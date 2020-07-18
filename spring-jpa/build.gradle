@@ -1,8 +1,8 @@
 plugins {
     id 'org.springframework.boot' version '2.3.1.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
     id 'java'
+    id 'idea'
 }
 
 group = 'com.example'
@@ -23,7 +23,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3'
-    compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
@@ -31,11 +30,7 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
 
-    // querydsl setting
-    implementation "com.querydsl:querydsl-jpa"
-    implementation "com.querydsl:querydsl-apt"
-    implementation 'org.jetbrains:annotations:15.0'
-    implementation 'org.jetbrains:annotations:15.0'
+    compileOnly 'org.projectlombok:lombok'
 
     // jasypt
     implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:1.17"
@@ -46,29 +41,7 @@ test {
     useJUnitPlatform()
 }
 
-
-// querydsl setting
-def querydslSrcDir = 'src/main/generated'
-
-querydsl {
-    library = "com.querydsl:querydsl-apt:4.2.1"
-    jpa = true
-    querydslSourcesDir = querydslSrcDir
+tasks.withType(Test) {
+    scanForTestClasses = false
+    include "**/*Test.class"
 }
-
-compileQuerydsl {
-    options.annotationProcessorPath = configurations.querydsl
-}
-
-sourceSets {
-    main {
-        java {
-            srcDirs = [ "src/main/java" , "${querydslSrcDir}"]
-        }
-    }
-}
-
-clean {
-    delete file(querydslSrcDir)
-}
-
