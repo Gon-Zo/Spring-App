@@ -6,10 +6,10 @@ public class Jasypt {
 
     public static void main(String[] args) {
         StandardPBEStringEncryptor jasypt = new StandardPBEStringEncryptor();
-        jasypt.setPassword("park12345!");
+        jasypt.setPassword("");
         jasypt.setAlgorithm("PBEWithMD5AndDES");
 
-        String encryptedText = jasypt.encrypt("1234");
+        String encryptedText = jasypt.encrypt("");
         String plainText = jasypt.decrypt(encryptedText);
 
         System.out.println("encryptedText:  " + encryptedText);
