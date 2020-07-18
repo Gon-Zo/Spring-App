@@ -2,7 +2,6 @@ package com.example.springjpa.domain;
 
 
 import lombok.Getter;
-import org.apache.ibatis.annotations.UpdateProvider;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -21,13 +20,13 @@ public class BaseEntity {
     @Column(name = "update_date")
     protected LocalDate updateDate;
 
-    @PostPersist
-    protected void onPostPersist() {
+    @PrePersist
+    protected void onPrePersist() {
         this.createDate = LocalDate.now();
     }
 
-    @UpdateProvider
-    protected void onUpdateProvider() {
+    @PreUpdate
+    protected void onPreUpdate() {
         this.updateDate = LocalDate.now();
     }
 
