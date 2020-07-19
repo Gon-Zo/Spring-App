@@ -1,5 +1,6 @@
-package com.example.springjpa.domain;
+package com.example.springjpa.domain.post;
 
+import com.example.springjpa.domain.BaseEntity;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
