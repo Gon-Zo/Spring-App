@@ -12,10 +12,10 @@ import javax.persistence.Table;
 @NoArgsConstructor
 public class Post extends BaseEntity {
 
-   @Column(name = "title")
+   @Column(name = "title" , nullable = false)
    private String title;
 
-   @Column(name = "content")
+   @Column(name = "content" , nullable = false)
    private String content;
 
 }

@@ -10,12 +10,14 @@ import java.time.LocalDate;
 public class BaseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "seq" , nullable = false)
     private Long seq;
 
-    @Column(name = "create_date")
+    @Column(name = "create_date" , nullable = false)
     protected LocalDate createDate;
 
-    @Column(name = "update_date")
+    @Column(name = "update_date" , nullable = false)
     protected LocalDate updateDate;
 
     @PrePersist
