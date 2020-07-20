@@ -6,6 +6,11 @@ import com.example.springjpa.web.dto.PostDto;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Create by pnw1517@gmail.com on 2020.07.18
+ * Blog : https://zzz-oficial.tistory.com
+ * Github : https://github.com/Gon-Zo
+ */
 public interface PostSupport {
 
     Optional<List<Post>> findByAll();
