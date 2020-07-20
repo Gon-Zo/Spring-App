@@ -38,11 +38,20 @@ public class PostController {
         }
     }
 
+    /**
+     * jpql select 절
+     * @return
+     */
     @GetMapping("/jpql")
     public List<Post> showPostsByJpql() {
         return service.getAllPostByJpal();
     }
 
+    /**
+     * jpal select 절 find title
+     * @param title
+     * @return
+     */
     @GetMapping("/jpal")
     public List<Post> showPostsByjpal(String title){
         return service.getPostByJpql(title);
