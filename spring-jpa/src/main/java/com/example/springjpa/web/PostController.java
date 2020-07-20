@@ -2,9 +2,8 @@ package com.example.springjpa.web;
 
 import com.example.springjpa.domain.post.Post;
 import com.example.springjpa.service.post.PostService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.springjpa.web.dto.PostDto;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,9 +37,40 @@ public class PostController {
         return service.getAllPostByJpal();
     }
 
-    @GetMapping("jpal")
+    @GetMapping("/jpal")
     public List<Post> showPostsByjpal(String title){
         return service.getPostByJpql(title);
+    }
+
+    /**
+     * 하나의 포스트 업데이트
+     *
+     * @param seq
+     * @param dto
+     */
+    @PutMapping("/{seq}")
+    public void modifyPostInfo (@PathVariable long seq , PostDto dto){
+        service.updateToPost(seq, dto);
+    }
+
+    /**
+     * 하나의 포스트 삭제
+     *
+     * @param seq
+     */
+    @DeleteMapping("/{seq}")
+    public void removeToPost(@PathVariable long seq){
+        service.removeToPost(seq);
+    }
+
+    /**
+     * 포스트 정보 저장
+     *
+     * @param dto
+     */
+    @PostMapping("/")
+    public void createPostInfo(PostDto dto){
+        service.saveToPost(dto);
     }
 
 }
