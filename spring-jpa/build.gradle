@@ -22,6 +22,9 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://repo.spring.io/libs-milestone'
+    }
 }
 
 project.afterEvaluate {
@@ -64,8 +67,12 @@ dependencies {
     implementation "com.querydsl:querydsl-apt"
     implementation 'org.jetbrains:annotations:15.0'
 
-
+    // util
     implementation 'org.apache.commons:commons-lang3:3.9'
+
+    // mobile
+    implementation 'org.springframework.mobile:spring-mobile-device:2.0.0.M3'
+
 }
 
 test {

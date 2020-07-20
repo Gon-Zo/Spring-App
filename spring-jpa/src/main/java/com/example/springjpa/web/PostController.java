@@ -3,6 +3,7 @@ package com.example.springjpa.web;
 import com.example.springjpa.domain.post.Post;
 import com.example.springjpa.service.post.PostService;
 import com.example.springjpa.web.dto.PostDto;
+import org.springframework.mobile.device.Device;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,8 +29,13 @@ public class PostController {
      * @return
      */
     @GetMapping("")
-    public List<Post> showPosts() {
-        return service.getAllPost();
+    public List<Post> showPosts(Device device) {
+        // 모바일 체크
+        if(device.isMobile()){
+            return service.getAllPost();
+        }else{
+            return service.getAllPost();
+        }
     }
 
     @GetMapping("/jpql")
