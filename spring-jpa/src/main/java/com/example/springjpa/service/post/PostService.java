@@ -8,4 +8,8 @@ public interface PostService {
 
     List<Post> getAllPost();
 
+    List<Post> getAllPostByJpal();
+
+    List<Post> getPostByJpql(String title);
+
 }

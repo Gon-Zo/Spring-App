@@ -9,4 +9,6 @@ public interface PostSupport {
 
     Optional<List<Post>> findByAll();
 
+    Optional<List<Post>> findByTitle(String title);
+
 }
