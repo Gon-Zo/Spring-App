@@ -2,7 +2,7 @@ plugins {
 
     id 'java'
     id 'idea'
-    id 'application'
+//    id 'application'
     id 'org.springframework.boot' version '2.2.3.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     //querydsl 추가
@@ -100,7 +100,7 @@ compileQuerydsl {
 sourceSets {
     main {
         java {
-            srcDirs = ["src/main/java", "${querydslSrcDir}"]
+            srcDirs = ["src/main/java", querydslSrcDir]
         }
     }
 }
