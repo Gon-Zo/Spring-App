@@ -44,13 +44,14 @@ public class PostSupportImpl extends QuerydslRepositorySupport implements PostSu
     @Transactional(readOnly = true)
     public Optional<List<Post>> findByAll() {
 
-        String queryStr = "select p.title , p.content  from post as p ";
+        String queryStr = "select p from Post p ";
 
-        TypedQuery<Post> query = entityManager.createQuery(queryStr, Post.class);
+        TypedQuery query = entityManager.createQuery(queryStr, Post.class);
 
         List<Post> result = query.getResultList();
 
         return Optional.ofNullable(result);
+
     }
 
     /**
@@ -63,15 +64,16 @@ public class PostSupportImpl extends QuerydslRepositorySupport implements PostSu
     @Transactional(readOnly = true)
     public Optional<List<Post>> findByTitle(String title) {
 
-        String queryStr = "select p.title , p.content from post as p where p.title = :title";
+        String queryStr = "select p from Post p where p.title = :title";
 
         TypedQuery<Post> query = entityManager.createQuery(queryStr, Post.class);
 
-        query.setParameter("title" , title);
+        query.setParameter("title", title);
 
         List<Post> list = query.getResultList();
 
         return Optional.ofNullable(list);
+
     }
 
     /**

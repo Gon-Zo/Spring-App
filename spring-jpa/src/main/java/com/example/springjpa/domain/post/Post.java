@@ -2,12 +2,14 @@ package com.example.springjpa.domain.post;
 
 import com.example.springjpa.domain.BaseEntity;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+@Getter
 @Entity
 @Table(name = "POST")
 @NoArgsConstructor

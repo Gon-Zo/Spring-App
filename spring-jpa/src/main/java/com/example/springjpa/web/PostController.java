@@ -30,12 +30,7 @@ public class PostController {
      */
     @GetMapping("")
     public List<Post> showPosts(Device device) {
-        // 모바일 체크
-        if(device.isMobile()){
-            return service.getAllPost();
-        }else{
-            return service.getAllPost();
-        }
+        return service.getAllPost();
     }
 
     /**
@@ -52,7 +47,7 @@ public class PostController {
      * @param title
      * @return
      */
-    @GetMapping("/jpal")
+    @GetMapping("/jpql/find")
     public List<Post> showPostsByjpal(String title){
         return service.getPostByJpql(title);
     }
