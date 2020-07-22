@@ -26,7 +26,8 @@ public class Post extends BaseEntity {
     */
    @OneToOne
    @JoinColumn(name = "user_seq" ,
-           referencedColumnName = "seq")
+           referencedColumnName = "seq" ,
+           nullable = false)
    private User user;
 
    @Builder
