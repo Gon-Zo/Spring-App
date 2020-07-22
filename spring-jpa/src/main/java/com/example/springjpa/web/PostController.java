@@ -14,7 +14,7 @@ import java.util.List;
  * Github : https://github.com/Gon-Zo
  */
 @RestController
-@RequestMapping("/api/post")
+@RequestMapping("/api/app/post")
 public class PostController {
 
     private final PostService service;

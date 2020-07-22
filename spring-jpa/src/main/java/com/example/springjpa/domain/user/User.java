@@ -1,8 +1,10 @@
 package com.example.springjpa.domain.user;
 
 import com.example.springjpa.domain.BaseEntity;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,5 +24,12 @@ public class User extends BaseEntity {
 
     @Column( name = "name", nullable = false)
     private String name;
+
+    @Builder
+    public User(String email, String password, String name) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+    }
 
 }
