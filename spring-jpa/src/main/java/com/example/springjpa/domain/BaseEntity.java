@@ -16,19 +16,19 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
 
-    @Column(name = "create_date" , nullable = false)
+    @Column(updatable = false , nullable = false)
     protected LocalDate createDate;
 
-    @Column(name = "update_date" , nullable = false)
+    @Column(nullable = false)
     protected LocalDate updateDate;
 
     @PrePersist
-    protected void onPrePersist(){
+    protected void onPersist() {
         this.createDate = this.updateDate = LocalDate.now();
     }
 
     @PreUpdate
-    protected void onPreUpdate() {
+    protected void onUpdate() {
         this.updateDate = LocalDate.now();
     }
 
