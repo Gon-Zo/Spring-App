@@ -5,7 +5,6 @@ import com.example.springjpa.domain.post.PostRepository;
 import com.example.springjpa.domain.post.support.PostSupport;
 import com.example.springjpa.web.dto.PostDto;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,67 +26,30 @@ public class PostServiceImpl implements PostService {
         this.repository = repository;
     }
 
-    /**
-     * 전체 데이터 출력
-     *
-     * @return
-     */
     @Override
     public List<Post> getAllPost() {
-        return repository.findAllBy();
-    }
-
-    /**
-     * 전체 데이터 훌력 (jpal)
-     *
-     * @return
-     */
-    @Override
-    public List<Post> getAllPostByJpal() {
         return support.findByAll().orElseGet(() -> new ArrayList<>());
     }
 
-    /**
-     * title 이 같은 것만 출력 (jpql)
-     *
-     * @param title
-     * @return
-     */
     @Override
-    public List<Post> getPostByJpql(String title) {
+    public List<Post> getPost(String title) {
         return support.findByTitle(title).orElseGet(() -> new ArrayList<>());
     }
 
-    /**
-     * update query
-     *
-     * @param seq
-     * @param dto
-     */
     @Override
-    public void updateToPost(long seq, PostDto dto) {
-        support.update(seq , dto);
+    public void updateByPost(long seq, PostDto dto) {
+        support.update(seq ,dto);
     }
 
-    /**
-     * delete query
-     *
-     * @param seq
-     */
     @Override
-    @Transactional
-    public void removeToPost(long seq) {
-        repository.deleteById(seq);
+    public void removeByPost(long seq) {
+        support.deleteById(seq);
     }
 
-    /**
-     * update query
-     *
-     * @param dto
-     */
     @Override
-    public void saveToPost(PostDto dto) {
-        repository.save(dto.toEntity());
+    public void createByPost(PostDto dto) {
+        support.save(dto);
     }
+
 
 }

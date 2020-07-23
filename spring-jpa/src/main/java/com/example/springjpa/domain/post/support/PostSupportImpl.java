@@ -2,21 +2,18 @@ package com.example.springjpa.domain.post.support;
 
 import com.example.springjpa.domain.post.Post;
 import com.example.springjpa.web.dto.PostDto;
-import com.querydsl.core.dml.UpdateClause;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.querydsl.jpa.impl.JPAUpdateClause;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
-import static com.example.springjpa.domain.post.QPost.post;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
-
 
 /**
  * Create by pnw1517@gmail.com on 2020.07.18
@@ -36,11 +33,6 @@ public class PostSupportImpl extends QuerydslRepositorySupport implements PostSu
         this.jpaQueryFactory = jpaQueryFactory;
     }
 
-    /**
-     * Jpql example method
-     *
-     * @return
-     */
     @Override
     @Transactional(readOnly = true)
     public Optional<List<Post>> findByAll() {
@@ -51,16 +43,12 @@ public class PostSupportImpl extends QuerydslRepositorySupport implements PostSu
 
         List<Post> result = query.getResultList();
 
+        entityManager.close();
+
         return Optional.ofNullable(result);
 
     }
 
-    /**
-     * jpql 파라미터 사용법
-     *
-     * @param title
-     * @return
-     */
     @Override
     @Transactional(readOnly = true)
     public Optional<List<Post>> findByTitle(String title) {
@@ -71,34 +59,74 @@ public class PostSupportImpl extends QuerydslRepositorySupport implements PostSu
 
         query.setParameter("title", title);
 
+        entityManager.close();
+
         List<Post> list = query.getResultList();
 
         return Optional.ofNullable(list);
 
     }
 
-    /**
-     * querydsl update 쿼리
-     *
-     * @param seq
-     * @param dto
-     */
     @Override
     @Transactional
-    public void update(long seq, PostDto dto) {
+    public void update( long seq, PostDto dto) {
 
-        UpdateClause<JPAUpdateClause> query = update(post);
+        StringBuffer str = new StringBuffer();
 
-        if (isNotEmpty(dto.getTitle())) {
-            query.set(post.title, dto.getTitle());
+        str.append("Update Post p");
+
+        if(isNotEmpty(dto.getTitle())){
+            str.append("set p.title = :title");
         }
 
         if(isNotEmpty(dto.getContent())){
-           query.set(post.content , dto.getContent());
+            str.append(",set p.content = :content");
         }
 
-        query.execute();
+        str.append("where p.seq =:seq");
 
+        Query query = entityManager.createQuery(str.toString());
+
+        if(isNotEmpty(dto.getTitle())){
+            query.setParameter("title" , dto.getTitle());
+        }
+
+        if(isNotEmpty(dto.getContent())){
+            query.setParameter("content" , dto.getContent());
+        }
+
+        query.setParameter("seq" , seq);
+
+        query.executeUpdate();
+
+        entityManager.getTransaction();
+
+        entityManager.close();
     }
+
+    @Override
+    @Transactional
+    public void deleteById(long seq) {
+        String str = "DELETE FROM Post p WHERE p.seq =:seq";
+
+        Query query = entityManager.createQuery(str);
+
+        query.setParameter("seq" , seq);
+
+        entityManager.getTransaction();
+
+        entityManager.close();
+    }
+
+    @Override
+    public void save(PostDto dto) {
+
+        String str =  "insert into Post( title , content ) Values ( :title , :content)";
+
+        Query query = entityManager.createQuery(str);
+
+        entityManager.close();
+    }
+
 
 }

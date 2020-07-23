@@ -19,4 +19,8 @@ public interface PostSupport {
 
     void update(long seq , PostDto dto);
 
+    void deleteById(long seq);
+
+    void save(PostDto dto);
+
 }

@@ -9,14 +9,12 @@ public interface PostService {
 
     List<Post> getAllPost();
 
-    List<Post> getAllPostByJpal();
+    List<Post> getPost(String title);
 
-    List<Post> getPostByJpql(String title);
+    void updateByPost(long seq , PostDto dto);
 
-    void updateToPost(long seq , PostDto dto);
+    void removeByPost(long seq);
 
-    void removeToPost(long seq);
-
-    void saveToPost(PostDto dto);
+    void createByPost(PostDto dto);
 
 }

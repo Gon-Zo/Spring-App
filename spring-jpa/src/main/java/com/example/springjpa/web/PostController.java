@@ -3,7 +3,6 @@ package com.example.springjpa.web;
 import com.example.springjpa.domain.post.Post;
 import com.example.springjpa.service.post.PostService;
 import com.example.springjpa.web.dto.PostDto;
-import org.springframework.mobile.device.Device;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,64 +22,29 @@ public class PostController {
         this.service = service;
     }
 
-    /**
-     * jpa 포스트 데이터 출력
-     *
-     * @return
-     */
-    @GetMapping("")
-    public List<Post> showPosts(Device device) {
+    @GetMapping("/jpql")
+    public List<Post> showPosts() {
         return service.getAllPost();
     }
 
-    /**
-     * jpql select 절
-     * @return
-     */
-    @GetMapping("/jpql")
-    public List<Post> showPostsByJpql() {
-        return service.getAllPostByJpal();
-    }
-
-    /**
-     * jpal select 절 find title
-     * @param title
-     * @return
-     */
     @GetMapping("/jpql/find")
-    public List<Post> showPostsByjpal(String title){
-        return service.getPostByJpql(title);
+    public List<Post> showPosts(String title){
+        return service.getPost(title);
     }
 
-    /**
-     * 하나의 포스트 업데이트
-     *
-     * @param seq
-     * @param dto
-     */
+    @PostMapping("")
+    public void saveByPost(PostDto dto){
+        service.createByPost(dto);
+    }
+
     @PutMapping("/{seq}")
-    public void modifyPostInfo (@PathVariable long seq , PostDto dto){
-        service.updateToPost(seq, dto);
+    public void modifyByPost(@PathVariable long seq  , PostDto dto){
+        service.updateByPost(seq , dto);
     }
 
-    /**
-     * 하나의 포스트 삭제
-     *
-     * @param seq
-     */
     @DeleteMapping("/{seq}")
-    public void removeToPost(@PathVariable long seq){
-        service.removeToPost(seq);
-    }
-
-    /**
-     * 포스트 정보 저장
-     *
-     * @param dto
-     */
-    @PostMapping("/")
-    public void createPostInfo(PostDto dto){
-        service.saveToPost(dto);
+    public void removeByPost(long seq){
+        service.removeByPost(seq);
     }
 
 }
