@@ -5,6 +5,8 @@ import com.example.springjpa.service.user.UserService;
 import com.example.springjpa.web.dto.UserDto;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Create by pnw1517@gmail.com on 2020.07.22
  * Blog : https://zzz-oficial.tistory.com
@@ -21,8 +23,8 @@ public class UserController {
     }
 
     @GetMapping("")
-    public User showToUserByEmail(UserDto dto){
-        return service.getByEmail(dto);
+    public List<User> showByUserList(){
+       return service.getByUserList();
     }
 
     @PostMapping("")

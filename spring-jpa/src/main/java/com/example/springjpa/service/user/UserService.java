@@ -2,6 +2,9 @@ package com.example.springjpa.service.user;
 
 import com.example.springjpa.domain.user.User;
 import com.example.springjpa.web.dto.UserDto;
+import net.bytebuddy.agent.builder.AgentBuilder;
+
+import java.util.List;
 
 /**
  * Create by pnw1517@gmail.com on 2020.07.22
@@ -25,5 +28,7 @@ public interface UserService {
     void removeByUser(long seq);
 
     void updateByUser(long seq , UserDto dto);
+
+    List<User> getByUserList();
 
 }
