@@ -2,10 +2,8 @@ plugins {
 
     id 'java'
     id 'idea'
-//    id 'application'
     id 'org.springframework.boot' version '2.2.3.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    //querydsl 추가
     id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 
 }
@@ -59,18 +57,11 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testCompileOnly("org.projectlombok:lombok")
     testAnnotationProcessor("org.projectlombok:lombok")
-
-    // jasypt
     implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:1.17"
-
     implementation "com.querydsl:querydsl-jpa"
     implementation "com.querydsl:querydsl-apt"
     implementation 'org.jetbrains:annotations:15.0'
-
-    // util
     implementation 'org.apache.commons:commons-lang3:3.9'
-
-    // mobile
     implementation 'org.springframework.mobile:spring-mobile-device:2.0.0.M3'
 
 }
