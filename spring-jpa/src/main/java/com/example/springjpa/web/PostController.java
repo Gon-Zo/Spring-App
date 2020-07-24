@@ -33,7 +33,7 @@ public class PostController {
     }
 
     @PostMapping("")
-    public void saveByPost(PostDto dto){
+    public void saveByPost(@RequestBody PostDto dto){
         service.createByPost(dto);
     }
 

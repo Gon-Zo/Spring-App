@@ -118,15 +118,4 @@ public class PostSupportImpl extends QuerydslRepositorySupport implements PostSu
         entityManager.close();
     }
 
-    @Override
-    public void save(PostDto dto) {
-
-        String str =  "insert into Post( title , content ) Values ( :title , :content)";
-
-        Query query = entityManager.createQuery(str);
-
-        entityManager.close();
-    }
-
-
 }

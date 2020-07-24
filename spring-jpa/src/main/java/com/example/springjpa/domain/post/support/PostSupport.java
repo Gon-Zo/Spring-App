@@ -21,6 +21,4 @@ public interface PostSupport {
 
     void deleteById(long seq);
 
-    void save(PostDto dto);
-
 }

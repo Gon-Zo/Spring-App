@@ -48,8 +48,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void createByPost(PostDto dto) {
-        support.save(dto);
+        repository.save(dto.toEntity());
     }
-
 
 }
