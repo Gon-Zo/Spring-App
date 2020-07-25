@@ -19,6 +19,7 @@ public class SwaggerConfiguration {
 
     @Bean
     public Docket setDocket () {
+        // swagger ui >> http://localhost:8080/swagger-ui.html
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
