@@ -4,15 +4,14 @@ import com.example.springjpa.domain.user.User;
 import com.example.springjpa.domain.user.UserRepository;
 import com.example.springjpa.domain.user.support.UserSupport;
 import com.example.springjpa.web.dto.UserDto;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
 
@@ -24,44 +23,44 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User getByEmail(UserDto dto) {
+    public User getByEmail(@NotNull UserDto dto) {
         return repository.findByEmail(dto.getEmail());
     }
 
     @Override
-    public User getByName(UserDto dto) {
+    public User getByName(@NotNull UserDto dto) {
         return repository.findByName(dto.getName());
     }
 
     @Override
-    public User getByEmailAndName(UserDto dto) {
-        return repository.findByEmailAndName(dto.getEmail() , dto.getName());
+    public User getByEmailAndName(@NotNull UserDto dto) {
+        return repository.findByEmailAndName(dto.getEmail(), dto.getName());
     }
 
     @Override
-    public User getByEmailOrName(UserDto dto) {
-        return repository.findByEmailOrName(dto.getEmail() , dto.getName());
+    public User getByEmailOrName(@NotNull UserDto dto) {
+        return repository.findByEmailOrName(dto.getEmail(), dto.getName());
     }
 
     @Override
-    public User getByCreateDate(UserDto dto) {
+    public User getByCreateDate(@NotNull UserDto dto) {
         return repository.findByCreateDate(dto.getCreateDate());
     }
 
     @Override
-    public void createByUser(UserDto dto) {
+    public void createByUser(@NotNull UserDto dto) {
         repository.save(dto.toEntity());
     }
 
     @Override
     @Transactional
-    public void removeByUser(long seq) {
+    public void removeByUser(@NotNull long seq) {
         repository.deleteById(seq);
     }
 
     @Override
     @Transactional
-    public void updateByUser(long seq , UserDto dto) {
+    public void updateByUser(@NotNull long seq, @NotNull UserDto dto) {
 
         User currentUser = repository.getOne(seq);
 
