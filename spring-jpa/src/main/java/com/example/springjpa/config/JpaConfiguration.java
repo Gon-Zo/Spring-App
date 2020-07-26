@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
  * Github : https://github.com/Gon-Zo
  */
 @Configuration
-public class JspConfiguration {
+public class JpaConfiguration {
 
     @PersistenceContext
     private EntityManager entityManager;
