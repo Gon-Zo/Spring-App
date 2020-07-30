@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Create by pnw1517@gmail.com on 2020.07.20
+ * Create by park031517@gmail on 2020.07.20
  * Blog : https://zzz-oficial.tistory.com
  * Github : https://github.com/Gon-Zo
  */

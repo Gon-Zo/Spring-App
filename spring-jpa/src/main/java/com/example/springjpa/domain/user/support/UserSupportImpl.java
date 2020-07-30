@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 
 /**
- * Create by pnw1517@gmail.com on 2020.07.22
+ * Create by park031517@gmail on 2020.07.22
  * Blog : https://zzz-oficial.tistory.com
  * Github : https://github.com/Gon-Zo
  */
