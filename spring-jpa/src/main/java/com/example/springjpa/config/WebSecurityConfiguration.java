@@ -1,5 +1,6 @@
 package com.example.springjpa.config;
 
+import com.example.springjpa.core.auth.JwtUtils;
 import com.example.springjpa.core.auth.LoginAuthUserDetailsService;
 import com.example.springjpa.core.filter.LoginAuthFilter;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +26,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final LoginAuthUserDetailsService loginAuthUserDetailsService;
 
-    public WebSecurityConfiguration(LoginAuthUserDetailsService loginAuthUserDetailsService) {
+    private final JwtUtils jwtUtils;
+
+    public WebSecurityConfiguration(LoginAuthUserDetailsService loginAuthUserDetailsService, JwtUtils jwtUtils) {
         this.loginAuthUserDetailsService = loginAuthUserDetailsService;
+        this.jwtUtils = jwtUtils;
     }
 
     @Override
@@ -40,7 +44,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilterBefore(new LoginAuthFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new LoginAuthFilter(authenticationManager(), jwtUtils), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override

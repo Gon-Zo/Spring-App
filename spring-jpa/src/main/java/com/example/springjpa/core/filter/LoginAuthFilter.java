@@ -1,6 +1,10 @@
 package com.example.springjpa.core.filter;
 
 
+import com.example.springjpa.core.WebResultDto;
+import com.example.springjpa.core.auth.JwtUtils;
+import com.example.springjpa.core.auth.LoginAuthUser;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -12,6 +16,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Create by park031517@gmail.com on 2020-08-1, 토
@@ -22,8 +28,11 @@ public class LoginAuthFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
 
-    public LoginAuthFilter(AuthenticationManager authenticationManager){
+    private final JwtUtils jwtUtils;
+
+    public LoginAuthFilter(AuthenticationManager authenticationManager, JwtUtils jwtUtils){
         this.authenticationManager = authenticationManager;
+        this.jwtUtils = jwtUtils;
         setFilterProcessesUrl("/login");
         setUsernameParameter("email");
         setPasswordParameter("password");
@@ -46,7 +55,24 @@ public class LoginAuthFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        super.successfulAuthentication(request, response, chain, authResult);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        LoginAuthUser loginAuthUser = (LoginAuthUser) authResult.getPrincipal();
+
+        Map<String, Object> userInfo = new HashMap<>();
+
+        userInfo.put("email", loginAuthUser);
+
+        String jwt = jwtUtils.doGenerateToken(userInfo, loginAuthUser.getUsername());
+
+        response.getOutputStream()
+                .println(objectMapper.writeValueAsString(
+                        WebResultDto.builder()
+                                .status("200")
+                                .message(jwt)
+                                .build())
+                );
     }
 
 }
