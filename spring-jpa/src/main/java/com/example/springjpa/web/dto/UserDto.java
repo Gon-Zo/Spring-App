@@ -4,6 +4,7 @@ import com.example.springjpa.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 
@@ -31,6 +32,10 @@ public class UserDto {
                 .password(this.password)
                 .name(this.name)
                 .build();
+    }
+
+    public void encodingByPassword(){
+        this.password = new BCryptPasswordEncoder().encode(this.password);
     }
 
 }

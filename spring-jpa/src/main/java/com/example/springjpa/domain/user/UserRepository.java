@@ -32,4 +32,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Transactional(readOnly = true)
     User findByCreateDate(LocalDate createDate);
 
+    @Transactional(readOnly = true)
+    User findByEmailAndPassword(String email , String password);
+
 }

@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createByUser(@NotNull UserDto dto) {
+        dto.encodingByPassword();
         repository.save(dto.toEntity());
     }
 
