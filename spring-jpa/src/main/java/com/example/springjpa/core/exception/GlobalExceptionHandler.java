@@ -2,6 +2,7 @@ package com.example.springjpa.core.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.apache.ibatis.reflection.ExceptionUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -41,7 +42,7 @@ public class GlobalExceptionHandler {
      * 커스텀 예외 처리
      */
     @ResponseBody
-    @ExceptionHandler(WebException.class)
+    @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ExceptionDto handleException(WebException e) {
 
@@ -54,6 +55,7 @@ public class GlobalExceptionHandler {
         return ExceptionDto.builder()
                 .code(errorCode.getCode())
                 .message(errorCode.getMessage())
+                .errorDetail(ExceptionUtils.getStackTrace(e))
                 .build();
 
     }

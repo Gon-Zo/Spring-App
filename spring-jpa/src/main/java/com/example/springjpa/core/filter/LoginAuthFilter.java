@@ -5,6 +5,7 @@ import com.example.springjpa.core.WebResultDto;
 import com.example.springjpa.core.auth.JwtUtils;
 import com.example.springjpa.core.auth.LoginAuthUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,6 +25,7 @@ import java.util.Map;
  * Blog : https://zzz-oficial.tistory.com
  * Github : https://github.com/Gon-Zo
  */
+@Slf4j
 public class LoginAuthFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
@@ -45,6 +47,8 @@ public class LoginAuthFilter extends UsernamePasswordAuthenticationFilter {
         String email = request.getParameter("email");
 
         String password = request.getParameter("password");
+
+        log.info("Login User={}", email);
 
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(email, password);
 

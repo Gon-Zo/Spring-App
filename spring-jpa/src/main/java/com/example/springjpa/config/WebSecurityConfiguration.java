@@ -2,9 +2,11 @@ package com.example.springjpa.config;
 
 import com.example.springjpa.core.auth.JwtUtils;
 import com.example.springjpa.core.auth.LoginAuthUserDetailsService;
+import com.example.springjpa.core.filter.JwtAuthFilter;
 import com.example.springjpa.core.filter.LoginAuthFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -28,7 +30,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final JwtUtils jwtUtils;
 
-    public WebSecurityConfiguration(LoginAuthUserDetailsService loginAuthUserDetailsService, JwtUtils jwtUtils) {
+    public WebSecurityConfiguration(LoginAuthUserDetailsService loginAuthUserDetailsService, JwtUtils jwtUtils){
         this.loginAuthUserDetailsService = loginAuthUserDetailsService;
         this.jwtUtils = jwtUtils;
     }
@@ -44,7 +46,21 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilterBefore(new LoginAuthFilter(authenticationManager(), jwtUtils), UsernamePasswordAuthenticationFilter.class);
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/health/check-up")
+                .permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/api/app/user")
+                .permitAll()
+                .and()
+//                .authorizeRequests()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+                .addFilterBefore(new LoginAuthFilter(authenticationManager(), jwtUtils), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(new JwtAuthFilter(jwtUtils, loginAuthUserDetailsService), LoginAuthFilter.class);
+
     }
 
     @Override
