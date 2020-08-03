@@ -42,31 +42,37 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String authorization = setJwtHeader(request.getHeader("Authorization"));
 
+        String url = request.getRequestURI();
+
         String userName = null;
 
-        if (isEmpty(authorization)) {
-            throw new WebException(ErrorCode.AUTHORIZATION_NOT_FOUND);
+        if (url.startsWith("/api")) {
+
+            if (isEmpty(authorization)) {
+                throw new WebException(ErrorCode.AUTHORIZATION_NOT_FOUND);
+            }
+
+            userName = jwtUtils.getUsernameFromToken(authorization);
+
+            if (isEmpty(userName)) {
+                throw new WebException(ErrorCode.UNABLE_JWT_TOKEN);
+            }
+
+            UserDetails loginAuthUser = loginAuthUserDetailsService.loadUserByUsername(userName);
+
+            Boolean isNotValidate = isNotValidate(authorization, loginAuthUser);
+
+            if (isNotValidate) {
+                throw new WebException(ErrorCode.IS_NOT_VALIDATE);
+            }
+
+            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(loginAuthUser, null, loginAuthUser.getAuthorities());
+
+            usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+
         }
-
-        userName = jwtUtils.getUsernameFromToken(authorization);
-
-        if(isEmpty(userName)) {
-            throw new WebException(ErrorCode.UNABLE_JWT_TOKEN);
-        }
-
-        UserDetails loginAuthUser = loginAuthUserDetailsService.loadUserByUsername(userName);
-
-        Boolean isNotValidate = isNotValidate(authorization, loginAuthUser);
-
-        if(isNotValidate){
-           throw new WebException(ErrorCode.IS_NOT_VALIDATE);
-        }
-
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(loginAuthUser, null, loginAuthUser.getAuthorities());
-
-        usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-        SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
 
         filterChain.doFilter(request , response);
 
