@@ -4,6 +4,8 @@ package com.example.springjpa.core.filter;
 import com.example.springjpa.core.WebResultDto;
 import com.example.springjpa.core.auth.JwtUtils;
 import com.example.springjpa.core.auth.LoginAuthUser;
+import com.example.springjpa.core.exception.ErrorCode;
+import com.example.springjpa.core.exception.WebException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,9 +18,11 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import static com.example.springjpa.core.utils.WebUtils.getJsonData;
 
 /**
  * Create by park031517@gmail.com on 2020-08-1, 토
@@ -36,19 +40,27 @@ public class LoginAuthFilter extends UsernamePasswordAuthenticationFilter {
         this.authenticationManager = authenticationManager;
         this.jwtUtils = jwtUtils;
         setFilterProcessesUrl("/login");
-        setUsernameParameter("email");
-        setPasswordParameter("password");
-        setPostOnly(Boolean.TRUE);
+//        setUsernameParameter("email");
+//        setPasswordParameter("password");
+//        setPostOnly(Boolean.TRUE);
     }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
-        String email = request.getParameter("email");
+        String method = request.getMethod();
 
-        String password = request.getParameter("password");
+        if (isNotPost(method)) {
+            throw new WebException(ErrorCode.INTERNAL_SERVER_ERROR);
+        }
 
-        log.info("Login User={}", email);
+        String body = getRequestBodyToString(request);
+
+        String email =  getJsonData(body , "email");
+
+        String password =  getJsonData(body , "password");
+
+        log.info("LOGIN USER -> {}", email);
 
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(email, password);
 
@@ -77,6 +89,24 @@ public class LoginAuthFilter extends UsernamePasswordAuthenticationFilter {
                                 .message(jwt)
                                 .build())
                 );
+    }
+
+    private String getRequestBodyToString(HttpServletRequest request){
+        StringBuffer jb = new StringBuffer();
+        String line = null;
+        try {
+            BufferedReader reader = request.getReader();
+            while ((line = reader.readLine()) != null) {
+                jb.append(line);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return jb.toString();
+    }
+
+    private boolean isNotPost(String method){
+        return !method.equals("POST");
     }
 
 }
