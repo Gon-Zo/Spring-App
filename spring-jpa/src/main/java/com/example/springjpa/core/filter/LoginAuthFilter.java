@@ -22,7 +22,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.example.springjpa.core.exception.ErrorCode.INTERNAL_SERVER_ERROR;
+import static com.example.springjpa.core.exception.ErrorCode.USER_EMAIL_FAIL;
+import static com.example.springjpa.core.exception.ErrorCode.USER_PASSWORD_FAIL;
 import static com.example.springjpa.core.utils.WebUtils.getJsonData;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 /**
  * Create by park031517@gmail.com on 2020-08-1, 토
@@ -40,9 +45,6 @@ public class LoginAuthFilter extends UsernamePasswordAuthenticationFilter {
         this.authenticationManager = authenticationManager;
         this.jwtUtils = jwtUtils;
         setFilterProcessesUrl("/login");
-//        setUsernameParameter("email");
-//        setPasswordParameter("password");
-//        setPostOnly(Boolean.TRUE);
     }
 
     @Override
@@ -51,14 +53,22 @@ public class LoginAuthFilter extends UsernamePasswordAuthenticationFilter {
         String method = request.getMethod();
 
         if (isNotPost(method)) {
-            throw new WebException(ErrorCode.INTERNAL_SERVER_ERROR);
+            throw new WebException(INTERNAL_SERVER_ERROR);
         }
 
         String body = getRequestBodyToString(request);
 
         String email =  getJsonData(body , "email");
 
+        if(isEmpty(email)){
+            throw new WebException(USER_EMAIL_FAIL);
+        }
+
         String password =  getJsonData(body , "password");
+
+        if(isEmpty(password)){
+           throw new WebException(USER_PASSWORD_FAIL);
+        }
 
         log.info("LOGIN USER -> {}", email);
 
@@ -67,6 +77,11 @@ public class LoginAuthFilter extends UsernamePasswordAuthenticationFilter {
         this.setDetails(request , authRequest);
 
         return authenticationManager.authenticate(authRequest);
+    }
+
+    @Override
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
+        super.unsuccessfulAuthentication(request, response, failed);
     }
 
     @Override

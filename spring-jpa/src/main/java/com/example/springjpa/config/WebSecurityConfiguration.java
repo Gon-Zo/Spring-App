@@ -60,16 +60,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .permitAll()
 //                .and()
 
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated()
-                .and()
+//                .authorizeRequests()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
 
                 .addFilterAfter(new LoginAuthFilter(authenticationManager(), jwtUtils), UsernamePasswordAuthenticationFilter.class)
                 .addFilterAfter(new JwtAuthFilter(jwtUtils, loginAuthUserDetailsService), LoginAuthFilter.class)
-                .exceptionHandling()
-                .authenticationEntryPoint(new RestAuthenticationEntryPoint())
-                .and()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(new RestAuthenticationEntryPoint())
+//                .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
