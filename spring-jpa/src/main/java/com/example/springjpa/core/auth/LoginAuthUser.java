@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Create by park031517@gmail.com on 2020-08-1, 토
@@ -20,10 +21,12 @@ public class LoginAuthUser implements UserDetails {
 
     private String password;
 
+    private List<String> groups;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
-        auth.add(new SimpleGrantedAuthority("USER"));
+        groups.forEach(group -> auth.add(new SimpleGrantedAuthority(group)));
         return auth;
     }
 
