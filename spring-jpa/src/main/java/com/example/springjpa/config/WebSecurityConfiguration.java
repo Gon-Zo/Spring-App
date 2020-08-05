@@ -2,9 +2,11 @@ package com.example.springjpa.config;
 
 import com.example.springjpa.core.auth.JwtUtils;
 import com.example.springjpa.core.auth.LoginAuthUserDetailsService;
+import com.example.springjpa.core.filter.AuthGroupFilter;
 import com.example.springjpa.core.filter.JwtAuthFilter;
 import com.example.springjpa.core.filter.LoginAuthFilter;
-import com.example.springjpa.core.filter.RestAuthenticationEntryPoint;
+import com.example.springjpa.domain.group.GroupRepository;
+import com.example.springjpa.domain.groupmenu.GroupMenuRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -34,10 +36,19 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final LoginAuthUserDetailsService loginAuthUserDetailsService;
 
+    private final GroupRepository groupRepository;
+
+    private final GroupMenuRepository groupMenuRepository;
+
     private final JwtUtils jwtUtils;
 
-    public WebSecurityConfiguration(LoginAuthUserDetailsService loginAuthUserDetailsService, JwtUtils jwtUtils){
+    public WebSecurityConfiguration(LoginAuthUserDetailsService loginAuthUserDetailsService,
+                                    GroupRepository groupRepository,
+                                    GroupMenuRepository groupMenuRepository,
+                                    JwtUtils jwtUtils){
         this.loginAuthUserDetailsService = loginAuthUserDetailsService;
+        this.groupRepository = groupRepository;
+        this.groupMenuRepository = groupMenuRepository;
         this.jwtUtils = jwtUtils;
     }
 
@@ -64,12 +75,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .anyRequest()
 //                .authenticated()
 //                .and()
-
                 .addFilterAfter(new LoginAuthFilter(authenticationManager(), jwtUtils), UsernamePasswordAuthenticationFilter.class)
                 .addFilterAfter(new JwtAuthFilter(jwtUtils, loginAuthUserDetailsService), LoginAuthFilter.class)
-//                .exceptionHandling()
-//                .authenticationEntryPoint(new RestAuthenticationEntryPoint())
-//                .and()
+                .addFilterAfter(new AuthGroupFilter(groupRepository, groupMenuRepository) , JwtAuthFilter.class)
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

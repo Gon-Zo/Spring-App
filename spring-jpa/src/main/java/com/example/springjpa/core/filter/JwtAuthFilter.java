@@ -3,12 +3,9 @@ package com.example.springjpa.core.filter;
 import com.example.springjpa.core.auth.JwtUtils;
 import com.example.springjpa.core.auth.LoginAuthUserDetailsService;
 import com.example.springjpa.core.exception.ErrorCode;
-import com.example.springjpa.core.exception.ExceptionDto;
 import com.example.springjpa.core.exception.WebException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +17,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static com.example.springjpa.core.utils.WebUtils.getWebExceptionData;
 
 /**
  * Create by park031517@gmail.com on 2020-08-2, 일
@@ -41,6 +40,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
+        log.info("FILTER -> {}" , "JwtAuthFilter");
+
         String url = request.getRequestURI();
 
         String authorization = null;
@@ -59,6 +60,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
                 try {
                     userName = jwtUtils.getUsernameFromToken(authorization);
+                    log.info("REQUEST USER -> {}" , userName);
                 } catch (IllegalArgumentException e) {
                     throw new WebException(ErrorCode.UNABLE_JWT_TOKEN);
                 } catch (ExpiredJwtException e) {
@@ -81,7 +83,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
                     SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
 
-
                 }
 
             }
@@ -93,27 +94,10 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             getWebExceptionData(e, response);
         }
 
-
     }
 
     private Boolean isNotValidate(String jwtHeader, UserDetails userDetails) {
         return !jwtUtils.validateToken(jwtHeader, userDetails);
-    }
-
-    private void getWebExceptionData(WebException e, HttpServletResponse response) {
-        ObjectMapper om = new ObjectMapper();
-        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        try {
-            response.getOutputStream()
-                    .println(om.writeValueAsString(
-                            ExceptionDto.builder()
-                                    .code(e.getErrorCode().getCode())
-                                    .message(e.getErrorCode().getMessage())
-                                    .build()
-                    ));
-        } catch (Exception exception) {
-            exception.getStackTrace();
-        }
     }
 
 }
