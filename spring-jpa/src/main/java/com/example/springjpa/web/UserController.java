@@ -28,11 +28,6 @@ public class UserController {
         return service.getByUserList();
     }
 
-    @PostMapping("")
-    public void saveByUserInfo(@RequestBody @NotNull UserDto dto) {
-        service.createByUser(dto);
-    }
-
     @PutMapping("/{seq}")
     public void modifyFromUserInfo(@PathVariable long seq, @RequestBody @NotNull UserDto dto) {
         service.updateByUser(seq, dto);

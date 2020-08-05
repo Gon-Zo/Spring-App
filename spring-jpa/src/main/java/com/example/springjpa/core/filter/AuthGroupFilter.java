@@ -45,13 +45,17 @@ public class AuthGroupFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
+        String url = request.getRequestURI();
+
+        log.info(" FILTER -> {} ", "AuthGroupFilter");
+
+        log.info(" REQUEST URL -> {}", url);
+
+        if (!url.startsWith("/api")) {
+            filterChain.doFilter(request, response);
+        }
+
         try {
-
-            log.info(" FILTER -> {} ", "AuthGroupFilter");
-
-            String url = request.getRequestURI();
-
-            log.info(" REQUEST URL -> {}", url);
 
             SecurityContext securityContext = SecurityContextHolder.getContext();
 
@@ -76,21 +80,21 @@ public class AuthGroupFilter extends OncePerRequestFilter {
             List<Boolean> isAuthUrl = new ArrayList<>();
 
             for (String str : urls) {
-                isAuthUrl.add(StringUtils.equals(str , url));
+                isAuthUrl.add(StringUtils.equals(str, url));
             }
 
             long isAuthUrlCnt = isAuthUrl.stream().filter(authUrl -> authUrl.equals(Boolean.TRUE)).count();
 
-            if(isAuthUrlCnt == 0){
-                log.error("is not access denied url -> {}"  , url);
-               throw new WebException(ErrorCode.IS_NOT_ACCESS_DENIED_URL);
-            }else{
+            if (isAuthUrlCnt == 0) {
+                log.error("is not access denied url -> {}", url);
+                throw new WebException(ErrorCode.IS_NOT_ACCESS_DENIED_URL);
+            } else {
                 filterChain.doFilter(request, response);
             }
 
-        }catch (WebException we){
+        } catch (WebException we) {
             we.getStackTrace();
-            getWebExceptionData(we , response);
+            getWebExceptionData(we, response);
         }
 
     }
