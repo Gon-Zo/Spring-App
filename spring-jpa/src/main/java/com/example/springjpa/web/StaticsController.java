@@ -3,10 +3,7 @@ package com.example.springjpa.web;
 import com.example.springjpa.service.user.UserService;
 import com.example.springjpa.web.dto.UserDto;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Create by park031517@gmail.com on 2020-08-1, 토
@@ -14,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Github : https://github.com/Gon-Zo
  */
 @RestController
+@RequestMapping("/static")
 public class StaticsController {
 
     private final UserService userService;

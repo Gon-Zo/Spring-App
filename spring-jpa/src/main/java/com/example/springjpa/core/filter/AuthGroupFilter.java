@@ -51,7 +51,7 @@ public class AuthGroupFilter extends OncePerRequestFilter {
 
         log.info(" REQUEST URL -> {}", url);
 
-        if (!url.startsWith("/api")) {
+        if (url.startsWith("/static")) {
             filterChain.doFilter(request, response);
         }
 
