@@ -43,7 +43,7 @@ public class PostController {
     }
 
     @DeleteMapping("/{seq}")
-    public void removeByPost(long seq){
+    public void removeByPost(@PathVariable long seq){
         service.removeByPost(seq);
     }
 
