@@ -9,6 +9,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Create by park031517@gmail.com on 2020-08-14, 금
+ * Blog : https://zzz-oficial.tistory.com
+ * Github : https://github.com/Gon-Zo
+ */
 @Getter
 @Entity
 @Table(name = "APP_USER")
