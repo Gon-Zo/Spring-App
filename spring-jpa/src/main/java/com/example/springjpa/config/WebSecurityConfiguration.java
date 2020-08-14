@@ -59,7 +59,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-
 //                .authorizeRequests()
 //                .antMatchers("/health/check-up" , "/sign-up")
 //                .permitAll()
@@ -73,7 +72,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new AuthGroupFilter(groupRepository, groupMenuRepository) , JwtAuthFilter.class)
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
     }
 
     @Override
