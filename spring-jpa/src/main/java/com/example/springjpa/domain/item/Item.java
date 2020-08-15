@@ -21,7 +21,7 @@ import java.math.BigDecimal;
 @Getter
 @Entity
 @NoArgsConstructor
-@Table(name = "APP_Item")
+@Table(name = "APP_ITEM")
 public class Item extends BaseEntity {
 
     @Column(name = "name" , nullable = false)

@@ -13,10 +13,10 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.example.springjpa.domain.item.QItem.item;
-
 import javax.persistence.EntityManager;
 import java.util.List;
+
+import static com.example.springjpa.domain.item.QItem.item;
 
 /**
  * Create by park031517@gmail.com on 2020-08-15, 토
