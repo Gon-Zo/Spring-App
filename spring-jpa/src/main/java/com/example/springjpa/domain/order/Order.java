@@ -1,7 +1,7 @@
 package com.example.springjpa.domain.order;
 
 import com.example.springjpa.domain.BaseEntity;
-import com.example.springjpa.domain.product.Product;
+import com.example.springjpa.domain.item.Item;
 import com.example.springjpa.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +27,7 @@ public class Order extends BaseEntity {
     private User user;
 
     @OneToOne
-    private Product product;
+    private Item product;
 
     @Column(name = "count" , nullable = false)
     private BigDecimal count;

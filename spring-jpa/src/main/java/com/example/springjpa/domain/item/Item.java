@@ -1,10 +1,11 @@
-package com.example.springjpa.domain.product;
+package com.example.springjpa.domain.item;
 
 import com.example.springjpa.domain.BaseEntity;
 import com.example.springjpa.domain.category.Category;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,8 +21,8 @@ import java.math.BigDecimal;
 @Getter
 @Entity
 @NoArgsConstructor
-@Table(name = "APP_PRODUCT")
-public class Product extends BaseEntity {
+@Table(name = "APP_Item")
+public class Item extends BaseEntity {
 
     @Column(name = "name" , nullable = false)
     private String name;
@@ -32,9 +33,11 @@ public class Product extends BaseEntity {
     @Column(name = "image" , nullable = false)
     private String image;
 
+    @Setter
     @Column(name = "is_sale" , nullable = false)
     private Boolean  isSale;
 
+    @Setter
     @Column(name = "is_discount" , nullable = false)
     private Boolean isDiscount;
 
@@ -42,12 +45,12 @@ public class Product extends BaseEntity {
     private Category category;
 
     @Builder
-    public Product(String name,
-                   BigDecimal price,
-                   String image,
-                   Boolean isSale,
-                   Boolean isDiscount,
-                   Category category) {
+    public Item(String name,
+                BigDecimal price,
+                String image,
+                Boolean isSale,
+                Boolean isDiscount,
+                Category category) {
         this.name = name;
         this.price = price;
         this.image = image;

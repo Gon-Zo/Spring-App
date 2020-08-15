@@ -16,7 +16,9 @@ public enum ErrorCode {
     UNABLE_JWT_TOKEN(500 , "A002" , "Unable to get JWT Token"),
     IS_NOT_VALIDATE(500 , "A003" , "Is Not Validate"),
     EXPIRED_JWT_TOKEN(500 , "A004" , "EXPIRED JWT TOKEN"),
-    IS_NOT_ACCESS_DENIED_URL(500 , "A005" , "Is Not Access Denied Url");
+    IS_NOT_ACCESS_DENIED_URL(500 , "A005" , "Is Not Access Denied Url"),
+    NOT_FOUND_STORE(500 , "S001" , "Not found Store Data"),
+    NOT_FOUND_ITEM(500 , "I001" , "Not found Item Data");
 
     @Getter
     private final String code;

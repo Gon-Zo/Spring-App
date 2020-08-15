@@ -1,7 +1,7 @@
 package com.example.springjpa.web.dto;
 
 import com.example.springjpa.domain.category.Category;
-import com.example.springjpa.domain.product.Product;
+import com.example.springjpa.domain.item.Item;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @Getter
 @ToString
 @NoArgsConstructor
-public class ProductDto {
+public class ItemDto {
 
     private String name;
 
@@ -30,8 +30,8 @@ public class ProductDto {
 
     private Category category;
 
-    public Product toEntity (){
-        return Product.builder()
+    public Item toEntity (){
+        return Item.builder()
                 .name(this.name)
                 .price(this.price)
                 .image(this.image)

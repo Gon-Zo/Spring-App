@@ -13,7 +13,8 @@ import javax.persistence.Table;
  * Blog : https://zzz-oficial.tistory.com
  * Github : https://github.com/Gon-Zo
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Builder
 @DynamicUpdate
