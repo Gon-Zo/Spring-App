@@ -10,33 +10,33 @@ import org.springframework.web.bind.annotation.*;
  * Github : https://github.com/Gon-Zo
  */
 @RestController
-@RequestMapping("/api/store")
+@RequestMapping("/api/app/store")
 public class StoreController {
-    
+
     private final StoreService service;
 
     public StoreController(StoreService service) {
         this.service = service;
     }
-    
+
     @GetMapping("/{seq}")
     public void showToStore(@PathVariable long seq) {
         service.getToStore(seq);
     }
-    
+
     @PostMapping("")
     public void createToStore(@RequestBody StoreDto dto){
-       service.saveToStore(dto); 
+       service.saveToStore(dto);
     }
-    
-    @PutMapping("/{seq}") 
+
+    @PutMapping("/{seq}")
     public void modifyToStore(@PathVariable long seq , StoreDto dto){
         service.updateToStore(seq, dto);
     }
-    
+
     @DeleteMapping("/{seq}")
     public void removeToStore(@PathVariable long seq){
         service.deleteToStore(seq);
     }
-    
+
 }

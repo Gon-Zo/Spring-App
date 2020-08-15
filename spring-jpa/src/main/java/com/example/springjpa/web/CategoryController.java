@@ -12,7 +12,7 @@ import java.util.List;
  * Github : https://github.com/Gon-Zo
  */
 @RestController
-@RequestMapping("/api/category")
+@RequestMapping("/api/app/category")
 public class CategoryController {
 
     private CategoryService service;
