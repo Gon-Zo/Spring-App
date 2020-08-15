@@ -58,7 +58,12 @@ public class InitService {
 
         if (menuCnt == 0) {
 
-            List<String> urls = Arrays.asList("/api/app/post", "/api/app/user");
+            List<String> urls = Arrays.asList(
+                    "/api/app/post",
+                    "/api/app/user",
+                    "/api/app/category",
+                    "/api/app/store"
+            );
 
             for (String url : urls) {
 

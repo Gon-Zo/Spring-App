@@ -29,6 +29,9 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'org.springframework.security:spring-security-test'
+//    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+
+//    implementation("javax.servlet:javax.servlet-api:3.0.1")
 }
 
 test {
