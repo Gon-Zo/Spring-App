@@ -1,6 +1,4 @@
-# Spring boot 
-## 1. 개발환경 
-* Build Tool : gradle    
-* DB : postgres sql  
-* Java Version : 8    
-
+### JPA Project 
+> Builde Tool : Gradle <br/>
+> DataBase : Postgres Sql <br/>
+> Java Version : 8 <br/>
