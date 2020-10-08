@@ -1,4 +1,4 @@
-package com.example.springjpa.core.exception;
+package com.example.springjpa.exception;
 
 import lombok.Builder;
 import lombok.Getter;

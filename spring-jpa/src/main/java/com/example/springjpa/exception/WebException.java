@@ -1,4 +1,4 @@
-package com.example.springjpa.core.exception;
+package com.example.springjpa.exception;
 
 /**
  * Create by park031517@gmail.com on 2020-08-1, 토

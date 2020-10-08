@@ -1,4 +1,4 @@
-package com.example.springjpa.core.utils;
+package com.example.springjpa.utils;
 
 /**
  * Create by park031517@gmail.com on 2020-08-3, 월

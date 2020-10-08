@@ -1,4 +1,4 @@
-package com.example.springjpa.core.exception;
+package com.example.springjpa.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
