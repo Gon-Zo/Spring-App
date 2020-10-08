@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: ENC(uaHzT06Hp+iYMT/3YzzLCslJNb+U3UxuYcAaunhvGlTapXj0iqSQrOKvJb1o+y3vXZbfbyJqo1b8180oQgVctD29kf92c2MLQ/mmR2b98AF8AuYE1dScpeubQLypp3U2)
+    hikari:
+      username: ENC(M/qSx0TdvwP4f9peXKc0FrsAA7ZDpLCL)
+      password: ENC(aWwDwqapVyVFiQsDIskixw==)
+  jpa.hibernate.ddl-auto: create-drop
+  jpa.properties.hibernate.show_sql: true
+  jpa.properties.hibernate.format_sql: true
+
+logging:
+  level.org.hibernate:
+                  SQL: DEBUG
+                  type.descriptor.sql: trace
+                  descriptor.sql.BasicBinder: TRACE
