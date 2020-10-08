@@ -4,6 +4,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * Create by park031517@gmail.com on 2020-10-8, 목
+ * Blog : https://zzz-oficial.tistory.com
+ * Github : https://github.com/Gon-Zo
+ */
 @Getter
 @ToString
 public class ExceptionDto {

@@ -13,13 +13,13 @@ import java.time.LocalDate;
  */
 @Getter
 @MappedSuperclass
-public class BaseEntity {
+public abstract class BaseEntity {
 
     @Id
     @Setter
-    @Column(name = "seq" , nullable = false)
+    @Column(name = "id" , nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long seq;
+    private Long id;
 
     @Column(updatable = false , nullable = false)
     protected LocalDate createDate;
