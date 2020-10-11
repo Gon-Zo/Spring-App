@@ -1,5 +1,6 @@
 package com.example.springjpa.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,14 @@ public class Post extends BaseEntity {
 
     private String content;
 
-    @ManyToOne
+    /**
+     * 양뱡향성을 막기위해서
+     * @JsonIgnore
+     * @ManyToOne(fetch = FetchType.LAZY)
+     */
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @Builder

@@ -4,10 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
@@ -18,7 +15,7 @@ public class Category extends BaseEntity{
 
     private String title;
 
-    @OrderBy("createDate asc")
+    @OrderBy("createDate asc , title desc ")
     @OneToMany(mappedBy = "category")
     private List<Post> posts;
 

@@ -5,14 +5,17 @@ spring:
       username: ENC(M/qSx0TdvwP4f9peXKc0FrsAA7ZDpLCL)
       password: ENC(aWwDwqapVyVFiQsDIskixw==)
   jpa:
-    hibernate.ddl-auto: update
+    show-sql: true
+    hibernate:
+      ddl-auto: update
     properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
+      hibernate.format_sql: true
+      hibernate.jdbc.lob.non_contextual_creation: true
 
 logging:
-  level.org.hibernate:
-    SQL: DEBUG
-    type.descriptor.sql: trace
-    descriptor.sql.BasicBinder: TRACE
+  level:
+    org:
+      hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+#  logging.level.org.hibernate.SQL=DEBUG
+#  logging.level.org.hibernate.type=TRACE
