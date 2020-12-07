@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -13,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Category extends BaseEntity{
 
+    @Column(name = "TITLE")
     private String title;
 
     @OrderBy("createDate asc , title desc ")
