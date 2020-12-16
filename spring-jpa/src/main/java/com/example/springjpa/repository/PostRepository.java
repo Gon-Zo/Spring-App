@@ -1,6 +1,7 @@
 package com.example.springjpa.repository;
 
 import com.example.springjpa.domain.Post;
+import com.example.springjpa.repository.support.PostSupport;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * Github : https://github.com/Gon-Zo
  */
 @Repository
-public interface PostRepository extends JpaRepository<Post , Long> {
+public interface PostRepository extends JpaRepository<Post, Long>, PostSupport {
 }
