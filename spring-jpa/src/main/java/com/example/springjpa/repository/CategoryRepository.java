@@ -1,9 +1,11 @@
 package com.example.springjpa.repository;
 
 import com.example.springjpa.domain.Category;
+import com.example.springjpa.repository.support.PostSupport;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -15,13 +17,8 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    /*
-    SELECT DISTINCT title
-    FROM category
-     */
-    List<Category> findDistinctByTitle();
+    List<Category> findDistinctByTitle(String title);
 
-
-    List<Category> findByCreateDateIsGreaterThanAndCreateDateLessThan();
+    List<Category> findByCreateDateIsGreaterThanAndCreateDateLessThan(LocalDate createDate, LocalDate createDate2);
 
 }
