@@ -25,4 +25,7 @@ public class PostService {
         return categoryRepository.findAll();
     }
 
+    public List<String> getToGroupByTitle(){
+        return postRepository.findGroupByTitle();
+    }
 }

@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.List;
+
+import static com.example.springjpa.domain.QPost.post;
 
 @Repository
 public class PostSupportImpl extends QuerydslRepositorySupport implements PostSupport {
@@ -20,4 +23,12 @@ public class PostSupportImpl extends QuerydslRepositorySupport implements PostSu
         this.entityManager = entityManager;
     }
 
+    @Override
+    public List<String> findGroupByTitle() {
+        return jpaQueryFactory.select(post.title)
+                .from(post)
+                .groupBy(post.title)
+                .fetch();
+    }
+    
 }

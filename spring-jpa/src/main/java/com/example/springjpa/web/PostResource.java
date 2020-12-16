@@ -26,4 +26,9 @@ public class PostResource {
         return service.getToCategoryList();
     }
 
+    @GetMapping("/post/title")
+    public List<String> showToTitleGroup(){
+        return service.getToGroupByTitle();
+    }
+
 }
