@@ -23,12 +23,12 @@ repositories {
     }
 }
 
-//project.afterEvaluate {
-//    project.tasks.compileQuerydsl.options.compilerArgs = [
-//            "-proc:only",
-//            "-processor", project.querydsl.processors() + ',lombok.launch.AnnotationProcessorHider$AnnotationProcessor'
-//    ]
-//}
+project.afterEvaluate {
+    project.tasks.compileQuerydsl.options.compilerArgs = [
+            "-proc:only",
+            "-processor", project.querydsl.processors() + ',lombok.launch.AnnotationProcessorHider$AnnotationProcessor'
+    ]
+}
 
 configurations {
     developmentOnly
@@ -73,26 +73,26 @@ tasks.withType(Test) {
 
 def querydslSrcDir = 'src/main/generated'
 
-//querydsl {
-//    library = "com.querydsl:querydsl-apt:4.2.1"
-//    jpa = true
-//    querydslDefault = true
-//    querydslSourcesDir = querydslSrcDir
-//}
-//
-//compileQuerydsl {
-//    options.annotationProcessorPath = configurations.querydsl
-//}
-//
-//sourceSets {
-//    main {
-//        java {
-//            srcDirs = ["src/main/java","${querydslSrcDir}"]
-//        }
-//    }
-//}
-//
-//clean {
-//    delete file(querydslSrcDir)
-//}
+querydsl {
+    library = "com.querydsl:querydsl-apt:4.2.1"
+    jpa = true
+    querydslDefault = true
+    querydslSourcesDir = querydslSrcDir
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java","${querydslSrcDir}"]
+        }
+    }
+}
+
+clean {
+    delete file(querydslSrcDir)
+}
 
