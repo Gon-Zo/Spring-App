@@ -1,8 +1,0 @@
-GET http://localhost:8080/api/post/category
-
-###
-#===================
-# Hello API
-#===================
-GET http://localhost:8080/api/hello
-
