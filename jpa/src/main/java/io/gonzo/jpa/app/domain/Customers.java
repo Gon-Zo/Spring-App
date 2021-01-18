@@ -45,4 +45,11 @@ public class Customers extends BaseEntity {
     @Column(name = "LEVEL" , nullable = false)
     private Integer level;
 
+    @PrePersist
+    @PostLoad
+    void initialize() {
+        this.joinDay = Instant.now();
+        this.level = 0;
+    }
+
 }
