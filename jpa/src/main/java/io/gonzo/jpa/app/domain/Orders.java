@@ -1,6 +1,5 @@
 package io.gonzo.jpa.app.domain;
 
-import io.gonzo.jpa.app.domain.common.BaseEntity;
 import io.gonzo.jpa.app.domain.common.DomainEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

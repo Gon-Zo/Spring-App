@@ -1,13 +1,13 @@
 spring:
   datasource:
-    url: ENC(uaHzT06Hp+iYMT/3YzzLCslJNb+U3UxuYcAaunhvGlTapXj0iqSQrOKvJb1o+y3vXZbfbyJqo1b8180oQgVctD29kf92c2MLQ/mmR2b98AF8AuYE1dScpeubQLypp3U2)
+    url: jdbc:postgresql://ec2-3-36-78-52.ap-northeast-2.compute.amazonaws.com:2345/postgres
     hikari:
       username: ENC(M/qSx0TdvwP4f9peXKc0FrsAA7ZDpLCL)
       password: ENC(aWwDwqapVyVFiQsDIskixw==)
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate.format_sql: true
       hibernate.jdbc.lob.non_contextual_creation: true
