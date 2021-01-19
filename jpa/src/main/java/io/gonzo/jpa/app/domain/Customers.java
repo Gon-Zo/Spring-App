@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.List;
 
 @Getter
 @Entity
@@ -44,6 +45,9 @@ public class Customers extends BaseEntity {
 
     @Column(name = "LEVEL" , nullable = false)
     private Integer level;
+
+    @OneToMany(mappedBy = "customers")
+    private List<Orders> orders;
 
     @PrePersist
     @PostLoad
