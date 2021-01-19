@@ -28,4 +28,7 @@ public class Product extends DomainEntity {
     @ManyToOne
     private ProductType productType;
 
+    @OneToOne(mappedBy = "product")
+    private ProductDetail productDetail;
+
 }
