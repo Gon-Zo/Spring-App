@@ -1,17 +1,11 @@
 package io.gonzo.jpa.app.domain.inheritance;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn
-@Table(name = "ITEM")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Item {
 
     @Id
