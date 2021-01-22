@@ -1,4 +1,4 @@
-package io.gonzo.jpa.app.domain;
+package io.gonzo.jpa.app.domain.basic;
 
 import io.gonzo.jpa.app.domain.common.BaseEntity;
 import io.gonzo.jpa.app.domain.common.GenderConverter;
