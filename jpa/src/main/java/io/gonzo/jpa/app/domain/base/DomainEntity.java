@@ -1,4 +1,4 @@
-package io.gonzo.jpa.app.domain.common;
+package io.gonzo.jpa.app.domain.base;
 
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;

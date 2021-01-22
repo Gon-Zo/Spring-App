@@ -1,4 +1,4 @@
-package io.gonzo.jpa.app.domain.common;
+package io.gonzo.jpa.app.domain.base;
 
 import io.gonzo.jpa.app.enums.BaseEnumCode;
 

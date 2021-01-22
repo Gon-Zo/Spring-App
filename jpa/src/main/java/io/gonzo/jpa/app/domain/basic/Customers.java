@@ -1,7 +1,7 @@
 package io.gonzo.jpa.app.domain.basic;
 
-import io.gonzo.jpa.app.domain.common.BaseEntity;
-import io.gonzo.jpa.app.domain.common.GenderConverter;
+import io.gonzo.jpa.app.domain.base.BaseEntity;
+import io.gonzo.jpa.app.domain.base.GenderConverter;
 import io.gonzo.jpa.app.enums.Gender;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
