@@ -1,4 +1,4 @@
-package io.gonzo.jpa.app.domain.inheritance;
+package io.gonzo.jpa.app.domain.inheritance1;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 @Entity
 @DiscriminatorColumn
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Item {
+public class Item1 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
