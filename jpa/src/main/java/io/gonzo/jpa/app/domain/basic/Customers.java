@@ -1,7 +1,9 @@
 package io.gonzo.jpa.app.domain.basic;
 
+import io.gonzo.jpa.app.domain.base.Address;
 import io.gonzo.jpa.app.domain.base.BaseEntity;
 import io.gonzo.jpa.app.domain.base.GenderConverter;
+import io.gonzo.jpa.app.domain.base.Name;
 import io.gonzo.jpa.app.enums.Gender;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,11 +24,11 @@ public class Customers extends BaseEntity {
     @Column(name = "PASSWORD" , nullable = false)
     private String password;
 
-    @Column(name = "NAME" , nullable = false)
-    private String name;
+    @Embedded
+    private Name name;
 
-    @Column(name = "ADDRESS" , nullable = false)
-    private String address;
+    @Embedded
+    private Address address;
 
     @Column(name = "PHONE_NUMBER" , nullable = false)
     private String phoneNumber;
