@@ -1,4 +1,4 @@
-package io.gonzo.jpa.app.service.repository.inheritance2;
+package io.gonzo.jpa.app.repository.inheritance2;
 
 import io.gonzo.jpa.app.domain.inheritance2.Album2;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package io.gonzo.jpa.app.service.repository.inheritance3;
+package io.gonzo.jpa.app.repository.inheritance3;
 
 import io.gonzo.jpa.app.domain.inheritance3.Item3;
 import org.springframework.data.jpa.repository.JpaRepository;

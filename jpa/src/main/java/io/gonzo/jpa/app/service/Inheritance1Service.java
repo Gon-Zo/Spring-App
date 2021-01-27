@@ -1,9 +1,9 @@
 package io.gonzo.jpa.app.service;
 
-import io.gonzo.jpa.app.service.repository.inheritance1.Album1Repository;
-import io.gonzo.jpa.app.service.repository.inheritance1.Book1Repository;
-import io.gonzo.jpa.app.service.repository.inheritance1.Item1Repository;
-import io.gonzo.jpa.app.service.repository.inheritance1.Movie1Repository;
+import io.gonzo.jpa.app.repository.inheritance1.Album1Repository;
+import io.gonzo.jpa.app.repository.inheritance1.Book1Repository;
+import io.gonzo.jpa.app.repository.inheritance1.Item1Repository;
+import io.gonzo.jpa.app.repository.inheritance1.Movie1Repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
