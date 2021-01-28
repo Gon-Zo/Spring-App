@@ -22,4 +22,9 @@ public class CustomResource {
         return service.getByCustomPK_Email(email);
     }
 
+    @GetMapping("/all")
+    public Optional<List<Custom>> showByAll() {
+        return service.getByAll();
+    }
+
 }

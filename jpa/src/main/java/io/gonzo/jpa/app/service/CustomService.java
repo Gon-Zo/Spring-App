@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CustomService {
 
-    private CustomRepository repository;
+    private final CustomRepository repository;
 
     @Transactional
     public void saveBy(CustomDTO dto) {
@@ -30,6 +30,11 @@ public class CustomService {
     @Transactional(readOnly = true)
     public Optional<List<Custom>> getByCustomPK_Email(String email) {
         return repository.findByCustomPK_Email(email);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<List<Custom>> getByAll() {
+        return Optional.of(repository.findAll());
     }
 
 }
