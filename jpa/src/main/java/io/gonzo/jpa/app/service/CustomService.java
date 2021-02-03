@@ -5,7 +5,6 @@ import io.gonzo.jpa.app.domain.basic.Custom;
 import io.gonzo.jpa.app.repository.CustomOnly;
 import io.gonzo.jpa.app.repository.CustomRepository;
 import io.gonzo.jpa.app.web.dto.CustomDTO;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,10 +13,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class CustomService {
 
     private final CustomRepository repository;
+
+    public CustomService(CustomRepository repository) {
+        this.repository = repository;
+    }
 
     @Transactional
     public void saveBy(CustomDTO dto) {

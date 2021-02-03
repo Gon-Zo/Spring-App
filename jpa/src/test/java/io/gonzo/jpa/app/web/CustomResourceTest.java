@@ -8,45 +8,28 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.web.client.MockRestServiceServer;
+import org.springframework.test.web.client.RequestMatcher;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@WebMvcTest(CustomResource.class)
+@RestClientTest(CustomService.class)
 class CustomResourceTest {
 
     @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private CustomService service;
-
-//    @BeforeEach
-//    void createByData() {
-//
-//        CustomPK pk = new CustomPK();
-//        pk.setEmail("test@namver.com");
-//        pk.setUrl("naver.com");
-//
-//        service.saveBy(
-//                CustomDTO.builder()
-//                        .customPK(pk)
-//                        .content("tset...")
-//                        .build()
-//        );
-//
-//    }
+    private MockRestServiceServer server;
 
     @Test
     @DisplayName("모든 데이터 보기")
     public void showByAll() throws Exception {
-        mockMvc.perform(get("/api/web/custom/all"))
-                .andExpect(status().isOk())
-                ;
+        server.expect(requestTo("/api/web/custom"));
     }
 
 }
