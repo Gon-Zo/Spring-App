@@ -1,8 +1,5 @@
-### Spring Boot Application 
-> `Spring Boot` 관련 어플리케이션 개발
-
-----
-<br/>
+# Spring Boot Application 
+> Spring Boot 관련 어플리케이션 개발
 
 ### Spring Jpa 
 >더 큰 SpringData 제품군의 일부인 SpringData JPA를 사용하면 JPA 기반 저장소를 쉽게 구현할 수 있습니다.<br/>
@@ -19,5 +16,4 @@
 > Querydsl은 광범위한 Java 프레임워크로, SQL과 유사한 구문에서 타입 세이프 쿼리를 생성할 수 있다.<br/>
 > 현재 JPA, JDO, SQL, 자바 컬렉션, RDF, 루세, 동면 검색, 몽고 DB 등 별도 모듈을 활용해 다양한 백엔드를 폭넓게 지원한다.<br/>
 
-----
 <br/>
