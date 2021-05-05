@@ -1,13 +1,16 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://ec2-3-36-78-52.ap-northeast-2.compute.amazonaws.com:2345/postgres
-    hikari:
-      username: ENC(M/qSx0TdvwP4f9peXKc0FrsAA7ZDpLCL)
-      password: ENC(aWwDwqapVyVFiQsDIskixw==)
+  application:
+    name: JPA-APP
+    profiles:
+      active:
+        group:
+        dev:
+          - pg
+          - h2
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: 'create-drop'
     properties:
       hibernate.format_sql: true
       hibernate.jdbc.lob.non_contextual_creation: true
