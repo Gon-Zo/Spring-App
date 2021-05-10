@@ -6,5 +6,5 @@ ${AnsiColor.BRIGHT_GREEN}  ____/ /__  /_/ /  /   _  / _  / / /  /_/ /  ${AnsiCol
 ${AnsiColor.BRIGHT_GREEN}  /____/ _  .___//_/    /_/  /_/ /_/_\__, /   ${AnsiColor.BRIGHT_RED}  \____/  _  .___/\__,_/
 ${AnsiColor.BRIGHT_GREEN}         /_/                        /____/    ${AnsiColor.BRIGHT_RED}          /_/
 
-${AnsiColor.BRIGHT_CYAN}:: Gon-Zo Project 🤓  :: Running Spring Boot By Jpa ${spring-boot.version} ::
-:: https://github.com/Gon-Zo/Spring_Application ::${AnsiColor.BRIGHT_BLACK}
+${AnsiColor.BRIGHT_CYAN}:: Gon-Zo Project 👊 :: Running Spring Boot By Jpa ${spring-boot.version} ::
+:: https://github.com/Gon-Zo/Spring_App ::${AnsiColor.BRIGHT_BLACK}
