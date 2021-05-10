@@ -1,12 +1,15 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.1'
-    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'org.springframework.boot' version "${SpringbootVersion}"
+    id 'io.spring.dependency-management' version "${SpringdependencyManagement}"
     id 'java'
 }
 
 group = 'io.gonzo'
 version = '0.0.1-SNAPSHOT'
+
 sourceCompatibility = '1.8'
+targetCompatibility='1.8'
+assert System.properties["java.specification.version"] == "1.8" || "1.9" || "10" || "11" || "12" || "13" || "14" || "15"
 
 configurations {
     compileOnly {
