@@ -21,11 +21,11 @@
 <br/>
 
 ### About 
-[What is JPA <정의편>](https://velog.io/@ewan/What-is-JPA-정의편)
-[What is JPA <가동성을 높여보자 1편>](https://velog.io/@ewan/What-is-JPA-가동성을-높여보자-1편)
-[What is JPA <복합키 편>](https://velog.io/@ewan/What-is-JPA-복합키-편)
-[What is JPA <NumberExpression 편>](https://velog.io/@ewan/What-is-JPA-NumberExpression-편)
-[What is JPA <JpaRepository 편>](https://velog.io/@ewan/What-is-JPA-JpaRepository-편)
-[What is JPA <1 : N 양뱡향성 메핑 편>](https://velog.io/@ewan/What-is-JPA-1-N-양뱡향성-메핑-편)
+[What is JPA <정의편>](https://velog.io/@ewan/What-is-JPA-정의편) </br>
+[What is JPA <가동성을 높여보자 1편>](https://velog.io/@ewan/What-is-JPA-가동성을-높여보자-1편) </br>
+[What is JPA <복합키 편>](https://velog.io/@ewan/What-is-JPA-복합키-편) </br>
+[What is JPA <NumberExpression 편>](https://velog.io/@ewan/What-is-JPA-NumberExpression-편) </br>
+[What is JPA <JpaRepository 편>](https://velog.io/@ewan/What-is-JPA-JpaRepository-편) </br>
+[What is JPA <1 : N 양뱡향성 메핑 편>](https://velog.io/@ewan/What-is-JPA-1-N-양뱡향성-메핑-편) </br>
 
 
