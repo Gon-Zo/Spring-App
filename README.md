@@ -1,7 +1,9 @@
 # Spring Boot Application 
 > Spring Boot 관련 어플리케이션 개발
 
-### Spring Jpa 
+## Spring Data
+
+### JPA
 >더 큰 SpringData 제품군의 일부인 SpringData JPA를 사용하면 JPA 기반 저장소를 쉽게 구현할 수 있습니다.<br/>
 >이 모듈은 JPA 기반 데이터 액세스 계층에 대한 향상된 지원을 다룹니다.<br/> 
 >데이터 액세스 기술을 사용하는 Spring 기반 애플리케이션을 쉽게 빌드 할 수 있습니다.<br/>
@@ -12,8 +14,18 @@
 
 <br/>
 
-#### Querydsl
+### Querydsl
 > Querydsl은 광범위한 Java 프레임워크로, SQL과 유사한 구문에서 타입 세이프 쿼리를 생성할 수 있다.<br/>
 > 현재 JPA, JDO, SQL, 자바 컬렉션, RDF, 루세, 동면 검색, 몽고 DB 등 별도 모듈을 활용해 다양한 백엔드를 폭넓게 지원한다.<br/>
 
 <br/>
+
+### About 
+[What is JPA <정의편>](https://velog.io/@ewan/What-is-JPA-정의편)
+[What is JPA <가동성을 높여보자 1편>](https://velog.io/@ewan/What-is-JPA-가동성을-높여보자-1편)
+[What is JPA <복합키 편>](https://velog.io/@ewan/What-is-JPA-복합키-편)
+[What is JPA <NumberExpression 편>](https://velog.io/@ewan/What-is-JPA-NumberExpression-편)
+[What is JPA <JpaRepository 편>](https://velog.io/@ewan/What-is-JPA-JpaRepository-편)
+[What is JPA <1 : N 양뱡향성 메핑 편>](https://velog.io/@ewan/What-is-JPA-1-N-양뱡향성-메핑-편)
+
+
