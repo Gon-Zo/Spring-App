@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: ENC(SS7z8zYNmarzjYDg8VFbjer8j2qtZ12S+XZhVhV4QDmB2IfUEf6MfoOglPLQWjRz0APvwKB7H9zbay+CyMkDbue0+BzZtX+3XYtcfe2sFCA3yyoIjoQrLW/uMUP+5YvD)
+    hikari:
+      username: ENC(3nbGvmfntYTFG3xK64cIsA==)
+      password: ENC(4WR+jZr0A9beNd3pAzhEKeVhQVS3nHAM)

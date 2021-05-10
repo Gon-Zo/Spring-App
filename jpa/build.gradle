@@ -21,7 +21,7 @@ repositories {
 if (project.hasProperty("h2")) {
     apply from: "gradle/h2.gradle"
 } else {
-    apply from: "gradle/postgres.gradle"
+    apply from: "gradle/pg.gradle"
 }
 
 dependencies {
