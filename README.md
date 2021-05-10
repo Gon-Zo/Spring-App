@@ -14,9 +14,10 @@
 
 ### Spring Boot
 
-## About
-[What is Spring <Lombok 편>](https://velog.io/@ewan/Wow-is-Spring-Lombok-편)
-[What is Spring <Junit5 편>](https://velog.io/@ewan/Junit5-기초편)
+### About
+[What is Spring <Lombok 편>](https://velog.io/@ewan/Wow-is-Spring-Lombok-편) </br>
+[What is Spring <Junit5 편>](https://velog.io/@ewan/Junit5-기초편) </br>
+
 
 ## Spring Data
 
