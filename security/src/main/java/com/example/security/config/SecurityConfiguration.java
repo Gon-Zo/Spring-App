@@ -35,6 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring()
                 // Http Method OPTIONS
                 .antMatchers(HttpMethod.OPTIONS, "/**")
+                // h2 console 추가
                 .antMatchers("/h2-console/**")
         ;
     }
