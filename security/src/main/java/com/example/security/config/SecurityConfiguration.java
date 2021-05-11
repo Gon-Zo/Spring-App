@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true , securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     /**
@@ -20,7 +20,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      * @return
      */
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -34,8 +34,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 // Http Method OPTIONS
-                .antMatchers(HttpMethod.OPTIONS , "/**")
-                ;
+                .antMatchers(HttpMethod.OPTIONS, "/**")
+                .antMatchers("/h2-console/**")
+        ;
     }
 
     /**
@@ -46,7 +47,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+        http.formLogin().loginPage("/login")
+                .defaultSuccessUrl("/main")
+                .failureForwardUrl("/failure/login")
+        ;
     }
 
 }
