@@ -8,7 +8,7 @@ group = 'io.gonzo'
 version = '0.0.1-SNAPSHOT'
 
 sourceCompatibility = '1.8'
-targetCompatibility='1.8'
+targetCompatibility = '1.8'
 assert System.properties["java.specification.version"] == "1.8" || "1.9" || "10" || "11" || "12" || "13" || "14" || "15"
 
 configurations {
@@ -22,10 +22,12 @@ repositories {
 }
 
 if (project.hasProperty("h2")) {
-    apply from: "gradle/h2.gradle"
+    apply from: "${project.rootDir.toString()}/gradle/h2.gradle"
 } else {
-    apply from: "gradle/pg.gradle"
+    apply from: "${project.rootDir.toString()}/gradle/pg.gradle"
 }
+
+apply from: "${project.rootDir.toString()}/gradle/utils.gradle"
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -37,8 +39,6 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:1.17"
 
-    // root utils 로 디펜던시 넣기
-    implementation 'org.apache.commons:commons-lang3:3.9'
 }
 
 test {
