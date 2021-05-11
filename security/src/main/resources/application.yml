@@ -1,0 +1,29 @@
+
+spring:
+  application:
+    name: JPA-APP
+    profiles:
+      active:
+        group:
+        dev:
+          - pg
+          - h2
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: 'create-drop'
+    properties:
+      hibernate.format_sql: true
+      hibernate.jdbc.lob.non_contextual_creation: true
+
+logging:
+  level:
+    org:
+      hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+#  logging.level.org.hibernate.SQL=DEBUG
+#  logging.level.org.hibernate.type=TRACE
+
+# server port
+#server:
+#  port: 8080
