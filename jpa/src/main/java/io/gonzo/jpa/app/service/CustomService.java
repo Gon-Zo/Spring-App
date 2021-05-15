@@ -5,6 +5,7 @@ import io.gonzo.jpa.app.domain.basic.Custom;
 import io.gonzo.jpa.app.repository.CustomOnly;
 import io.gonzo.jpa.app.repository.CustomRepository;
 import io.gonzo.jpa.app.web.dto.CustomDTO;
+import io.gonzo.jpa.app.web.dto.CustomStoreDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,8 +43,18 @@ public class CustomService {
     }
 
     @Transactional(readOnly = true)
-    public Collection<CustomOnly> getByCustomPK_Url(String url){
+    public Collection<CustomOnly> getByCustomPK_Url(String url) {
         return repository.findByCustomPK_Url(url);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<List<Custom>> getByContentContaining(String content) {
+        return repository.findByContentContaining(content);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<List<Custom>> getByContentLike(String content) {
+        return repository.findByContentLike(content);
     }
 
 }

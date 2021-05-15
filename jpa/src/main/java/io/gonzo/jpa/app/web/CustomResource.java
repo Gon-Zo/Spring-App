@@ -3,6 +3,7 @@ package io.gonzo.jpa.app.web;
 import io.gonzo.jpa.app.domain.basic.Custom;
 import io.gonzo.jpa.app.repository.CustomOnly;
 import io.gonzo.jpa.app.service.CustomService;
+import io.gonzo.jpa.app.web.dto.CustomStoreDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +31,18 @@ public class CustomResource {
     }
 
     @GetMapping("/url")
-    public Collection<CustomOnly> showByCustomPK_Url(String url){
+    public Collection<CustomOnly> showByCustomPK_Url(String url) {
         return service.getByCustomPK_Url(url);
+    }
+
+    @GetMapping("/like")
+    public Optional<List<Custom>> showByContentLike(String content) {
+        return service.getByContentLike(content);
+    }
+
+    @GetMapping("/containing")
+    public Optional<List<Custom>> showByContentContaining(String content) {
+        return service.getByContentContaining(content);
     }
 
 }

@@ -16,4 +16,7 @@ public interface CustomRepository extends JpaRepository<Custom, CustomPK> {
 
     Collection<CustomOnly> findByCustomPK_Url(String url);
 
+    Optional<List<Custom>> findByContentContaining(String content);
+
+    Optional<List<Custom>> findByContentLike(String content);
 }
