@@ -3,7 +3,6 @@ package io.gonzo.jpa.app.web;
 import io.gonzo.jpa.app.domain.basic.Custom;
 import io.gonzo.jpa.app.repository.CustomOnly;
 import io.gonzo.jpa.app.service.CustomService;
-import io.gonzo.jpa.app.web.dto.CustomStoreDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
