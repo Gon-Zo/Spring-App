@@ -1,12 +1,12 @@
 spring:
   application:
     name: JPA-APP
-    profiles:
-      active:
-        group:
-        dev:
-          - pg
-          - h2
+#    profiles:
+#      active:
+#        group:
+#        dev:
+#          - pg
+#          - h2
   jpa:
     show-sql: true
     hibernate:
