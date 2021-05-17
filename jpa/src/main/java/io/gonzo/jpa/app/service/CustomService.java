@@ -5,7 +5,6 @@ import io.gonzo.jpa.app.domain.basic.Custom;
 import io.gonzo.jpa.app.repository.CustomOnly;
 import io.gonzo.jpa.app.repository.CustomRepository;
 import io.gonzo.jpa.app.web.dto.CustomDTO;
-import io.gonzo.jpa.app.web.dto.CustomStoreDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,6 +54,26 @@ public class CustomService {
     @Transactional(readOnly = true)
     public Optional<List<Custom>> getByContentLike(String content) {
         return repository.findByContentLike(content);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<List<Custom>> getByContentStartingWith(String content) {
+        return repository.findByContentStartingWith(content);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<List<Custom>> getByContentEndingWith(String content) {
+        return repository.findByContentEndingWith(content);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<List<Custom>> getByContentStartsWith(String content) {
+        return repository.findByContentStartsWith(content);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<List<Custom>> getByContentEndsWith(String content) {
+        return repository.findByContentEndsWith(content);
     }
 
 }

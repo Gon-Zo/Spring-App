@@ -44,4 +44,24 @@ public class CustomResource {
         return service.getByContentContaining(content);
     }
 
+    @GetMapping("/starting-with")
+    public Optional<List<Custom>> showByContentStartingWith(String content) {
+        return service.getByContentStartingWith(content);
+    }
+
+    @GetMapping("/ending-with")
+    public Optional<List<Custom>> showByContentEndingWith(String content) {
+        return service.getByContentEndingWith(content);
+    }
+
+    @GetMapping("/starts-with")
+    public Optional<List<Custom>> showByContentStartsWith(String content) {
+        return service.getByContentStartsWith(content);
+    }
+
+    @GetMapping("/ends-with")
+    public Optional<List<Custom>> showByContentEndsWith(String content) {
+        return service.getByContentEndsWith(content);
+    }
+
 }

@@ -20,12 +20,12 @@ public interface CustomRepository extends JpaRepository<Custom, CustomPK> {
 
     Optional<List<Custom>> findByContentContaining(String content);
 
-    Optional<Custom> findByContentStartingWith(String content);
+    Optional<List<Custom>> findByContentStartingWith(String content);
 
-    Optional<Custom> findByContentEndingWith(String content);
+    Optional<List<Custom>> findByContentEndingWith(String content);
 
-    Optional<Custom> findByContentStartsWith(String content);
+    Optional<List<Custom>> findByContentStartsWith(String content);
 
-    Optional<Custom> findByContentEndsWith(String content);
+    Optional<List<Custom>> findByContentEndsWith(String content);
 
 }
