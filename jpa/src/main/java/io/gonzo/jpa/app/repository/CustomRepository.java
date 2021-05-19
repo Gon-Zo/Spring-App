@@ -28,4 +28,6 @@ public interface CustomRepository extends JpaRepository<Custom, CustomPK> {
 
     Optional<List<Custom>> findByContentEndsWith(String content);
 
+    Optional<List<Custom>> findByContentIsContaining(String content);
+
 }
