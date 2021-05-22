@@ -1,8 +1,6 @@
 package io.gonzo.jpa.app.domain.base;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
@@ -11,6 +9,7 @@ import java.io.Serializable;
 @Setter
 @Embeddable
 @NoArgsConstructor
+@AllArgsConstructor
 public class CustomPK implements Serializable {
 
     private String url;

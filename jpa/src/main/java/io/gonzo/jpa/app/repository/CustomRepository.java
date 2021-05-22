@@ -33,6 +33,6 @@ public interface CustomRepository extends JpaRepository<Custom, CustomPK> {
 
     Optional<List<Custom>> findByContentIsContaining(String content);
 
-    Optional<Custom> findByContentIsNotContaining(String content);
+    Optional<List<Custom>> findByContentIsNotContaining(String content);
 
 }
