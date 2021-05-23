@@ -37,7 +37,7 @@ class CustomRepositoryTest {
     }
 
     @Test
-    @DisplayName("컨텐츠 like 절")
+    @DisplayName("컨텐츠 like 절 by jpa containing")
     public void findByContentContaining() {
 
         Optional<List<Custom>> list = customRepository.findByContentContaining(content);
@@ -47,6 +47,63 @@ class CustomRepositoryTest {
                 .findFirst()).ifPresent(value -> {
             Assertions.assertEquals(value.getContent(), content);
         });
+    }
+
+    @Test
+    @DisplayName("컨텐츠 like 절 by jpa like")
+    public void findByContentLike() {
+        Optional<List<Custom>> list = customRepository.findByContentLike("%" + content + "%");
+
+        list.flatMap(data -> data.stream()
+                .filter(value -> value.getContent().equals(content)).findFirst())
+                .ifPresent(value -> {
+                    Assertions.assertEquals(value.getContent(), content);
+                });
+    }
+
+    @Test
+    @DisplayName("컨텐츠 jpa starting with 절")
+    public void findByContentStartingWith() {
+        Optional<List<Custom>> list = customRepository.findByContentStartingWith(content);
+        list.flatMap(data ->
+                data.stream()
+                        .filter(value -> value.getContent().equals(content))
+                        .findFirst())
+                .ifPresent(value -> {
+                    Assertions.assertEquals(value.getContent(), content);
+                });
+    }
+
+    @Test
+    @DisplayName("컨텐츠 jpa start with 절")
+    public void findByStartsWith() {
+        Optional<List<Custom>> list = customRepository.findByContentStartsWith(content);
+        list.flatMap(data ->
+                data.stream()
+                        .filter(value -> value.getContent().equals(content))
+                        .findFirst())
+                .ifPresent(value -> Assertions.assertEquals(value.getContent(), content));
+    }
+
+    @Test
+    @DisplayName("컨텐츠 jpa ending with 절")
+    public void findByEndingWith() {
+        Optional<List<Custom>> list = customRepository.findByContentEndingWith(content);
+        list.flatMap(data ->
+                data.stream()
+                        .filter(value -> value.getContent().equals(content))
+                        .findFirst())
+                .ifPresent(value -> Assertions.assertEquals(value.getContent(), content));
+    }
+
+    @Test
+    @DisplayName("컨텐츠 jpa ends with 절")
+    public void findByContentEndsWith() {
+        Optional<List<Custom>> list = customRepository.findByContentEndsWith(content);
+        list.flatMap(data -> data.stream()
+                .filter(value -> value.getContent().equals(content))
+                .findFirst())
+                .ifPresent(value -> Assertions.assertEquals(value.getContent(), content));
     }
 
 }
