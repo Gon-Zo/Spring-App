@@ -5,6 +5,8 @@ import io.gonzo.jpa.app.domain.basic.Custom;
 import io.gonzo.jpa.app.repository.CustomOnly;
 import io.gonzo.jpa.app.repository.CustomRepository;
 import io.gonzo.jpa.app.web.dto.CustomDTO;
+import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,15 +17,17 @@ import java.util.Optional;
 @Service
 public class CustomService {
 
-    private final CustomRepository repository;
+    private CustomRepository repository;
 
+    @Autowired
     public CustomService(CustomRepository repository) {
         this.repository = repository;
     }
 
     @Transactional
-    public void saveBy(CustomDTO dto) {
-        repository.save(dto.toEntity());
+    public Boolean saveBy(CustomDTO dto) {
+        Custom saveEntity = repository.save(dto.toEntity());
+        return ObjectUtils.isNotEmpty(saveEntity) ? Boolean.TRUE : Boolean.FALSE;
     }
 
     @Transactional(readOnly = true)
