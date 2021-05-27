@@ -8,11 +8,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "PRODUCT_TYPE")
 public class ProductType extends DomainEntity {
 
@@ -21,5 +21,9 @@ public class ProductType extends DomainEntity {
 
     @OneToMany(mappedBy = "productType")
     private List<Product> products;
+
+    public ProductType(String name) {
+        this.name = name;
+    }
 
 }
