@@ -43,12 +43,27 @@ class ProductRepositoryTest {
     @Test
     @DisplayName("select All 이 아닌 단일로 적용 하기")
     void findByImg_Success() {
+
         String img = "project.jpg";
+
         String name = "test....";
-        Collection<NameOnly> reult = repository.findByImg(img, NameOnly.class);
-        reult.forEach(value -> {
-            Assertions.assertEquals(value.getName(), name);
-        });
+
+        Collection<NameOnly> data = repository.findByImg(img, NameOnly.class);
+
+        data.forEach(value -> Assertions.assertEquals(value.getName(), name));
+
+    }
+
+    @Test
+    @DisplayName("dto 로 데이터 꺼내기 fail")
+    void findByImg_Fail() {
+        String img = "project.jpg";
+
+        String name = "test1";
+
+        Collection<NameOnly> data = repository.findByImg(img, NameOnly.class);
+
+        data.forEach(value -> Assertions.assertEquals(value.getName(), name));
     }
 
 }
