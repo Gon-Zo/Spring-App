@@ -15,6 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Optional;
 
 
 @DataJpaTest
@@ -25,8 +26,47 @@ class ProductRepositoryTest {
     @Autowired
     private ProductRepository repository;
 
+    @Autowired
+    private ProductTypeRepository productTypeRepository;
+
+    private final String productTypeTitle = "샅품타입1";
+
     @BeforeEach
     public void beforeEach() {
+
+        /**
+         * product type 저장 로직
+         */
+
+        ProductType productType = new ProductType(productTypeTitle);
+
+        productTypeRepository.save(productType);
+
+    }
+
+    @Test
+    @DisplayName("기본적인 insert")
+    void save_default_save() {
+
+        Optional<ProductType> productType = productTypeRepository.findByName(productTypeTitle);
+
+        productType.ifPresent(type -> {
+            ProductDTO dto = ProductDTO.builder()
+                    .type("ING")
+                    .name("test....")
+                    .price(new BigDecimal(0))
+                    .productType(type)
+                    .img("project.jpg")
+                    .build();
+
+            repository.save(dto.toEntity());
+        });
+
+    }
+
+    @Test
+    @DisplayName("select All 이 아닌 단일로 적용 하기")
+    void findByImg_Success() {
 
         ProductDTO dto = ProductDTO.builder()
                 .type("ING")
@@ -37,12 +77,6 @@ class ProductRepositoryTest {
                 .build();
 
         repository.save(dto.toEntity());
-
-    }
-
-    @Test
-    @DisplayName("select All 이 아닌 단일로 적용 하기")
-    void findByImg_Success() {
 
         String img = "project.jpg";
 
@@ -57,6 +91,17 @@ class ProductRepositoryTest {
     @Test
     @DisplayName("dto 로 데이터 꺼내기 fail")
     void findByImg_Fail() {
+
+        ProductDTO dto = ProductDTO.builder()
+                .type("ING")
+                .name("test....")
+                .price(new BigDecimal(0))
+                .productType(new ProductType("test..."))
+                .img("project.jpg")
+                .build();
+
+        repository.save(dto.toEntity());
+
         String img = "project.jpg";
 
         String name = "test1";
