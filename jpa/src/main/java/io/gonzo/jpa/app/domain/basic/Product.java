@@ -2,6 +2,7 @@ package io.gonzo.jpa.app.domain.basic;
 
 import io.gonzo.jpa.app.domain.base.DomainEntity;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class Product extends DomainEntity {
     @Column(name = "IMG")
     private String img;
 
+    @Getter
     @ManyToOne(cascade = CascadeType.ALL)
     private ProductType productType;
 

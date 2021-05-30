@@ -1,5 +1,6 @@
 package io.gonzo.jpa.app.repository;
 
+import io.gonzo.jpa.app.domain.basic.Product;
 import io.gonzo.jpa.app.domain.basic.ProductType;
 import io.gonzo.jpa.app.web.dto.NameOnly;
 import io.gonzo.jpa.app.web.dto.ProductDTO;
@@ -17,7 +18,6 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Optional;
 
-
 @DataJpaTest
 @ActiveProfiles("h2")
 @ExtendWith(SpringExtension.class)
@@ -31,17 +31,59 @@ class ProductRepositoryTest {
 
     private final String productTypeTitle = "샅품타입1";
 
+    private final String prodTypeName2 = "상품_타입3";
+
+    private Product insertProd = null;
+
     @BeforeEach
     public void beforeEach() {
-
         /**
          * product type 저장 로직
          */
-
         ProductType productType = new ProductType(productTypeTitle);
-
         productTypeRepository.save(productType);
 
+        /**
+         * case delete
+         */
+        ProductType type = new ProductType(prodTypeName2);
+
+        ProductDTO dto = ProductDTO.builder()
+                .type("ING")
+                .name("test....")
+                .price(new BigDecimal(0))
+                .productType(type)
+                .img("project.jpg")
+                .build();
+
+        insertProd = repository.save(dto.toEntity());
+
+    }
+
+    @Test
+    @DisplayName("case code all")
+    void save_casecade_all_success() {
+
+        ProductType type = new ProductType("상품_타입2");
+
+        ProductDTO dto = ProductDTO.builder()
+                .type("ING")
+                .name("test....")
+                .price(new BigDecimal(0))
+                .productType(type)
+                .img("project.jpg")
+                .build();
+
+        repository.save(dto.toEntity());
+    }
+
+    @Test
+    @DisplayName("case code delete")
+    void delelete_casecade_delete_success() {
+        productTypeRepository.findByName(prodTypeName2).ifPresent(type -> {
+            productTypeRepository.deleteById(type.getSeq());
+            Assertions.assertEquals(insertProd.getProductType().getSeq(), type.getSeq());
+        });
     }
 
     @Test
