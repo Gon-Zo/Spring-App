@@ -18,10 +18,10 @@ import java.util.List;
 @Table(name = "CUSTOMERS")
 public class Customers extends BaseEntity {
 
-    @Column( name = "ID", nullable = false)
+    @Column(name = "ID", nullable = false)
     private String id;
 
-    @Column(name = "PASSWORD" , nullable = false)
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
 
     @Embedded
@@ -30,23 +30,26 @@ public class Customers extends BaseEntity {
     @Embedded
     private Address address;
 
-    @Column(name = "PHONE_NUMBER" , nullable = false)
+    @Column(name = "PHONE_NUMBER", nullable = false)
     private String phoneNumber;
 
     @Convert(converter = GenderConverter.class)
-    @Column( name = "GENDER", columnDefinition = "char")
+    @Column(name = "GENDER", columnDefinition = "char")
     private Gender gender;
 
-    @Column(name = "EMAIL_ADDRESS" , nullable = false)
+    @Column(name = "EMAIL_ADDRESS", nullable = false)
     private String emailAddress;
 
-    @Column(name = "BIRTH_DATE" , nullable = false)
+    @Column(name = "BIRTH_DATE", nullable = false)
     private Instant birthDate;
 
     private Instant joinDay;
 
-    @Column(name = "LEVEL" , nullable = false)
+    @Column(name = "LEVEL", nullable = false)
     private Integer level;
+
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive;
 
     @OneToMany(mappedBy = "customers")
     private List<Orders> orders;
