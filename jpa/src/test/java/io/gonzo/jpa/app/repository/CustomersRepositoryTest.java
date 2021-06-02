@@ -99,9 +99,9 @@ class CustomersRepositoryTest {
 
                             Assertions.assertEquals(_address.getAddressCode(), address.getAddressCode());
 
-                            Assertions.assertEquals(_address.getAddressNumber() , address.getAddressNumber());
+                            Assertions.assertEquals(_address.getAddressNumber(), address.getAddressNumber());
 
-                            Assertions.assertEquals(_address.getCity() , address.getCity());
+                            Assertions.assertEquals(_address.getCity(), address.getCity());
 
                             Assertions.assertEquals(value.getName().getFirstName(), firstName);
 
@@ -155,11 +155,35 @@ class CustomersRepositoryTest {
     }
 
     @Test
-    void findByName_FirstNameOrName_LastName() {
+    void findByName_FirstNameOrName_LastName_success() {
+        String firstName = "박";
+        String lastName = "초원";
+
+        Optional<List<Customers>> result = repository.findByName_FirstNameOrName_LastName(firstName, lastName);
+
+        Assertions.assertEquals(result.isPresent(), Boolean.TRUE);
     }
 
     @Test
+    void findByName_FirstNameOrName_LastName_fail() {
+        String firstName = "남";
+        String lastName = "도일";
+
+        Optional<List<Customers>> result = repository.findByName_FirstNameOrName_LastName(firstName, lastName);
+
+        Assertions.assertEquals(result.isPresent(), Boolean.TRUE);
+    }
+
+
+    @Test
     void findByName_FirstName() {
+
+        String firstName = "박";
+
+        Optional<List<Customers>> result = repository.findByName_FirstName(firstName);
+
+        Assertions.assertEquals(result.isPresent(), Boolean.TRUE);
+
     }
 
     @Test

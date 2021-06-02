@@ -27,7 +27,7 @@ public interface CustomersRepository extends JpaRepository<Customers, Long> {
 
     Optional<List<Customers>> findByName_FirstNameOrName_LastName(String name_firstName , String name_lastName);
 
-    Optional<Customers> findByName_FirstName(String name_firstName);
+    Optional<List<Customers>> findByName_FirstName(String name_firstName);
 
     Optional<List<Customers>> findByNameIsNull();
 
