@@ -188,10 +188,25 @@ class CustomersRepositoryTest {
 
     @Test
     void findByNameIsNull() {
+
+        Optional<List<Customers>> result = repository.findByNameIsNull();
+
+        Assertions.assertEquals(result.isPresent(), Boolean.TRUE);
+
     }
 
     @Test
     void findByNameIsNot() {
+
+        Name name = Name.builder()
+                .firstName("김")
+                .lastName("호수")
+                .build();
+
+        Optional<List<Customers>> result = repository.findByNameIsNot(name);
+
+        Assertions.assertEquals(result.isPresent(), Boolean.TRUE);
+
     }
 
     @Test
