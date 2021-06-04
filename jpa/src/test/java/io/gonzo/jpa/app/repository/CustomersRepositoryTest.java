@@ -11,8 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -211,22 +210,59 @@ class CustomersRepositoryTest {
 
     @Test
     void findByNameOrderByLevelDesc() {
+
+        Name name = Name.builder()
+                .firstName("김")
+                .lastName("호수")
+                .build();
+
+        Optional<List<Customers>> result = repository.findByNameOrderByLevelDesc(name);
+
+        Assertions.assertEquals(result.isPresent(), Boolean.TRUE);
+
     }
 
     @Test
     void findByNameOrderByLevelAsc() {
+        Name name = Name.builder()
+                .firstName("김")
+                .lastName("호수")
+                .build();
+
+        Optional<List<Customers>> result = repository.findByNameOrderByLevelAsc(name);
+
+        Assertions.assertEquals(result.isPresent(), Boolean.TRUE);
     }
 
     @Test
     void findByNameNot() {
+
+        Name name = Name.builder()
+                .firstName("김")
+                .lastName("호수")
+                .build();
+
+        Optional<List<Customers>> data = repository.findByNameNot(name);
+
+        Assertions.assertEquals(data.isPresent() , Boolean.TRUE);
     }
 
     @Test
     void findByLevelIn() {
+        Collection<Integer> levelList = Arrays.asList(3,5);
+
+        Optional<List<Customers>> data = repository.findByLevelIn(levelList);
+
+        Assertions.assertEquals(data.isPresent() , Boolean.TRUE);
     }
 
     @Test
     void findByLevelNotIn() {
+        Collection<Integer> levelList = Collections.singletonList(3);
+
+        Optional<List<Customers>> data = repository.findByLevelNotIn(levelList);
+
+        Assertions.assertEquals(data.isPresent() , Boolean.TRUE);
     }
 
     @Test
