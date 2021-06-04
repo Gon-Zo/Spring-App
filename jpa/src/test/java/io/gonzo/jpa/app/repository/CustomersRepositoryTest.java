@@ -13,8 +13,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @DataJpaTest
 @ActiveProfiles("h2")
 @ExtendWith(SpringExtension.class)
