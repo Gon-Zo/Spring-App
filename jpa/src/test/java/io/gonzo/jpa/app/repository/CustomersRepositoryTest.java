@@ -242,16 +242,16 @@ class CustomersRepositoryTest {
 
         Optional<List<Customers>> data = repository.findByNameNot(name);
 
-        Assertions.assertEquals(data.isPresent() , Boolean.TRUE);
+        Assertions.assertEquals(data.isPresent(), Boolean.TRUE);
     }
 
     @Test
     void findByLevelIn() {
-        Collection<Integer> levelList = Arrays.asList(3,5);
+        Collection<Integer> levelList = Arrays.asList(3, 5);
 
         Optional<List<Customers>> data = repository.findByLevelIn(levelList);
 
-        Assertions.assertEquals(data.isPresent() , Boolean.TRUE);
+        Assertions.assertEquals(data.isPresent(), Boolean.TRUE);
     }
 
     @Test
@@ -260,18 +260,28 @@ class CustomersRepositoryTest {
 
         Optional<List<Customers>> data = repository.findByLevelNotIn(levelList);
 
-        Assertions.assertEquals(data.isPresent() , Boolean.TRUE);
+        Assertions.assertEquals(data.isPresent(), Boolean.TRUE);
     }
 
     @Test
     void findByIsActiveTrue() {
+        Optional<List<Customers>> data = repository.findByIsActiveTrue();
+        Assertions.assertEquals(data.isPresent(), Boolean.TRUE);
     }
 
     @Test
     void findByIsActiveFalse() {
+        Optional<List<Customers>> data = repository.findByIsActiveTrue();
+        Assertions.assertEquals(data.isPresent(), Boolean.TRUE);
     }
 
     @Test
     void findByEmailAddressIgnoreCase() {
+        String emailAddress = "test1@naver.com";
+
+        Optional<List<Customers>> data = repository.findByEmailAddressIgnoreCase(emailAddress);
+
+        Assertions.assertEquals(data.isPresent(), Boolean.TRUE);
     }
+
 }
