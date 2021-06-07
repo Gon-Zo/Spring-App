@@ -1,15 +1,27 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    // 자바스크립트 파일 컴파일 허용 여부
+    "allowSyntheticDefaultImports": true,
+    // export default 를 export 한 값들을 가지는 객체로 설정
     "target": "es5",
+    // ???
+    "baseUrl": ".",
+    // 기본 디렉토리 위치,
+    "sourceMap": true,
+    // 원본소스 변환소스 매핑 기능 사용 여부,
+    "charset": "utf8",
+    // 입력파일의 문자집합 형식,
+    "outDir": "./dist/",
+    "noImplicitAny": true,
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es6"
     ],
-    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
@@ -21,6 +33,9 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./node_modules/**/*"
   ]
 }
