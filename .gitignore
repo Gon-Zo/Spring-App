@@ -1,0 +1,6 @@
+/.gradle/
+/.idea/
+/data/
+
+/jpa/build
+/security/build
