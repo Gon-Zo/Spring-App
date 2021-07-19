@@ -23,9 +23,9 @@ repositories {
 
 
 if (project.hasProperty("h2")) {
-    apply from: "${project.rootDir.toString()}/gradle/pg.gradle"
-}else {
     apply from: "${project.rootDir.toString()}/gradle/h2.gradle"
+}else {
+    apply from: "${project.rootDir.toString()}/gradle/pg.gradle"
 }
 
 apply from: "${project.rootDir.toString()}/gradle/utils.gradle"
