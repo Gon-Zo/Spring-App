@@ -22,10 +22,10 @@ repositories {
 }
 
 
-apply from: "${project.rootDir.toString()}/gradle/h2.gradle"
-
-if (project.hasProperty("pg")) {
+if (project.hasProperty("h2")) {
     apply from: "${project.rootDir.toString()}/gradle/pg.gradle"
+}else {
+    apply from: "${project.rootDir.toString()}/gradle/h2.gradle"
 }
 
 apply from: "${project.rootDir.toString()}/gradle/utils.gradle"
