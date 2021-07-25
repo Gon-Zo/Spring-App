@@ -7,10 +7,11 @@ spring:
         dev:
           - pg
           - h2
+          - mysql
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: 'update'
+      ddl-auto: update
     properties:
       hibernate.format_sql: true
       hibernate.jdbc.lob.non_contextual_creation: true
