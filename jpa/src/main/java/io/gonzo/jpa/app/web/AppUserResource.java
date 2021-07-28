@@ -2,10 +2,9 @@ package io.gonzo.jpa.app.web;
 
 import io.gonzo.jpa.app.domain.AppUser;
 import io.gonzo.jpa.app.service.AppUserService;
+import io.gonzo.jpa.app.web.dto.AppUserDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +18,11 @@ public class AppUserResource {
     @GetMapping("")
     public List<AppUser> showByAppUser(){
         return service.getUserList();
+    }
+
+    @PostMapping("")
+    public void createByAppUser(@RequestBody AppUserDTO dto){
+        service.saveAppUser(dto);
     }
 
 }

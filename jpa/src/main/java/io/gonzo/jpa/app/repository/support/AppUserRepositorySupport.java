@@ -4,6 +4,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import io.gonzo.jpa.app.domain.AppUser;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
@@ -24,6 +25,7 @@ public class AppUserRepositorySupport extends QuerydslRepositorySupport {
         this.entityManager = entityManager;
     }
 
+    @Transactional(readOnly = true)
     public List<AppUser> findByAll(){
         return jpaQueryFactory.selectFrom(appUser).fetch();
     }
