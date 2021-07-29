@@ -21,8 +21,11 @@ public class AppUserService {
         return repositorySupport.findByAll();
     }
 
-    public void saveAppUser(AppUserDTO dto){
+    public void saveAppUser(AppUserDTO dto) {
         repository.save(dto.toEntity());
     }
 
+    public Long updateAppUser(AppUserDTO dto, Long id) {
+        return repositorySupport.update(dto, id);
+    }
 }

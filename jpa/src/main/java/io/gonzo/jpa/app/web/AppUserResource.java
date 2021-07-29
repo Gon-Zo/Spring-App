@@ -16,13 +16,18 @@ public class AppUserResource {
     private final AppUserService service;
 
     @GetMapping("")
-    public List<AppUser> showByAppUser(){
+    public List<AppUser> showByAppUser() {
         return service.getUserList();
     }
 
     @PostMapping("")
-    public void createByAppUser(@RequestBody AppUserDTO dto){
+    public void createByAppUser(@RequestBody AppUserDTO dto) {
         service.saveAppUser(dto);
+    }
+
+    @PutMapping("/{id}")
+    public Long updateByAppUser(@PathVariable Long id, @RequestBody AppUserDTO dto) {
+        return service.updateAppUser(dto, id);
     }
 
 }
