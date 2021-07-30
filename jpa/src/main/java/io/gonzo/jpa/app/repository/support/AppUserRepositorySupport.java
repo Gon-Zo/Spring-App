@@ -64,5 +64,9 @@ public class AppUserRepositorySupport extends QuerydslRepositorySupport {
                 .execute();
     }
 
+    @Transactional
+    public Long delete(Long id){
+        return delete(appUser).where(appUser.id.eq(id)).execute();
+    }
 
 }

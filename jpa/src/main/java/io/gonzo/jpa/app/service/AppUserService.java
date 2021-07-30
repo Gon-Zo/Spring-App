@@ -28,4 +28,8 @@ public class AppUserService {
     public Long updateAppUser(AppUserDTO dto, Long id) {
         return repositorySupport.update(dto, id);
     }
+
+    public Long removeAppUser(Long id) {
+        return repositorySupport.delete(id);
+    }
 }

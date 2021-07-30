@@ -30,4 +30,9 @@ public class AppUserResource {
         return service.updateAppUser(dto, id);
     }
 
+    @DeleteMapping("/{id}")
+    public Long removeByAppUser(@PathVariable Long id) {
+        return service.removeAppUser(id);
+    }
+
 }
