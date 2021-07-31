@@ -1,6 +1,8 @@
 package io.gonzo.jpa.app.repository.support;
 
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.dml.UpdateClause;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.jpa.impl.JPAUpdateClause;
 import io.gonzo.jpa.app.domain.AppUser;
@@ -35,6 +37,13 @@ public class AppUserRepositorySupport extends QuerydslRepositorySupport {
         return jpaQueryFactory.selectFrom(appUser).fetch();
     }
 
+    @Transactional(readOnly = true)
+    public List<AppUser> findByWhere(AppUserDTO dto) {
+        return jpaQueryFactory.selectFrom(appUser)
+                .where(setWhereBuilder(dto))
+                .fetch();
+    }
+
     @Transactional
     public Long update(AppUserDTO dto, Long id) {
         UpdateClause<JPAUpdateClause> updateBuilder = update(appUser);
@@ -65,8 +74,36 @@ public class AppUserRepositorySupport extends QuerydslRepositorySupport {
     }
 
     @Transactional
-    public Long delete(Long id){
+    public Long delete(Long id) {
         return delete(appUser).where(appUser.id.eq(id)).execute();
+    }
+
+
+    private BooleanBuilder setWhereBuilder(AppUserDTO dto) {
+
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+
+        if (StringUtils.isNotEmpty(dto.getFirstName())) {
+            booleanBuilder.and(appUser.firstName.eq(dto.getFirstName()));
+        }
+
+        if (StringUtils.isNoneEmpty(dto.getLastName())) {
+            booleanBuilder.and(appUser.lastName.eq(dto.getLastName()));
+        }
+
+        if (StringUtils.isNoneEmpty(dto.getEmail())) {
+            booleanBuilder.and(appUser.email.eq(dto.getEmail()));
+        }
+
+        if (StringUtils.isNoneEmpty(dto.getGender())) {
+            booleanBuilder.and(appUser.gender.eq(dto.getGender()));
+        }
+
+        if (ObjectUtils.isNotEmpty(dto.getCount())) {
+            booleanBuilder.and(appUser.count.eq(dto.getCount()));
+        }
+
+        return booleanBuilder;
     }
 
 }

@@ -9,30 +9,35 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/app-user")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class AppUserResource {
 
     private final AppUserService service;
 
-    @GetMapping("")
+    @GetMapping("/app-user")
     public List<AppUser> showByAppUser() {
         return service.getUserList();
     }
 
-    @PostMapping("")
+    @PostMapping("/app-user")
     public void createByAppUser(@RequestBody AppUserDTO dto) {
         service.saveAppUser(dto);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/app-user/{id}")
     public Long updateByAppUser(@PathVariable Long id, @RequestBody AppUserDTO dto) {
         return service.updateAppUser(dto, id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/app-user/{id}")
     public Long removeByAppUser(@PathVariable Long id) {
         return service.removeAppUser(id);
+    }
+
+    @GetMapping("/found/app-user")
+    public List<AppUser> showByFoundAppUser(AppUserDTO dto) {
+        return service.getFoundAppUserList(dto);
     }
 
 }

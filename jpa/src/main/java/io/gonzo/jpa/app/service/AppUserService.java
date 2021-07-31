@@ -21,6 +21,10 @@ public class AppUserService {
         return repositorySupport.findByAll();
     }
 
+    public List<AppUser> getFoundAppUserList(AppUserDTO dto) {
+        return repositorySupport.findByWhere(dto);
+    }
+
     public void saveAppUser(AppUserDTO dto) {
         repository.save(dto.toEntity());
     }
