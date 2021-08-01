@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -16,7 +17,7 @@ public class AppUserResource {
     private final AppUserService service;
 
     @GetMapping("/app-user")
-    public List<AppUser> showByAppUser() {
+    public Optional<List<AppUser>> showByAppUser() {
         return service.getUserList();
     }
 
@@ -36,7 +37,7 @@ public class AppUserResource {
     }
 
     @GetMapping("/found/app-user")
-    public List<AppUser> showByFoundAppUser(AppUserDTO dto) {
+    public Optional<List<AppUser>> showByFoundAppUser(AppUserDTO dto) {
         return service.getFoundAppUserList(dto);
     }
 

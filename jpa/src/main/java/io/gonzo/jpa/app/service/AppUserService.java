@@ -2,12 +2,12 @@ package io.gonzo.jpa.app.service;
 
 import io.gonzo.jpa.app.domain.AppUser;
 import io.gonzo.jpa.app.repository.AppUserRepository;
-import io.gonzo.jpa.app.repository.support.AppUserRepositorySupport;
 import io.gonzo.jpa.app.web.dto.AppUserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,14 +15,12 @@ public class AppUserService {
 
     private final AppUserRepository repository;
 
-    private final AppUserRepositorySupport repositorySupport;
-
-    public List<AppUser> getUserList() {
-        return repositorySupport.findByAll();
+    public Optional<List<AppUser>> getUserList() {
+        return repository.findByAll();
     }
 
-    public List<AppUser> getFoundAppUserList(AppUserDTO dto) {
-        return repositorySupport.findByWhere(dto);
+    public Optional<List<AppUser>> getFoundAppUserList(AppUserDTO dto) {
+        return repository.findByWhere(dto);
     }
 
     public void saveAppUser(AppUserDTO dto) {
@@ -30,10 +28,10 @@ public class AppUserService {
     }
 
     public Long updateAppUser(AppUserDTO dto, Long id) {
-        return repositorySupport.update(dto, id);
+        return repository.update(dto, id);
     }
 
     public Long removeAppUser(Long id) {
-        return repositorySupport.delete(id);
+        return repository.delete(id);
     }
 }
