@@ -2,7 +2,6 @@ package io.gonzo.jpa.app.repository.support;
 
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.dml.UpdateClause;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.jpa.impl.JPAUpdateClause;
 import io.gonzo.jpa.app.domain.AppUser;
