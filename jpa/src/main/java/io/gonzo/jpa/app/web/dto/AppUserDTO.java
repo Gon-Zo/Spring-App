@@ -1,6 +1,6 @@
 package io.gonzo.jpa.app.web.dto;
 
-import io.gonzo.jpa.app.domain.AppUser;
+import io.gonzo.jpa.app.domain.app.AppUser;
 import lombok.Getter;
 import lombok.Setter;
 

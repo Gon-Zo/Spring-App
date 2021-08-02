@@ -1,6 +1,6 @@
 package io.gonzo.jpa.app.web;
 
-import io.gonzo.jpa.app.domain.AppUser;
+import io.gonzo.jpa.app.domain.app.AppUser;
 import io.gonzo.jpa.app.service.AppUserService;
 import io.gonzo.jpa.app.web.dto.AppUserDTO;
 import lombok.RequiredArgsConstructor;

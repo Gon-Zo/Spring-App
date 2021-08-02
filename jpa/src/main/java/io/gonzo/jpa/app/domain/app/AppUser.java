@@ -1,4 +1,4 @@
-package io.gonzo.jpa.app.domain;
+package io.gonzo.jpa.app.domain.app;
 
 import lombok.Builder;
 import lombok.Getter;

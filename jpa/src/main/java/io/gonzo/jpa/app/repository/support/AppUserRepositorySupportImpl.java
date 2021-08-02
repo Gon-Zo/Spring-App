@@ -4,7 +4,7 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.dml.UpdateClause;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.jpa.impl.JPAUpdateClause;
-import io.gonzo.jpa.app.domain.AppUser;
+import io.gonzo.jpa.app.domain.app.AppUser;
 import io.gonzo.jpa.app.web.dto.AppUserDTO;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
