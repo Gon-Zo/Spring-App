@@ -17,7 +17,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-import static io.gonzo.jpa.app.domain.QAppUser.appUser;
+import static io.gonzo.jpa.app.domain.app.QAppUser.appUser;
 
 @Repository
 public class AppUserRepositorySupportImpl extends QuerydslRepositorySupport implements AppUserRepositorySupport {
@@ -51,7 +51,6 @@ public class AppUserRepositorySupportImpl extends QuerydslRepositorySupport impl
     @Override
     @Transactional
     public Long update(AppUserDTO dto, Long id) {
-
         UpdateClause<JPAUpdateClause> updateBuilder = update(appUser);
 
         if (StringUtils.isNoneEmpty(dto.getFirstName())) {
@@ -84,9 +83,7 @@ public class AppUserRepositorySupportImpl extends QuerydslRepositorySupport impl
         return delete(appUser).where(appUser.id.eq(id)).execute();
     }
 
-
     private BooleanBuilder setWhereBuilder(AppUserDTO dto) {
-
         BooleanBuilder booleanBuilder = new BooleanBuilder();
 
         if (StringUtils.isNotEmpty(dto.getFirstName())) {

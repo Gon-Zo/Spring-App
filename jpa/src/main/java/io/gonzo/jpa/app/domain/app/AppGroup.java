@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Table(name = "app_group")
@@ -22,4 +23,6 @@ public class AppGroup extends AppBaseEntity {
     @Column(name = "use_yn")
     private Boolean useYn;
 
+//    @Co
+//    private List<AppUser> appUsers;
 }
