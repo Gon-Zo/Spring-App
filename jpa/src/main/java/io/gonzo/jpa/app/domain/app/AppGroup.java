@@ -5,7 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Table(name = "app_group")
@@ -23,6 +24,10 @@ public class AppGroup extends AppBaseEntity {
     @Column(name = "use_yn")
     private Boolean useYn;
 
-//    @Co
-//    private List<AppUser> appUsers;
+    @ManyToMany
+    private Set<AppUser> appUsers = new HashSet<>();
+
+    @OneToMany
+    private Set<AppAuth> appAuths = new HashSet<>();
+
 }

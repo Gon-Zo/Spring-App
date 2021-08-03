@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -32,6 +36,9 @@ public class AppUser extends AppBaseEntity {
 
     @Column(name = "count", nullable = false)
     private BigDecimal count;
+
+    @ManyToMany
+    private Set<AppGroup> appGroups = new HashSet<>();
 
     @Builder
     public AppUser(Long id, String firstName, String lastName, String email, String gender, BigDecimal count) {
