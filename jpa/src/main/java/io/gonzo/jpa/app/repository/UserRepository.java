@@ -12,6 +12,9 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long>  , UserRepositorySupport {
 
     @Override
-    @EntityGraph(attributePaths = {"appGroups"})
+    @EntityGraph(attributePaths = {"groups"})
     List<User> findAll();
+
+//    @Override
+//    List<UserDTO> findAll();
 }

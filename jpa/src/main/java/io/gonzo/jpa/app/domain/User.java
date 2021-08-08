@@ -1,6 +1,7 @@
 package io.gonzo.jpa.app.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.gonzo.jpa.app.domain.base.AppBaseEntity;
 import io.gonzo.jpa.app.domain.base.Name;
@@ -23,7 +24,7 @@ import java.util.Set;
 @DynamicUpdate
 @NoArgsConstructor
 @Table(name = "app_user")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class User extends AppBaseEntity implements Serializable {
 
     @Id

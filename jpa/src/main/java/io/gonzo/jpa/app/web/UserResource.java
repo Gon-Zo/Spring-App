@@ -16,6 +16,11 @@ public class UserResource {
 
     private final UserService service;
 
+    @GetMapping("/app-user1")
+    public List<User> showByUser(){
+        return service.getUserList1();
+    }
+
     @GetMapping("/app-user")
     public Optional<List<User>> showByAppUser() {
         return service.getUserList();

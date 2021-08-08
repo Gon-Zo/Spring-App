@@ -15,6 +15,10 @@ public class UserService {
 
     private final UserRepository repository;
 
+    public List<User> getUserList1(){
+        return repository.findAll();
+    }
+
     public Optional<List<User>> getUserList() {
         return repository.findByAll();
     }

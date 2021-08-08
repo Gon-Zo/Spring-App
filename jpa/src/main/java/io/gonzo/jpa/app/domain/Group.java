@@ -16,7 +16,7 @@ import java.util.Set;
 @Table(name = "app_group")
 @Entity
 @NoArgsConstructor
-//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Group extends AppBaseEntity implements Serializable {
 
     @Id
