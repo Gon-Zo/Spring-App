@@ -1,7 +1,7 @@
 package io.gonzo.jpa.app.service;
 
-import io.gonzo.jpa.app.domain.app.AppUser;
-import io.gonzo.jpa.app.repository.AppUserRepository;
+import io.gonzo.jpa.app.domain.User;
+import io.gonzo.jpa.app.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +14,18 @@ import java.util.Optional;
 
 @ActiveProfiles({"mysql" , "test"})
 @SpringBootTest
-class AppUserServiceTest {
+class UserServiceTest {
 
     @Autowired
     private AppUserService appUserService;
 
     @MockBean
-    private AppUserRepository appUserRepository;
+    private UserRepository appUserRepository;
 
     @Test
     @DisplayName("유저 목록")
     public void getUserList(){
-        Optional<List<AppUser>> userList = appUserService.getUserList();
+        Optional<List<User>> userList = appUserService.getUserList();
 
         return;
     }

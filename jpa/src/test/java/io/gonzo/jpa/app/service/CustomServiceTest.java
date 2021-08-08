@@ -1,9 +1,6 @@
 package io.gonzo.jpa.app.service;
 
-import io.gonzo.jpa.app.domain.base.CustomPK;
 import io.gonzo.jpa.app.domain.basic.Custom;
-import io.gonzo.jpa.app.repository.CustomRepository;
-import io.gonzo.jpa.app.web.dto.CustomDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

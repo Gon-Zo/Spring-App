@@ -4,16 +4,18 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+@Getter
 @Embeddable
 @NoArgsConstructor
 public class Name {
 
-    @Getter
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Getter
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Builder

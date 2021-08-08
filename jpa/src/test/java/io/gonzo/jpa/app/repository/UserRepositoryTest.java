@@ -1,7 +1,8 @@
 package io.gonzo.jpa.app.repository;
 
 import io.gonzo.jpa.app.config.TestConfig;
-import io.gonzo.jpa.app.domain.app.AppUser;
+import io.gonzo.jpa.app.domain.User;
+import io.gonzo.jpa.app.domain.base.Name;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -21,18 +22,22 @@ import java.util.List;
 @DisplayName("app_user_test_case")
 @ActiveProfiles("mysql")
 @Import(TestConfig.class)
-class AppUserRepositoryTest {
+class UserRepositoryTest {
 
     @Autowired
-    private AppUserRepository appUserRepository;
+    private UserRepository appUserRepository;
 
     private final String userName = "test1";
 
     @BeforeEach
     public void beforeEach() {
-        AppUser data = AppUser.builder()
-                .firstName(userName)
-                .lastName(userName)
+        User data = User.builder()
+//                .firstName(userName)
+//                .lastName(userName)
+                .name(Name.builder()
+                        .firstName(userName)
+                        .lastName(userName)
+                        .build())
                 .email(userName)
                 .gender(userName)
                 .count(new BigDecimal(0))
@@ -43,13 +48,13 @@ class AppUserRepositoryTest {
     @Test
     @DisplayName("find all test case")
     public void findAll() {
-        List<AppUser> appUserList = appUserRepository.findAll();
+        List<User> userList = appUserRepository.findAll();
 
-        appUserList.stream()
-                .filter(user -> userName.equals(user.getFirstName()))
+        userList.stream()
+                .filter(user -> userName.equals(user.getName().getFirstName()))
                 .findFirst()
                 .ifPresent(value -> {
-                    Assertions.assertEquals(value.getFirstName(), userName);
+                    Assertions.assertEquals(value.getName().getFirstName(), userName);
                 });
     }
 

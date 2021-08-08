@@ -2,8 +2,6 @@ package io.gonzo.jpa.app.repository;
 
 import io.gonzo.jpa.app.domain.basic.Product;
 import io.gonzo.jpa.app.domain.basic.ProductType;
-import io.gonzo.jpa.app.web.dto.NameOnly;
-import io.gonzo.jpa.app.web.dto.ProductDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

@@ -4,8 +4,8 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.dml.UpdateClause;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.jpa.impl.JPAUpdateClause;
-import io.gonzo.jpa.app.domain.app.AppUser;
-import io.gonzo.jpa.app.web.dto.AppUserDTO;
+import io.gonzo.jpa.app.domain.User;
+import io.gonzo.jpa.app.web.dto.UserDTO;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
@@ -17,32 +17,32 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-import static io.gonzo.jpa.app.domain.app.QAppUser.appUser;
+import static io.gonzo.jpa.app.domain.QUser.user;
 
 @Repository
-public class AppUserRepositorySupportImpl extends QuerydslRepositorySupport implements AppUserRepositorySupport {
+public class UserRepositorySupportImpl extends QuerydslRepositorySupport implements UserRepositorySupport {
 
     private final JPAQueryFactory jpaQueryFactory;
 
     private final EntityManager entityManager;
 
-    public AppUserRepositorySupportImpl(JPAQueryFactory jpaQueryFactory, EntityManager entityManager) {
-        super(AppUser.class);
+    public UserRepositorySupportImpl(JPAQueryFactory jpaQueryFactory, EntityManager entityManager) {
+        super(User.class);
         this.jpaQueryFactory = jpaQueryFactory;
         this.entityManager = entityManager;
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<List<AppUser>> findByAll() {
-        return Optional.ofNullable(jpaQueryFactory.selectFrom(appUser).fetch());
+    public Optional<List<User>> findByAll() {
+        return Optional.ofNullable(jpaQueryFactory.selectFrom(user).fetch());
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<List<AppUser>> findByWhere(AppUserDTO dto) {
+    public Optional<List<User>> findByWhere(UserDTO dto) {
         return Optional.ofNullable(
-                jpaQueryFactory.selectFrom(appUser)
+                jpaQueryFactory.selectFrom(user)
                         .where(setWhereBuilder(dto))
                         .fetch()
         );
@@ -50,60 +50,61 @@ public class AppUserRepositorySupportImpl extends QuerydslRepositorySupport impl
 
     @Override
     @Transactional
-    public Long update(AppUserDTO dto, Long id) {
-        UpdateClause<JPAUpdateClause> updateBuilder = update(appUser);
+    public Long update(UserDTO dto, Long id) {
+
+        UpdateClause<JPAUpdateClause> updateBuilder = update(user);
 
         if (StringUtils.isNoneEmpty(dto.getFirstName())) {
-            updateBuilder.set(appUser.firstName, dto.getFirstName());
+            updateBuilder.set(user.name.firstName, dto.getFirstName());
         }
 
         if (StringUtils.isNoneEmpty(dto.getLastName())) {
-            updateBuilder.set(appUser.lastName, dto.getLastName());
+            updateBuilder.set(user.name.lastName, dto.getLastName());
         }
 
         if (StringUtils.isNoneEmpty(dto.getEmail())) {
-            updateBuilder.set(appUser.email, dto.getEmail());
+            updateBuilder.set(user.email, dto.getEmail());
         }
 
         if (StringUtils.isNoneEmpty(dto.getGender())) {
-            updateBuilder.set(appUser.gender, dto.getGender());
+            updateBuilder.set(user.gender, dto.getGender());
         }
 
         if (ObjectUtils.isNotEmpty(dto.getCount())) {
-            updateBuilder.set(appUser.count, dto.getCount());
+            updateBuilder.set(user.count, dto.getCount());
         }
 
         return updateBuilder
-                .where(appUser.id.eq(id))
+                .where(user.id.eq(id))
                 .execute();
     }
 
     @Transactional
     public Long delete(Long id) {
-        return delete(appUser).where(appUser.id.eq(id)).execute();
+        return delete(user).where(user.id.eq(id)).execute();
     }
 
-    private BooleanBuilder setWhereBuilder(AppUserDTO dto) {
+    private BooleanBuilder setWhereBuilder(UserDTO dto) {
         BooleanBuilder booleanBuilder = new BooleanBuilder();
 
         if (StringUtils.isNotEmpty(dto.getFirstName())) {
-            booleanBuilder.and(appUser.firstName.eq(dto.getFirstName()));
+            booleanBuilder.and(user.name.firstName.eq(dto.getFirstName()));
         }
 
         if (StringUtils.isNoneEmpty(dto.getLastName())) {
-            booleanBuilder.and(appUser.lastName.eq(dto.getLastName()));
+            booleanBuilder.and(user.name.lastName.eq(dto.getLastName()));
         }
 
         if (StringUtils.isNoneEmpty(dto.getEmail())) {
-            booleanBuilder.and(appUser.email.eq(dto.getEmail()));
+            booleanBuilder.and(user.email.eq(dto.getEmail()));
         }
 
         if (StringUtils.isNoneEmpty(dto.getGender())) {
-            booleanBuilder.and(appUser.gender.eq(dto.getGender()));
+            booleanBuilder.and(user.gender.eq(dto.getGender()));
         }
 
         if (ObjectUtils.isNotEmpty(dto.getCount())) {
-            booleanBuilder.and(appUser.count.eq(dto.getCount()));
+            booleanBuilder.and(user.count.eq(dto.getCount()));
         }
 
         return booleanBuilder;

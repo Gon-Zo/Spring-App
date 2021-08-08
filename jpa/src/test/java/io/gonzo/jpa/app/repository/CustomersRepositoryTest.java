@@ -1,8 +1,5 @@
 package io.gonzo.jpa.app.repository;
 
-import io.gonzo.jpa.app.domain.base.Address;
-import io.gonzo.jpa.app.domain.base.Name;
-import io.gonzo.jpa.app.domain.basic.Customers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

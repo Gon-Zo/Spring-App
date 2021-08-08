@@ -1,6 +1,5 @@
 package io.gonzo.jpa.app.repository;
 
-import io.gonzo.jpa.app.domain.base.CustomPK;
 import io.gonzo.jpa.app.domain.basic.Custom;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;

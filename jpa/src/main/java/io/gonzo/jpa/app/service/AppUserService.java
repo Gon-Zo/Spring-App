@@ -1,8 +1,8 @@
 package io.gonzo.jpa.app.service;
 
-import io.gonzo.jpa.app.domain.app.AppUser;
-import io.gonzo.jpa.app.repository.AppUserRepository;
-import io.gonzo.jpa.app.web.dto.AppUserDTO;
+import io.gonzo.jpa.app.domain.User;
+import io.gonzo.jpa.app.repository.UserRepository;
+import io.gonzo.jpa.app.web.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,21 +13,21 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AppUserService {
 
-    private final AppUserRepository repository;
+    private final UserRepository repository;
 
-    public Optional<List<AppUser>> getUserList() {
+    public Optional<List<User>> getUserList() {
         return repository.findByAll();
     }
 
-    public Optional<List<AppUser>> getFoundAppUserList(AppUserDTO dto) {
+    public Optional<List<User>> getFoundAppUserList(UserDTO dto) {
         return repository.findByWhere(dto);
     }
 
-    public void saveAppUser(AppUserDTO dto) {
+    public void saveAppUser(UserDTO dto) {
         repository.save(dto.toEntity());
     }
 
-    public Long updateAppUser(AppUserDTO dto, Long id) {
+    public Long updateAppUser(UserDTO dto, Long id) {
         return repository.update(dto, id);
     }
 

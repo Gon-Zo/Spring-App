@@ -1,6 +1,7 @@
 package io.gonzo.jpa.app.web.dto;
 
-import io.gonzo.jpa.app.domain.app.AppUser;
+import io.gonzo.jpa.app.domain.User;
+import io.gonzo.jpa.app.domain.base.Name;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,7 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public class AppUserDTO {
+public class UserDTO {
 
     private String firstName;
 
@@ -20,10 +21,12 @@ public class AppUserDTO {
 
     private BigDecimal count;
 
-    public AppUser toEntity() {
-        return AppUser.builder()
-                .firstName(this.firstName)
-                .lastName(this.lastName)
+    public User toEntity() {
+        return User.builder()
+                .name(Name.builder()
+                        .firstName(this.firstName)
+                        .lastName(this.lastName)
+                        .build())
                 .email(this.email)
                 .gender(this.gender)
                 .count(this.count)

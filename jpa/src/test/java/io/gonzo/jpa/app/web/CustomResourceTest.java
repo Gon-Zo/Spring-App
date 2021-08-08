@@ -1,6 +1,5 @@
 package io.gonzo.jpa.app.web;
 
-import io.gonzo.jpa.app.service.CustomService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
