@@ -27,7 +27,7 @@ public class AppGroup extends AppBaseEntity {
     @ManyToMany
     private Set<AppUser> appUsers = new HashSet<>();
 
-    @OneToMany
+    @ManyToMany
     private Set<AppAuth> appAuths = new HashSet<>();
 
 }
