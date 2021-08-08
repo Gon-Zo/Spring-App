@@ -1,7 +1,6 @@
 package io.gonzo.jpa.app.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.gonzo.jpa.app.domain.base.AppBaseEntity;
 import io.gonzo.jpa.app.domain.base.Name;
