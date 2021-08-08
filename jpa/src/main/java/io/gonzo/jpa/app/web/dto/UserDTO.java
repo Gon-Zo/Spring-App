@@ -2,6 +2,7 @@ package io.gonzo.jpa.app.web.dto;
 
 import io.gonzo.jpa.app.domain.User;
 import io.gonzo.jpa.app.domain.base.Name;
+import io.gonzo.jpa.app.enums.Gender;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +18,7 @@ public class UserDTO {
 
     private String email;
 
-    private String gender;
+    private Gender gender;
 
     private BigDecimal count;
 

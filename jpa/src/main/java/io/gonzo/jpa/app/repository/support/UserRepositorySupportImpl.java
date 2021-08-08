@@ -54,19 +54,19 @@ public class UserRepositorySupportImpl extends QuerydslRepositorySupport impleme
 
         UpdateClause<JPAUpdateClause> updateBuilder = update(user);
 
-        if (StringUtils.isNoneEmpty(dto.getFirstName())) {
+        if (StringUtils.isNotEmpty(dto.getFirstName())) {
             updateBuilder.set(user.name.firstName, dto.getFirstName());
         }
 
-        if (StringUtils.isNoneEmpty(dto.getLastName())) {
+        if (StringUtils.isNotEmpty(dto.getLastName())) {
             updateBuilder.set(user.name.lastName, dto.getLastName());
         }
 
-        if (StringUtils.isNoneEmpty(dto.getEmail())) {
+        if (StringUtils.isNotEmpty(dto.getEmail())) {
             updateBuilder.set(user.email, dto.getEmail());
         }
 
-        if (StringUtils.isNoneEmpty(dto.getGender())) {
+        if (ObjectUtils.isNotEmpty(dto.getGender())) {
             updateBuilder.set(user.gender, dto.getGender());
         }
 
@@ -91,15 +91,15 @@ public class UserRepositorySupportImpl extends QuerydslRepositorySupport impleme
             booleanBuilder.and(user.name.firstName.eq(dto.getFirstName()));
         }
 
-        if (StringUtils.isNoneEmpty(dto.getLastName())) {
+        if (StringUtils.isNotEmpty(dto.getLastName())) {
             booleanBuilder.and(user.name.lastName.eq(dto.getLastName()));
         }
 
-        if (StringUtils.isNoneEmpty(dto.getEmail())) {
+        if (StringUtils.isNotEmpty(dto.getEmail())) {
             booleanBuilder.and(user.email.eq(dto.getEmail()));
         }
 
-        if (StringUtils.isNoneEmpty(dto.getGender())) {
+        if (ObjectUtils.isNotEmpty(dto.getGender())) {
             booleanBuilder.and(user.gender.eq(dto.getGender()));
         }
 

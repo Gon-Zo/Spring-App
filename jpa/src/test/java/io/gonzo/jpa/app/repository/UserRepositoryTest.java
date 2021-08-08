@@ -3,6 +3,7 @@ package io.gonzo.jpa.app.repository;
 import io.gonzo.jpa.app.config.TestConfig;
 import io.gonzo.jpa.app.domain.User;
 import io.gonzo.jpa.app.domain.base.Name;
+import io.gonzo.jpa.app.enums.Gender;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -32,14 +33,12 @@ class UserRepositoryTest {
     @BeforeEach
     public void beforeEach() {
         User data = User.builder()
-//                .firstName(userName)
-//                .lastName(userName)
                 .name(Name.builder()
                         .firstName(userName)
                         .lastName(userName)
                         .build())
                 .email(userName)
-                .gender(userName)
+                .gender(Gender.MAN)
                 .count(new BigDecimal(0))
                 .build();
         appUserRepository.save(data);

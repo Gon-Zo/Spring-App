@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.gonzo.jpa.app.domain.base.AppBaseEntity;
 import io.gonzo.jpa.app.domain.base.Name;
+import io.gonzo.jpa.app.enums.Gender;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,7 +37,7 @@ public class User extends AppBaseEntity implements Serializable {
     private String email;
 
     @Column(name = "gender", nullable = false)
-    private String gender;
+    private Gender gender;
 
     @Column(name = "count", nullable = false)
     private BigDecimal count;
@@ -49,7 +50,7 @@ public class User extends AppBaseEntity implements Serializable {
     private Set<Group> groups = new HashSet<>();
 
     @Builder
-    public User(Long id, Name name, String email, String gender, BigDecimal count) {
+    public User(Long id, Name name, String email, Gender gender, BigDecimal count) {
         this.id = id;
         this.name = name;
         this.email = email;
