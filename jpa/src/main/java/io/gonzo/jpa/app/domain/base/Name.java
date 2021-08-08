@@ -6,11 +6,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Getter
 @Embeddable
 @NoArgsConstructor
-public class Name {
+public class Name implements Serializable {
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
