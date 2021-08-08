@@ -1,8 +1,8 @@
 package io.gonzo.jpa.app.web;
 
 import io.gonzo.jpa.app.domain.User;
-import io.gonzo.jpa.app.service.AppUserService;
-import io.gonzo.jpa.app.web.dto.UserDTO;
+import io.gonzo.jpa.app.service.UserService;
+import io.gonzo.jpa.app.web.dto.UserStoreDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserResource {
 
-    private final AppUserService service;
+    private final UserService service;
 
     @GetMapping("/app-user")
     public Optional<List<User>> showByAppUser() {
@@ -22,12 +22,12 @@ public class UserResource {
     }
 
     @PostMapping("/app-user")
-    public void createByAppUser(@RequestBody UserDTO dto) {
+    public void createByAppUser(@RequestBody UserStoreDTO dto) {
         service.saveAppUser(dto);
     }
 
     @PutMapping("/app-user/{id}")
-    public Long updateByAppUser(@PathVariable Long id, @RequestBody UserDTO dto) {
+    public Long updateByAppUser(@PathVariable Long id, @RequestBody UserStoreDTO dto) {
         return service.updateAppUser(dto, id);
     }
 
@@ -37,7 +37,7 @@ public class UserResource {
     }
 
     @GetMapping("/found/app-user")
-    public Optional<List<User>> showByFoundAppUser(UserDTO dto) {
+    public Optional<List<User>> showByFoundAppUser(UserStoreDTO dto) {
         return service.getFoundAppUserList(dto);
     }
 

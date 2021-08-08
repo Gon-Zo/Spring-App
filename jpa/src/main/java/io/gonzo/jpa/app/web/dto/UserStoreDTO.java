@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public class UserDTO {
+public class UserStoreDTO {
 
     private String firstName;
 

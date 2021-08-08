@@ -5,7 +5,7 @@ import com.querydsl.core.dml.UpdateClause;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.jpa.impl.JPAUpdateClause;
 import io.gonzo.jpa.app.domain.User;
-import io.gonzo.jpa.app.web.dto.UserDTO;
+import io.gonzo.jpa.app.web.dto.UserStoreDTO;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
@@ -40,7 +40,7 @@ public class UserRepositorySupportImpl extends QuerydslRepositorySupport impleme
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<List<User>> findByWhere(UserDTO dto) {
+    public Optional<List<User>> findByWhere(UserStoreDTO dto) {
         return Optional.ofNullable(
                 jpaQueryFactory.selectFrom(user)
                         .where(setWhereBuilder(dto))
@@ -50,7 +50,7 @@ public class UserRepositorySupportImpl extends QuerydslRepositorySupport impleme
 
     @Override
     @Transactional
-    public Long update(UserDTO dto, Long id) {
+    public Long update(UserStoreDTO dto, Long id) {
 
         UpdateClause<JPAUpdateClause> updateBuilder = update(user);
 
@@ -84,7 +84,7 @@ public class UserRepositorySupportImpl extends QuerydslRepositorySupport impleme
         return delete(user).where(user.id.eq(id)).execute();
     }
 
-    private BooleanBuilder setWhereBuilder(UserDTO dto) {
+    private BooleanBuilder setWhereBuilder(UserStoreDTO dto) {
         BooleanBuilder booleanBuilder = new BooleanBuilder();
 
         if (StringUtils.isNotEmpty(dto.getFirstName())) {

@@ -23,7 +23,7 @@ import java.util.Set;
 @DynamicUpdate
 @NoArgsConstructor
 @Table(name = "app_user")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class User extends AppBaseEntity implements Serializable {
 
     @Id

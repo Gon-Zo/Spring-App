@@ -17,7 +17,7 @@ import java.util.Optional;
 class UserServiceTest {
 
     @Autowired
-    private AppUserService appUserService;
+    private UserService userService;
 
     @MockBean
     private UserRepository appUserRepository;
@@ -25,7 +25,7 @@ class UserServiceTest {
     @Test
     @DisplayName("유저 목록")
     public void getUserList(){
-        Optional<List<User>> userList = appUserService.getUserList();
+        Optional<List<User>> userList = userService.getUserList();
 
         return;
     }
