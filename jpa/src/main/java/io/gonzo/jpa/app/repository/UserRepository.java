@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>  , UserRepositorySupport {
+public interface UserRepository extends JpaRepository<User, Long>, UserRepositorySupport {
 
     @Override
     @EntityGraph(attributePaths = {"groups"})

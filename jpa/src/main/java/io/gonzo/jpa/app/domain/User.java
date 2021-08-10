@@ -44,8 +44,8 @@ public class User extends AppBaseEntity implements Serializable {
 
     @ManyToMany(targetEntity = Group.class)
     @JoinTable(name = "app_group_app_users",
-            joinColumns = @JoinColumn(name = "app_user_id" , referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "app_group_id" , referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "app_user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "app_group_id", referencedColumnName = "id")
     )
     private Set<Group> groups = new HashSet<>();
 
