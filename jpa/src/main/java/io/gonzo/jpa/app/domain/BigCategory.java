@@ -2,7 +2,9 @@ package io.gonzo.jpa.app.domain;
 
 import io.gonzo.jpa.app.domain.base.AppBaseEntity;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +12,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 
+@Setter
+@Getter
 @Entity
 @NoArgsConstructor
 @Table(name = "big_category")
