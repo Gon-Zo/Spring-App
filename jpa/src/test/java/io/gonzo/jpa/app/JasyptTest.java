@@ -8,19 +8,24 @@ public class JasyptTest {
 
         StandardPBEStringEncryptor jasypt = new StandardPBEStringEncryptor();
 
-        String encrypt = "";
+        String[] array = new String[]{
+        };
 
         jasypt.setPassword("");
 
         jasypt.setAlgorithm("PBEWithMD5AndDES");
 
-        String encryptedText = jasypt.encrypt(encrypt);
+        for (String encrypt : array) {
 
-        String plainText = jasypt.decrypt(encryptedText);
+            String encryptedText = jasypt.encrypt(encrypt);
 
-        System.out.println("encryptedText:  " + encryptedText);
+            String plainText = jasypt.decrypt(encryptedText);
 
-        System.out.println("plainText:  " + plainText);
+            System.out.println("encryptedText:  " + encryptedText);
+
+            System.out.println("plainText:  " + plainText);
+        }
+
     }
 
 }
