@@ -30,15 +30,15 @@ public class Product extends AppBaseEntity implements Serializable {
     @Column(name = "work_id", nullable = false)
     private String workId;
 
-    @OneToOne(targetEntity = BigCategory.class)
-    private BigCategory bigCategorySet;
+    @OneToOne(targetEntity = Category.class)
+    private Category categorySet;
 
     @Builder
-    public Product(Long id, String title, BigDecimal count, String workId, BigCategory bigCategorySet) {
+    public Product(Long id, String title, BigDecimal count, String workId, Category categorySet) {
         this.id = id;
         this.title = title;
         this.count = count;
         this.workId = workId;
-        this.bigCategorySet = bigCategorySet;
+        this.categorySet = categorySet;
     }
 }
