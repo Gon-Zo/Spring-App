@@ -48,12 +48,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().disable().csrf().disable();
 
-//        http.formLogin().loginPage("/login")
-//                .defaultSuccessUrl("/main")
-//                .failureForwardUrl("/failure/login")
-//        ;
+//        http.cors().disable().csrf().disable();
+
+        http.formLogin()
+                .loginPage("/auth-login")
+                .defaultSuccessUrl("/main")
+                .failureForwardUrl("/failure/login")
+        ;
     }
 
 }

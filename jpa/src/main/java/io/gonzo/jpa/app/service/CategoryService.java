@@ -1,13 +1,11 @@
 package io.gonzo.jpa.app.service;
 
-import io.gonzo.jpa.app.domain.Category;
 import io.gonzo.jpa.app.repository.CategoryRepository;
 import io.gonzo.jpa.app.web.dto.CategoryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
