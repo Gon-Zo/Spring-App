@@ -47,6 +47,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:1.17"
 
+    //sec add
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 
 test {
