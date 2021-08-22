@@ -1,6 +1,7 @@
 package io.gonzo.jpa.app.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,8 +11,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+//@Configuration
+//@EnableWebSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+
+@Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     /**
@@ -49,12 +55,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        http.cors().disable().csrf().disable();
-
-        http.formLogin()
-                .loginPage("/auth-login")
-                .defaultSuccessUrl("/main")
-                .failureForwardUrl("/failure/login")
+        http
+                .authorizeRequests()
+                .antMatchers("/**")
+                .authenticated()
+//                .antMatchers("/**")
+//                .permitAll()
+                .and()
+                .formLogin()
+                .loginProcessingUrl("/login-process")
         ;
     }
 

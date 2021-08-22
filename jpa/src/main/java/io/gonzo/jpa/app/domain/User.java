@@ -36,6 +36,9 @@ public class User extends AppBaseEntity implements Serializable {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "gender", nullable = false)
     private Gender gender;
 
