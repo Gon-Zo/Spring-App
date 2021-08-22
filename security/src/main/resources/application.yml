@@ -6,15 +6,24 @@ spring:
       active:
         group:
         dev:
-          - pg
+          - mysql
           - h2
   jpa:
+    database: mysql
     show-sql: true
     hibernate:
       ddl-auto: 'create-drop'
     properties:
+      hibernate.jdbc.batch_size: 50
+      hibernate.order_inserts: true
+      hibernate.order_updates: true
       hibernate.format_sql: true
       hibernate.jdbc.lob.non_contextual_creation: true
+    datasource:
+      url: ENC(/IhX8gW5+R2YjG/jSqG74xOaNw0ZwDjxPZygyF5UNOHlt9Y7FtJKD/2lvwCUIUUqjDdrwZWC6Iazu5Yva1Dkb3ftnidbHs6m24DSq3yZHFhwz2mZF0xeZA==)
+      hikari:
+        username: ENC(7UXI2Y434wXYvQh99sas/g==)
+        password: ENC(dV5Ruy36kJEmFjkHLr+/ig==)
 
 logging:
   level:

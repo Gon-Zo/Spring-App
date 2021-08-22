@@ -1,0 +1,10 @@
+${AnsiColor.BRIGHT_GREEN}   _________            .__                ${AnsiColor.BRIGHT_YELLOW}   _________                          .__  __
+${AnsiColor.BRIGHT_GREEN}  /   _____/____________|__| ____    ____  ${AnsiColor.BRIGHT_YELLOW}  /   _____/ ____   ____  __ _________|__|/  |_ ___.__.
+${AnsiColor.BRIGHT_GREEN}  \_____  \\____ \_  __ \  |/    \  / ___\ ${AnsiColor.BRIGHT_YELLOW}  \_____  \_/ __ \_/ ___\|  |  \_  __ \  \   __<   |  |
+${AnsiColor.BRIGHT_GREEN}  /        \  |_> >  | \/  |   |  \/ /_/  >${AnsiColor.BRIGHT_YELLOW}  /        \  ___/\  \___|  |  /|  | \/  ||  |  \___  |
+${AnsiColor.BRIGHT_GREEN} /_______  /   __/|__|  |__|___|  /\___  / ${AnsiColor.BRIGHT_YELLOW} /_______  /\___  >\___  >____/ |__|  |__||__|  / ____|
+${AnsiColor.BRIGHT_GREEN}         \/|__|                 \//_____/  ${AnsiColor.BRIGHT_YELLOW}         \/     \/     \/                       \/
+
+
+${AnsiColor.BRIGHT_CYAN}:: Gon-Zo Project 👊 :: Running Spring Boot By Security ${spring-boot.version} ::
+:: https://github.com/Gon-Zo/Spring_App ::${AnsiColor.BRIGHT_BLACK}
