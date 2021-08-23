@@ -58,13 +58,14 @@ public class User extends AppBaseEntity implements Serializable {
     private Boolean useYn;
 
     @Builder
-    public User(Long id, Name name, String email, Gender gender, BigDecimal count, String password) {
+    public User(Long id, Name name, String email, Gender gender, BigDecimal count, String password, Boolean useYn) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.count = count;
         this.password = password;
+        this.useYn = useYn;
     }
 
 }
