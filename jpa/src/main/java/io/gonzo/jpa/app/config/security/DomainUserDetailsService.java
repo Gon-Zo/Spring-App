@@ -52,7 +52,7 @@ public class DomainUserDetailsService implements UserDetailsService {
                 .map(auth -> new SimpleGrantedAuthority(auth.getAuthName()))
                 .collect(Collectors.toList());
 
-        return new DomainUserDetails(loginUser.getEmail(), loginUser.getPassword(), authList);
+        return new DomainUserDetails(loginUser.getEmail(), loginUser.getPassword(), authList, loginUser.getUseYn());
     }
 
 }
