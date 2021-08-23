@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component("userDetailsService")
@@ -32,6 +31,17 @@ public class DomainUserDetailsService implements UserDetailsService {
         if (!userOptional.isPresent()) {
             throw new UsernameNotFoundException(username);
         }
+
+        return createDomainUser(userOptional);
+    }
+
+    /**
+     * create security user
+     *
+     * @param userOptional
+     * @return
+     */
+    private DomainUserDetails createDomainUser(Optional<User> userOptional) {
 
         User loginUser = userOptional.get();
 
