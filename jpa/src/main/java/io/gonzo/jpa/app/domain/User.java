@@ -8,6 +8,7 @@ import io.gonzo.jpa.app.enums.Gender;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -52,15 +53,19 @@ public class User extends AppBaseEntity implements Serializable {
     )
     private Set<Group> groups = new HashSet<>();
 
+    @Column(nullable = false)
+    @ColumnDefault(value = "false")
+    private Boolean useYn;
+
     @Builder
-    public User(Long id, Name name, String email, Gender gender, BigDecimal count) {
+    public User(Long id, Name name, String email, Gender gender, BigDecimal count, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.count = count;
+        this.password = password;
     }
-
 
 }
 
