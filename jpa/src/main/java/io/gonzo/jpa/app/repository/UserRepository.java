@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>, UserRepositorySupport {
@@ -15,6 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long>, UserRepositor
     @EntityGraph(attributePaths = {"groups"})
     List<User> findAll();
 
-//    @Override
-//    List<UserDTO> findAll();
+    @EntityGraph(attributePaths = {"groups" , "groups.auths"})
+    Optional<User> findByEmail(String email);
+
 }
