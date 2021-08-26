@@ -1,5 +1,7 @@
 package io.gonzo.jpa.app.config;
 
+import io.gonzo.jpa.app.config.security.AppFailureHandler;
+import io.gonzo.jpa.app.config.security.AppSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -10,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 //@Configuration
 //@EnableWebSecurity
@@ -59,12 +63,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/**")
                 .authenticated()
+                .antMatchers("/api/**")
+                .authenticated()
 //                .antMatchers("/**")
 //                .permitAll()
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login-process")
+                .successHandler(appSuccessHandler())
+                .failureHandler(appFailureHandler())
+                .permitAll()
         ;
     }
 
+    @Bean
+    public AuthenticationSuccessHandler appSuccessHandler() {
+        return new AppSuccessHandler();
+    }
+
+    @Bean
+    public AuthenticationFailureHandler appFailureHandler() {
+        return new AppFailureHandler();
+    }
 }
