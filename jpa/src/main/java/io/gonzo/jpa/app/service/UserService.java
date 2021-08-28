@@ -2,10 +2,13 @@ package io.gonzo.jpa.app.service;
 
 import io.gonzo.jpa.app.domain.User;
 import io.gonzo.jpa.app.repository.UserRepository;
+import io.gonzo.jpa.app.web.dto.IUserDTO;
 import io.gonzo.jpa.app.web.dto.UserStoreDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 

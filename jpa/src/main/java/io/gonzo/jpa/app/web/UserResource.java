@@ -2,10 +2,12 @@ package io.gonzo.jpa.app.web;
 
 import io.gonzo.jpa.app.domain.User;
 import io.gonzo.jpa.app.service.UserService;
+import io.gonzo.jpa.app.web.dto.IUserDTO;
 import io.gonzo.jpa.app.web.dto.UserStoreDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +19,7 @@ public class UserResource {
     private final UserService service;
 
     @GetMapping("/app-user1")
-    public List<User> showByUser(){
+    public List<User> showByUser() {
         return service.getUserList1();
     }
 
