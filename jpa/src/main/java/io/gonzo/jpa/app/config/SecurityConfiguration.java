@@ -61,12 +61,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-//                .antMatchers("/**")
-//                .authenticated()
-//                .antMatchers("/api/**")
-//                .authenticated()
                 .antMatchers("/**")
-                .permitAll()
+                .authenticated()
+                .antMatchers("/api/**")
+                .authenticated()
+//                .antMatchers("/**")
+//                .permitAll()
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login-process")
