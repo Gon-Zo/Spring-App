@@ -2,7 +2,7 @@ package io.gonzo.jpa.app.web;
 
 import io.gonzo.jpa.app.domain.Auth;
 import io.gonzo.jpa.app.repository.AuthRepository;
-import io.gonzo.jpa.app.web.dto.AuthDTO;
+import io.gonzo.jpa.app.web.dto.IOnlyAuthName;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,8 +25,8 @@ public class AuthResource {
     }
 
     @GetMapping("/{authName}")
-    public Collection<AuthDTO> showAuthList(@PathVariable String authName) {
-        return repository.findByAuthName(authName, AuthDTO.class);
+    public Collection<IOnlyAuthName> showAuthList(@PathVariable String authName) {
+        return repository.findByAuthName(authName, IOnlyAuthName.class);
     }
 
 }
