@@ -29,4 +29,9 @@ public class AuthResource {
         return repository.findByAuthName(authName, IOnlyAuthName.class);
     }
 
+    @GetMapping("/exc")
+    public void showExc(){
+        throw new NullPointerException();
+    }
+
 }
