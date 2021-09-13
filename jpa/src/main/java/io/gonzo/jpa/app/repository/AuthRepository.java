@@ -20,5 +20,9 @@ public interface AuthRepository extends JpaRepository<Auth, Long> {
     @Modifying
     @Query("update Auth auth set auth.authName = :authName where auth.id = :id")
     long setFixedAuthNameFor(@Param("authName") String authName, @Param("id") Long id);
-    
+
+    @Modifying
+    @Query("delete from Auth auth  where auth.authName = :authName")
+    void deleteByAuthName(@Param("authName") String authName);
+
 }
