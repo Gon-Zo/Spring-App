@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static io.gonzo.jpa.app.repository.specs.ProductSpecs.isEqualsTitle;
+
 @Service
 @RequiredArgsConstructor
 public class ProductService {
@@ -15,6 +17,10 @@ public class ProductService {
 
     public List<Product> getProduct() {
         return repository.findAll();
+    }
+
+    public List<Product> getProductByTitle(String title){
+        return repository.findAll(isEqualsTitle(title));
     }
 
 }
