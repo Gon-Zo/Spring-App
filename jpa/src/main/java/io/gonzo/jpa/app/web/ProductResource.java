@@ -27,6 +27,6 @@ public class ProductResource {
         return service.getProductByTitle(title , categoryTitle);
     }
 
-    
+
 
 }
