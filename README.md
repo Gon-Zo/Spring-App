@@ -1,8 +1,26 @@
 # Spring Boot
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/53357210/117662394-78a50680-b1da-11eb-8b39-7eaf9274a44f.png" width="500"/>
+  <img src="https://user-images.githubusercontent.com/53357210/117662394-78a50680-b1da-11eb-8b39-7eaf9274a44f.png" width="700"/>
 </p>
+
+
+## Project Tree
+
+```bash
+├── core
+│   ├── build
+│   ├── gradle
+│   └── src
+├── gradle
+│   └── wrapper
+└── jpa
+    ├── build
+    ├── gradle
+    └── src
+```
+
+## Project Information
 
 ### JPA
 
