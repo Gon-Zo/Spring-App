@@ -9,13 +9,11 @@
 
 ```bash
 ├── core
-│   ├── build
 │   ├── gradle
 │   └── src
 ├── gradle
 │   └── wrapper
 └── jpa
-    ├── build
     ├── gradle
     └── src
 ```
