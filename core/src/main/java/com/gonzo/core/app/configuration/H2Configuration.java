@@ -1,4 +1,4 @@
-package com.gonzo.core.app;
+package com.gonzo.core.app.configuration;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.h2.tools.Server;
