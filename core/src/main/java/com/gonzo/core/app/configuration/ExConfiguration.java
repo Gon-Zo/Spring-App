@@ -18,4 +18,10 @@ public class ExConfiguration {
         return new Store(getItem());
     }
 
+    @Bean
+    public Store getStore1() {
+        Store store = new Store();
+        store.setItem(getItem());
+        return store;
+    }
 }
