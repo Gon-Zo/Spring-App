@@ -15,31 +15,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-//@Configuration
-//@EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    /**
-     * 패스워드 인코딩
-     *
-     * @return
-     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    /**
-     * 정적 자원 설정
-     *
-     * @param web
-     * @throws Exception
-     */
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
@@ -50,12 +35,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         ;
     }
 
-    /**
-     * Http 설정
-     *
-     * @param http
-     * @throws Exception
-     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -88,4 +67,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public AuthenticationFailureHandler appFailureHandler() {
         return new AppFailureHandler();
     }
+
 }
