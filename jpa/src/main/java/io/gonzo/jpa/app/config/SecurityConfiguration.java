@@ -1,7 +1,6 @@
 package io.gonzo.jpa.app.config;
 
-import io.gonzo.jpa.app.config.security.AppFailureHandler;
-import io.gonzo.jpa.app.config.security.AppSuccessHandler;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,8 +16,13 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    private final AuthenticationFailureHandler authenticationFailureHandler;
+
+    private final AuthenticationSuccessHandler authenticationSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -36,34 +40,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        http
-//                .authorizeRequests()
+        http
+                .authorizeRequests()
+                .antMatchers("/**")
+                .authenticated()
+                .antMatchers("/api/**")
+                .authenticated()
 //                .antMatchers("/**")
-//                .authenticated()
-//                .antMatchers("/api/**")
-//                .authenticated()
-////                .antMatchers("/**")
-////                .permitAll()
-//                .and()
-//                .formLogin()
-//                .loginProcessingUrl("/login-process")
-//                .successHandler(appSuccessHandler())
-//                .failureHandler(appFailureHandler())
 //                .permitAll()
-//        ;
-
-        http.csrf().disable().cors().disable();
-
+                .and()
+                .formLogin()
+                .loginProcessingUrl("/login-process")
+                .successHandler(authenticationSuccessHandler)
+                .failureHandler(authenticationFailureHandler)
+                .permitAll()
+        ;
     }
 
-    @Bean
-    public AuthenticationSuccessHandler appSuccessHandler() {
-        return new AppSuccessHandler();
-    }
-
-    @Bean
-    public AuthenticationFailureHandler appFailureHandler() {
-        return new AppFailureHandler();
-    }
 
 }
