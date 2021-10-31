@@ -39,21 +39,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/**")
-                .authenticated()
-                .antMatchers("/api/**")
-                .authenticated()
+        http.cors().disable().csrf().disable();
+
+//        http.authorizeRequests()
+////                .antMatchers("/**")
+////                .authenticated()
+////                .antMatchers("/api/**")
+////                .authenticated()
 //                .antMatchers("/**")
 //                .permitAll()
-                .and()
-                .formLogin()
-                .loginPage("/login.html")
-                .loginProcessingUrl("/login-process")
-                .successHandler(authenticationSuccessHandler)
-                .failureHandler(authenticationFailureHandler)
-                .permitAll()
-        ;
+//                .and()
+//                .formLogin()
+//                .loginPage("/login.html")
+//                .loginProcessingUrl("/login-process")
+//                .successHandler(authenticationSuccessHandler)
+//                .failureHandler(authenticationFailureHandler)
+//                .permitAll()
+//        ;
     }
 
 
