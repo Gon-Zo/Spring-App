@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.gonzo.jpa.app.domain.base.AppBaseEntity;
 import io.gonzo.jpa.app.domain.base.Name;
 import io.gonzo.jpa.app.enums.Gender;
+import io.gonzo.jpa.app.enums.GenderConvert;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "app_user")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
+@Convert(converter = GenderConvert.class , attributeName = "gender")
 public class User extends AppBaseEntity implements Serializable {
 
     @Id
@@ -40,6 +42,7 @@ public class User extends AppBaseEntity implements Serializable {
     @Column(name = "password")
     private String password;
 
+    @Convert(converter = GenderConvert.class)
     @Column(name = "gender", nullable = false)
     private Gender gender;
 

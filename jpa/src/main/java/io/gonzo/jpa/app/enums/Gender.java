@@ -1,16 +1,21 @@
 package io.gonzo.jpa.app.enums;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
 public enum Gender implements BaseEnumCode<String> {
 
-    NULL(""),
-    WOMAN("W"),
-    MAN("M");
+    NULL("빈값", ""),
+    WOMAN("여자", "W"),
+    MAN("남자", "M");
+
+    private final String desc;
 
     private final String value;
+
+    Gender(String desc, String value) {
+        this.desc = desc;
+        this.value = value;
+    }
 
 }
