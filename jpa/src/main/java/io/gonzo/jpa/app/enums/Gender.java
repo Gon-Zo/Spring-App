@@ -2,6 +2,13 @@ package io.gonzo.jpa.app.enums;
 
 import lombok.Getter;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @Getter
 public enum Gender implements BaseEnumCode<String> {
 
@@ -16,6 +23,12 @@ public enum Gender implements BaseEnumCode<String> {
     Gender(String desc, String value) {
         this.desc = desc;
         this.value = value;
+    }
+
+    private static final Map<String, Gender> descriptions = Collections.unmodifiableMap(Stream.of(values()).collect(Collectors.toMap(Gender::getValue, Function.identity())));
+
+    public static Gender findOf(String findValue) {
+        return Optional.ofNullable(descriptions.get(findValue)).orElse(NULL);
     }
 
 }

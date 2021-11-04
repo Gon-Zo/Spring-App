@@ -20,7 +20,7 @@ public class GenderConvert implements AttributeConverter<Gender, String> {
         if (StringUtils.isEmpty(dbData)) {
             return Gender.NULL;
         }
-        return Gender.valueOf(dbData);
+        return Gender.findOf(dbData);
     }
 
 }
