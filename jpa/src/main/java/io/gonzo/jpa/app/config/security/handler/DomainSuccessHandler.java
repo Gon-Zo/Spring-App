@@ -20,6 +20,7 @@ public class DomainSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
         log.info("login success ===> {}", authentication.getName());
+
         AuthenticationSuccessHandler.super.onAuthenticationSuccess(request, response, chain, authentication);
     }
 

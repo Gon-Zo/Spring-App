@@ -3,12 +3,15 @@ package io.gonzo.jpa.app.config.security;
 import io.gonzo.jpa.app.domain.Group;
 import io.gonzo.jpa.app.domain.User;
 import io.gonzo.jpa.app.repository.UserRepository;
+import lombok.SneakyThrows;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
+import java.nio.file.AccessDeniedException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -35,24 +38,29 @@ public class DomainUserDetailsService implements UserDetailsService {
         return createDomainUser(userOptional);
     }
 
-    /**
-     * create security user
-     *
-     * @param userOptional
-     * @return
-     */
     private DomainUserDetails createDomainUser(Optional<User> userOptional) {
+        try {
 
-        User loginUser = userOptional.get();
+            User loginUser = userOptional.get();
 
-        List<SimpleGrantedAuthority> authList = loginUser.getGroups()
-                .stream()
-                .map(Group::getAuths)
-                .flatMap(Collection::parallelStream)
-                .map(auth -> new SimpleGrantedAuthority(auth.getAuthName()))
-                .collect(Collectors.toList());
+            List<SimpleGrantedAuthority> authList = loginUser.getGroups()
+                    .stream()
+                    .map(Group::getAuths)
+                    .flatMap(Collection::parallelStream)
+                    .map(auth -> new SimpleGrantedAuthority(auth.getAuthName()))
+                    .collect(Collectors.toList());
 
-        return new DomainUserDetails(loginUser.getEmail(), loginUser.getPassword(), authList, loginUser.getUseYn());
+            if (CollectionUtils.isEmpty(authList)) {
+                throw new AccessDeniedException(String.format(">>>>>>>>>>>>>>>>>>>>>> username %s", loginUser.getEmail()));
+            }
+
+            return new DomainUserDetails(loginUser.getEmail(), loginUser.getPassword(), authList, loginUser.getUseYn());
+
+        } catch (AccessDeniedException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 }
