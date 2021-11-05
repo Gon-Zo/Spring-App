@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 @Getter
 public enum Gender implements BaseEnumCode<String> {
 
-    NULL("빈값", ""),
+    NULL("빈값", null),
     WOMAN("여자", "W"),
     MAN("남자", "M");
 

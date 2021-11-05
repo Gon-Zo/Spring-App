@@ -35,10 +35,14 @@ public class DomainUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         }
 
-        return createDomainUser(userOptional);
+        return createDomainUser(userOptional)
+                .orElseThrow(() -> new UsernameNotFoundException(String.format(">>>>>>>>>>>>>> %s", username)));
     }
 
-    private DomainUserDetails createDomainUser(Optional<User> userOptional) {
+    private Optional<DomainUserDetails> createDomainUser(Optional<User> userOptional) {
+
+        DomainUserDetails domainUserDetails = null;
+
         try {
 
             User loginUser = userOptional.get();
@@ -54,13 +58,13 @@ public class DomainUserDetailsService implements UserDetailsService {
                 throw new AccessDeniedException(String.format(">>>>>>>>>>>>>>>>>>>>>> username %s", loginUser.getEmail()));
             }
 
-            return new DomainUserDetails(loginUser.getEmail(), loginUser.getPassword(), authList, loginUser.getUseYn());
+            domainUserDetails = new DomainUserDetails(loginUser.getEmail(), loginUser.getPassword(), authList, loginUser.getUseYn());
 
         } catch (AccessDeniedException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return Optional.ofNullable(domainUserDetails);
     }
 
 }

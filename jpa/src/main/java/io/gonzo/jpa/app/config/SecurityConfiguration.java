@@ -39,6 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.authorizeRequests()
                 .antMatchers("/**")
                 .authenticated()
@@ -46,12 +47,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginProcessingUrl("/login-process")
-                .successForwardUrl("/hello")
+                .loginProcessingUrl("/login-progress")
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
+//                .defaultSuccessUrl("/hello", true)
                 .permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
         ;
+
     }
 
 }
