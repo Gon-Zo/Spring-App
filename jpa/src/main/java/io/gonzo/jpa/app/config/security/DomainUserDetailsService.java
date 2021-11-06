@@ -3,7 +3,6 @@ package io.gonzo.jpa.app.config.security;
 import io.gonzo.jpa.app.domain.Group;
 import io.gonzo.jpa.app.domain.User;
 import io.gonzo.jpa.app.repository.UserRepository;
-import lombok.SneakyThrows;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -31,12 +30,11 @@ public class DomainUserDetailsService implements UserDetailsService {
 
         Optional<User> userOptional = repository.findByEmail(username);
 
-        if (!userOptional.isPresent()) {
+        if (userOptional.isEmpty()) {
             throw new UsernameNotFoundException(username);
         }
 
-        return createDomainUser(userOptional)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format(">>>>>>>>>>>>>> %s", username)));
+        return createDomainUser(userOptional).orElseThrow(() -> new UsernameNotFoundException(username));
     }
 
     private Optional<DomainUserDetails> createDomainUser(Optional<User> userOptional) {
