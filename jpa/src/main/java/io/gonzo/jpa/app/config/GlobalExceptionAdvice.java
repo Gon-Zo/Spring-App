@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionAdvice {
 
+    
     @ExceptionHandler(Exception.class)
     public ExceptionDTO custom(Exception e) {
 
