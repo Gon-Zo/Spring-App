@@ -50,11 +50,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login-progress")
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
-//                .defaultSuccessUrl("/hello", true)
                 .permitAll()
-                .and()
-                .logout()
-                .logoutUrl("/logout")
+//                .and()
+//                .logout()
+//                .logoutUrl("/logout")
         ;
 
     }
