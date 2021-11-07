@@ -1,10 +1,9 @@
 package io.gonzo.jpa.app.config.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.gonzo.jpa.app.enums.AuthenticationTypes;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.authentication.*;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
@@ -48,27 +47,8 @@ public class DomainFailureHandler implements AuthenticationFailureHandler {
     }
 
     private String getExceptionMessage(AuthenticationException exception) {
-        if (exception instanceof BadCredentialsException) {
-            //비밀번호불일치
-            return "비밀번호불일치";
-        } else if (exception instanceof UsernameNotFoundException) {
-            //계정없음
-            return "계정없음";
-        } else if (exception instanceof AccountExpiredException) {
-            //계정만료
-            return "계정만료";
-        } else if (exception instanceof CredentialsExpiredException) {
-            //비밀번호만료
-            return "비밀번호만료";
-        } else if (exception instanceof DisabledException) {
-            //계정비활성화
-            return "계정비활성화";
-        } else if (exception instanceof LockedException) {
-            // 계정잠김
-            return "계정잠김";
-        } else {
-            return "확인된 에러가 없습니다.";
-        }
+        AuthenticationTypes authenticationTypes = AuthenticationTypes.findOf(exception.getClass().getSimpleName());
+        return authenticationTypes.getValue();
     }
 
 }
