@@ -1,9 +1,10 @@
+
 dependencies {
     // add
     implementation 'com.querydsl:querydsl-jpa'
 }
 
-//querydsl 추가 시작
+// querydsl
 def querydslDir = "$buildDir/generated/querydsl"
 
 querydsl {
@@ -22,8 +23,3 @@ configurations {
 compileQuerydsl {
     options.annotationProcessorPath = configurations.querydsl
 }
-
-//compileQuerydsl.doFirst {
-//    if (file(querydslDir).exists())
-//        delete(file(querydslDir))
-//}

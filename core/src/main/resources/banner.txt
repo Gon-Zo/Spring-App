@@ -1,9 +1,0 @@
-${AnsiColor.BRIGHT_GREEN}   _________            .__                ${AnsiColor.MAGENTA}  _________
-${AnsiColor.BRIGHT_GREEN}  /   _____/____________|__| ____    ____  ${AnsiColor.MAGENTA}  \_   ___ \  ___________   ____
-${AnsiColor.BRIGHT_GREEN}  \_____  \\____ \_  __ \  |/    \  / ___\ ${AnsiColor.MAGENTA}  /    \  \/ /  _ \_  __ \_/ __ \
-${AnsiColor.BRIGHT_GREEN}  /        \  |_> >  | \/  |   |  \/ /_/  >${AnsiColor.MAGENTA}  \     \___(  <_> )  | \/\  ___/
-${AnsiColor.BRIGHT_GREEN} /_______  /   __/|__|  |__|___|  /\___  / ${AnsiColor.MAGENTA}   \______  /\____/|__|    \___  >
-${AnsiColor.BRIGHT_GREEN}         \/|__|                 \//_____/  ${AnsiColor.MAGENTA}          \/                   \/
-
-${AnsiColor.BRIGHT_CYAN}:: Gon-Zo Project 👊 :: Running Spring Boot By Jpa ${spring-boot.version} ::
-:: https://github.com/Gon-Zo/spring-app.git ::${AnsiColor.BRIGHT_BLACK}

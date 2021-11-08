@@ -1,5 +1,4 @@
 rootProject.name = 'spring-app'
 
 include 'jpa'
-include 'core'
-include 'batch'
+
