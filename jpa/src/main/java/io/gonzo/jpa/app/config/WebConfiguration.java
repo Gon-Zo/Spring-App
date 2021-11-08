@@ -20,6 +20,13 @@ public class WebConfiguration implements WebMvcConfigurer {
         registry.addViewController("/error")
                 .setViewName("error");
 
+//        registry.addViewController("/admin")
+//                .setViewName("admin");
+//        registry.addViewController("/user")
+//                .setViewName("user");
+//        registry.addViewController("/system")
+//                .setViewName("system");
+
     }
 
 }

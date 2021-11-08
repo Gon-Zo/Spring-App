@@ -24,7 +24,7 @@ repositories {
     mavenCentral()
 }
 
-//apply from: "gradle/querydsl.gradle"
+apply from: "gradle/querydsl.gradle"
 
 // database config
 apply from: "${project.rootDir.toString()}/gradle/h2.gradle"
@@ -50,9 +50,6 @@ dependencies {
     //security add
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
-    //querydsl add
-    implementation 'com.querydsl:querydsl-jpa'
-
     //thymeleaf add
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 }
@@ -61,21 +58,3 @@ test {
     useJUnitPlatform()
 }
 
-
-// querydsl
-
-def querydslDir = "$buildDir/generated/querydsl"
-
-querydsl {
-    jpa = true
-    querydslSourcesDir = querydslDir
-}
-sourceSets {
-    main.java.srcDir querydslDir
-}
-configurations {
-    querydsl.extendsFrom compileClasspath
-}
-compileQuerydsl {
-    options.annotationProcessorPath = configurations.querydsl
-}
