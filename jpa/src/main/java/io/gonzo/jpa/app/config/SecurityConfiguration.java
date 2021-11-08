@@ -1,5 +1,6 @@
 package io.gonzo.jpa.app.config;
 
+import io.gonzo.jpa.app.config.security.handler.DomainLogoutSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -23,6 +25,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final AuthenticationFailureHandler authenticationFailureHandler;
 
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
+
+    private final LogoutSuccessHandler logoutSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -44,17 +48,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**")
                 .authenticated()
                 .antMatchers("/api/**")
-                .authenticated()
-                .and()
-                .formLogin()
+                .authenticated();
+
+        http.formLogin()
                 .loginProcessingUrl("/login-progress")
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
-                .permitAll()
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout")
+                .permitAll();
+
+
+        http.logout()
+                .logoutUrl("/logout")
+                .logoutSuccessHandler(logoutSuccessHandler)
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
         ;
+
 
     }
 
