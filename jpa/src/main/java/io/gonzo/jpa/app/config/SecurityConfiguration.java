@@ -1,6 +1,5 @@
 package io.gonzo.jpa.app.config;
 
-import io.gonzo.jpa.app.config.security.handler.DomainLogoutSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
