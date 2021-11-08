@@ -1,5 +1,6 @@
 package io.gonzo.jpa.app.config;
 
+import io.gonzo.jpa.app.config.security.handler.DomainLogoutSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,8 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/system")
                 .hasRole("SYSTEM")
                 .antMatchers("/user")
-                .hasAnyRole("USER")
-        ;
+                .hasAnyRole("USER");
 
         http.formLogin()
                 .loginProcessingUrl("/login-progress")
@@ -66,8 +66,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessHandler(logoutSuccessHandler)
                 .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-        ;
+                .deleteCookies("JSESSIONID");
 
 
     }
