@@ -28,7 +28,7 @@ public interface AuthRepository extends JpaRepository<Auth, Long> {
     void deleteByAuthName(@Param("authName") String authName);
 
     @Override
-    @Query("select auth from Auth auth where auth.id =: id")
+    @Query("select auth from Auth auth where auth.id = :id")
     Optional<Auth> findById(@Param("id") Long id);
 
     @Query(value = "select auth from Auth auth where auth.authName like %?1", nativeQuery = true)

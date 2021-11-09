@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.gonzo.jpa.app.domain.base.AppBaseEntity;
 import io.gonzo.jpa.app.domain.base.Name;
 import io.gonzo.jpa.app.enums.Gender;
-import io.gonzo.jpa.app.enums.GenderConvert;
+import io.gonzo.jpa.app.enums.convert.GenderConvert;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

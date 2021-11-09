@@ -1,6 +1,6 @@
-package io.gonzo.jpa.app.enums;
+package io.gonzo.jpa.app.enums.convert;
 
-import org.apache.commons.lang3.StringUtils;
+import io.gonzo.jpa.app.enums.Gender;
 
 import javax.persistence.AttributeConverter;
 import java.util.Optional;
@@ -14,9 +14,6 @@ public class GenderConvert implements AttributeConverter<Gender, String> {
 
     @Override
     public Gender convertToEntityAttribute(String dbData) {
-        if (StringUtils.isEmpty(dbData)) {
-            return Gender.NULL;
-        }
         return Gender.findOf(dbData);
     }
 

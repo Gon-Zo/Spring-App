@@ -4,13 +4,12 @@ import io.gonzo.jpa.app.domain.Auth;
 import io.gonzo.jpa.app.repository.AuthRepository;
 import io.gonzo.jpa.app.web.dto.IOnlyAuthName;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,14 +23,28 @@ public class AuthResource {
         return repository.findAll();
     }
 
-    @GetMapping("/{authName}")
+    @GetMapping("/authName/{authName}")
     public Collection<IOnlyAuthName> showAuthList(@PathVariable String authName) {
         return repository.findByAuthName(authName, IOnlyAuthName.class);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Auth> showByAuthOne(@PathVariable Long id) {
+        Optional<Auth> authOptional = repository.findById(id);
+        return ResponseEntity.ok(authOptional.orElseThrow(() -> new NullPointerException()));
     }
 
     @GetMapping("/exc")
     public void showExc(){
         throw new NullPointerException();
+    }
+
+    @PutMapping("/{id}")
+    public void modifyByAuth(@PathVariable Long id) {
+
+        Auth auth = repository.getOne(id);
+
+        return;
     }
 
 }
