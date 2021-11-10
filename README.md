@@ -40,4 +40,10 @@
 
 ----
 
+## Runbook
 
+- JVM Options
+
+```
+  -Dspring.profiles.active=h2
+```

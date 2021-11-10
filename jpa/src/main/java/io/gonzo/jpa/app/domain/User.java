@@ -71,6 +71,10 @@ public class User extends AppBaseEntity implements Serializable {
         this.useYn = useYn;
     }
 
+    public void usedByUser() {
+        this.useYn = Boolean.TRUE;
+    }
+
 }
 
 
