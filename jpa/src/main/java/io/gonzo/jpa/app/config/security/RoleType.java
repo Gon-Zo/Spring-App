@@ -1,6 +1,6 @@
 package io.gonzo.jpa.app.config.security;
 
-public class AuthenticationType {
+public class RoleType {
 
     public static final String ADMIN = "ROLE_ADMIN";
 

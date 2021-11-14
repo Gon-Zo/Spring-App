@@ -1,21 +1,23 @@
 package io.gonzo.jpa.app.config.security.handler;
 
-import io.gonzo.jpa.app.config.security.AuthenticationType;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.Collection;
 
-
-@Component("authenticationSuccessHandler")
+@Slf4j
 @RequiredArgsConstructor
+@Component("authenticationSuccessHandler")
 public class DomainSuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
@@ -23,24 +25,9 @@ public class DomainSuccessHandler implements AuthenticationSuccessHandler {
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
-        boolean isSystemAble = isAuthenticationTypeAble(AuthenticationType.SYSTEM, authorities);
-
-        boolean isAdminAble = isAuthenticationTypeAble(AuthenticationType.ADMIN, authorities);
-
-        boolean isUserAble = isAuthenticationTypeAble(AuthenticationType.USER, authorities);
-
-        if (isSystemAble) {
-            response.sendRedirect("/system");
-            return;
-        }
-
-        if (isAdminAble) {
-            response.sendRedirect("/admin");
-            return;
-        }
-
-        if (isUserAble) {
-            response.sendRedirect("/user");
+        if (!CollectionUtils.isEmpty(authorities)) {
+            printLog(authentication);
+            response.sendRedirect("/home");
             return;
         }
 
@@ -48,8 +35,14 @@ public class DomainSuccessHandler implements AuthenticationSuccessHandler {
         return;
     }
 
-    private boolean isAuthenticationTypeAble(String authenticationType, Collection<? extends GrantedAuthority> authorities) {
-        return authorities.stream().anyMatch(value -> authenticationType.equals(value.getAuthority()));
+    /**
+     * login user print log
+     *
+     * @param authentication
+     */
+    private void printLog(Authentication authentication) {
+        String name = authentication.getName();
+        log.info("login success|user={}|time={}", name, Instant.now());
     }
 
 }
