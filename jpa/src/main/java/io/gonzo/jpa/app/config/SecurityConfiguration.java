@@ -43,33 +43,32 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.cors().disable().csrf().disable();
+        http.csrf().disable();
 
-//        http.authorizeRequests()
-//                .antMatchers("/**")
-//                .authenticated()
-//                .antMatchers("/api/**")
-//                .authenticated()
-//                .antMatchers("/admin")
-//                .access("hasRole('ADMIN')")
-//                .antMatchers("/system")
-//                .hasRole("SYSTEM")
-//                .antMatchers("/user")
-//                .hasAnyRole("USER");
-//
-//        http.formLogin()
-//                .loginProcessingUrl("/login-progress")
-//                .successHandler(authenticationSuccessHandler)
-//                .failureHandler(authenticationFailureHandler)
-//                .permitAll();
-//
-//        http.logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessHandler(logoutSuccessHandler)
-//                .invalidateHttpSession(true)
-//                .deleteCookies("JSESSIONID");
+        http.authorizeRequests()
+                .antMatchers("/**")
+                .authenticated()
+                .antMatchers("/api/**")
+                .authenticated()
+                .antMatchers("/admin")
+                .access("hasRole('ADMIN')")
+                .antMatchers("/system")
+                .hasRole("SYSTEM")
+                .antMatchers("/user")
+                .hasAnyRole("USER");
 
+        http.formLogin()
+                .loginProcessingUrl("/login-progress")
+                .successHandler(authenticationSuccessHandler)
+                .failureHandler(authenticationFailureHandler)
+                .permitAll();
 
+        http.logout()
+                .logoutUrl("/logout")
+                .logoutSuccessHandler(logoutSuccessHandler)
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID");
     }
 
 }

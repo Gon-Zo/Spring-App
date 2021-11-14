@@ -5,12 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<h1>USER</h1>
 
-<div>
-    <h5>로그아웃</h5>
-    <a href="/logout">로그아웃</a>
-</div>
+<h1>USER</h1>
+<form action="/logout" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <input type="submit"/>
+    <button>로그아웃</button>
+</form>
 
 </body>
 </html>
