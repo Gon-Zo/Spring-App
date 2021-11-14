@@ -2,7 +2,6 @@ package io.gonzo.jpa.app.config;
 
 import io.gonzo.jpa.app.config.security.filter.CustomAfterFilter;
 import io.gonzo.jpa.app.config.security.filter.CustomBeforeFilter;
-import io.gonzo.jpa.app.config.security.filter.CustomFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,14 +17,12 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.web.filter.GenericFilterBean;
 
-import javax.servlet.GenericFilter;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationFailureHandler authenticationFailureHandler;
@@ -54,16 +51,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new CustomAfterFilter(), BasicAuthenticationFilter.class);
 
         http.authorizeRequests()
-                .antMatchers("/**")
-                .authenticated()
-                .antMatchers("/api/**")
-                .authenticated()
-                .antMatchers("/admin")
-                .access("hasRole('ADMIN')")
-                .antMatchers("/system")
-                .hasRole("SYSTEM")
-                .antMatchers("/user")
-                .hasAnyRole("USER");
+                .antMatchers("/admin**", "/admin/**").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/api/**").authenticated()
+                .antMatchers("/**").permitAll()
+                .anyRequest()
+                .authenticated();
 
         http.formLogin()
                 .loginProcessingUrl("/login-progress")
