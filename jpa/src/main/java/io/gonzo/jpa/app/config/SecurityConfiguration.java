@@ -1,5 +1,8 @@
 package io.gonzo.jpa.app.config;
 
+import io.gonzo.jpa.app.config.security.filter.CustomAfterFilter;
+import io.gonzo.jpa.app.config.security.filter.CustomBeforeFilter;
+import io.gonzo.jpa.app.config.security.filter.CustomFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +17,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.web.filter.GenericFilterBean;
+
+import javax.servlet.GenericFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -43,7 +50,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.csrf().disable();
+        http.addFilterBefore(new CustomBeforeFilter(), BasicAuthenticationFilter.class)
+                .addFilterAfter(new CustomAfterFilter(), BasicAuthenticationFilter.class);
 
         http.authorizeRequests()
                 .antMatchers("/**")
@@ -62,6 +70,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
                 .permitAll();
+
+        http.csrf().disable();
 
         http.logout()
                 .logoutUrl("/logout")
