@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 
 @Configuration
@@ -47,6 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+
         http.addFilterBefore(new CustomBeforeFilter(), BasicAuthenticationFilter.class)
                 .addFilterAfter(new CustomAfterFilter(), BasicAuthenticationFilter.class);
 
@@ -63,14 +66,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .failureHandler(authenticationFailureHandler)
                 .permitAll();
 
-        http.csrf().disable();
-
         http.logout()
-                .logoutUrl("/logout")
+                .logoutUrl("/app/logout")
                 .logoutSuccessHandler(logoutSuccessHandler)
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
-                .deleteCookies("JSESSIONID");
+                .deleteCookies("JSESSIONID")
+                .permitAll();
     }
 
 }

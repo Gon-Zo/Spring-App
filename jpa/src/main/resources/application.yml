@@ -23,6 +23,7 @@ spring:
     prefix: classpath:templates/
     suffix: .html
     cache: false
+    check-template-location: true
 
 
 logging:
