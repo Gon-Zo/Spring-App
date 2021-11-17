@@ -12,7 +12,7 @@ import java.time.Instant;
 
 @Getter
 @MappedSuperclass
-public abstract class AppBaseEntity {
+public abstract class BaseEntity {
 
     @CreatedDate
     @CreationTimestamp

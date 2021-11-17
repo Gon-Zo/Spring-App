@@ -1,7 +1,7 @@
 package io.gonzo.jpa.app.domain;
 
 
-import io.gonzo.jpa.app.domain.base.AppBaseEntity;
+import io.gonzo.jpa.app.domain.base.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +20,7 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 //@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
-public class Group extends AppBaseEntity implements Serializable {
+public class Group extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

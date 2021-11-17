@@ -1,9 +1,8 @@
 package io.gonzo.jpa.app.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import io.gonzo.jpa.app.domain.base.AppBaseEntity;
+import io.gonzo.jpa.app.domain.base.BaseEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "category")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
-public class Category extends AppBaseEntity implements Serializable {
+public class Category extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

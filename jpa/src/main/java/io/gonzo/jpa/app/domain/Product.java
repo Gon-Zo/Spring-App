@@ -1,6 +1,6 @@
 package io.gonzo.jpa.app.domain;
 
-import io.gonzo.jpa.app.domain.base.AppBaseEntity;
+import io.gonzo.jpa.app.domain.base.BaseEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Table(name = "app_product")
 @Entity
-public class Product extends AppBaseEntity implements Serializable {
+public class Product extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

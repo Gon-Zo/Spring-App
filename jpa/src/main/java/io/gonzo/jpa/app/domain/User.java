@@ -2,7 +2,7 @@ package io.gonzo.jpa.app.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import io.gonzo.jpa.app.domain.base.AppBaseEntity;
+import io.gonzo.jpa.app.domain.base.BaseEntity;
 import io.gonzo.jpa.app.domain.base.Name;
 import io.gonzo.jpa.app.enums.Gender;
 import io.gonzo.jpa.app.enums.convert.GenderConvert;
@@ -27,7 +27,7 @@ import java.util.Set;
 @Table(name = "app_user")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 @Convert(converter = GenderConvert.class , attributeName = "gender")
-public class User extends AppBaseEntity implements Serializable {
+public class User extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
