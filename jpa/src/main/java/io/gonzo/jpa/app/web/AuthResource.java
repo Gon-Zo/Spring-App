@@ -2,7 +2,7 @@ package io.gonzo.jpa.app.web;
 
 import io.gonzo.jpa.app.domain.Auth;
 import io.gonzo.jpa.app.repository.AuthRepository;
-import io.gonzo.jpa.app.web.dto.IOnlyAuthName;
+import io.gonzo.jpa.app.web.dto.AuthDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +24,8 @@ public class AuthResource {
     }
 
     @GetMapping("/authName/{authName}")
-    public Collection<IOnlyAuthName> showAuthList(@PathVariable String authName) {
-        return repository.findByAuthName(authName, IOnlyAuthName.class);
+    public Collection<AuthDTO.IOnlyAuthName> showAuthList(@PathVariable String authName) {
+        return repository.findByAuthName(authName, AuthDTO.IOnlyAuthName.class);
     }
 
     @GetMapping("/{id}")
@@ -35,14 +35,20 @@ public class AuthResource {
     }
 
     @GetMapping("/exc")
-    public void showExc(){
+    public void showExc() {
         throw new NullPointerException();
     }
 
     @PutMapping("/{id}")
     public void modifyByAuth(@PathVariable Long id) {
 
-        Auth auth = repository.getOne(id);
+        Optional<Auth> authOptional = repository.findById(id);
+
+        if (authOptional.isPresent()){
+            Auth auth = authOptional.get();
+
+            auth.setAuthName("TEST_SUCCESS");
+        }
 
         return;
     }

@@ -2,10 +2,7 @@ package io.gonzo.jpa.app.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,6 +18,7 @@ public class Auth implements Serializable {
     private Long id;
 
     @Getter
+    @Setter
     @JsonManagedReference("authName")
     @Column(nullable = false, name = "auth_name")
     private String authName;

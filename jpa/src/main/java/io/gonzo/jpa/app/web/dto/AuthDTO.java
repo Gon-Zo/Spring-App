@@ -16,4 +16,9 @@ public class AuthDTO {
                 .build();
     }
 
+
+    public interface IOnlyAuthName {
+        String getAuthName();
+    }
+
 }
