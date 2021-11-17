@@ -25,7 +25,7 @@ import java.util.Set;
 @DynamicUpdate
 @NoArgsConstructor
 @Table(name = "app_user")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 @Convert(converter = GenderConvert.class , attributeName = "gender")
 public class User extends BaseEntity implements Serializable {
 
