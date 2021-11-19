@@ -1,6 +1,6 @@
 package io.gonzo.jpa.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.gonzo.jpa.app.domain.base.BaseEntity;
 import lombok.AllArgsConstructor;

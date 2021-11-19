@@ -32,6 +32,8 @@ public class UserRepositorySupportImpl extends QuerydslRepositorySupport impleme
         this.entityManager = entityManager;
     }
 
+//    public void find_
+
     @Override
     @Transactional(readOnly = true)
     public Optional<List<User>> findByAll() {

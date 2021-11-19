@@ -1,7 +1,7 @@
 package io.gonzo.jpa.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+//import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+//import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.gonzo.jpa.app.domain.base.BaseEntity;
 import io.gonzo.jpa.app.domain.base.Name;
 import io.gonzo.jpa.app.enums.Gender;
@@ -16,6 +16,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -55,6 +56,9 @@ public class User extends BaseEntity implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "app_group_id", referencedColumnName = "id")
     )
     private Set<Group> groups = new HashSet<>();
+
+    @Column
+    private Instant birthDate;
 
     @Column(nullable = false)
     @ColumnDefault(value = "false")

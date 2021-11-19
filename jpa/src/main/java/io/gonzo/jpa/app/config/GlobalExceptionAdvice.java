@@ -19,6 +19,8 @@ public class GlobalExceptionAdvice {
 
     private ResponseEntity responseEntity(GlobalErrorCode errorCode, Exception e, HttpStatus status) {
 
+        e.printStackTrace();
+
         MessageDTO.Error message = MessageDTO.Error.builder()
                 .status(status.value())
                 .code(errorCode.getCode())

@@ -32,10 +32,6 @@ public class MessageDTO {
             super(status, message, data);
         }
 
-        protected Error(DefaultBuilder<?, ?> b) {
-            super(b);
-        }
-
     }
 
 }

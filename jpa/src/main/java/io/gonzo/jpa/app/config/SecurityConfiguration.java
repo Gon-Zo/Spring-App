@@ -48,9 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-
-        http.csrf().disable();
+        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
         http.addFilterBefore(new CustomBeforeFilter(), BasicAuthenticationFilter.class)
                 .addFilterAfter(new CustomAfterFilter(), BasicAuthenticationFilter.class);
@@ -63,6 +61,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticated();
 
         http.formLogin()
+                .loginPage("/login")
                 .loginProcessingUrl("/login-progress")
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
