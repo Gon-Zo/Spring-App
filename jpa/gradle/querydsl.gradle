@@ -1,6 +1,4 @@
-
 dependencies {
-    // add
     implementation 'com.querydsl:querydsl-jpa'
 }
 

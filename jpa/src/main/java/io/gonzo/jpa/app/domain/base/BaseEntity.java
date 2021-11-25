@@ -39,13 +39,13 @@ public abstract class BaseEntity {
 
     @PrePersist
     public void prePersist() {
-        this.createBy = SecurityUtils.getByCurrentLoginName().orElseThrow(() -> new NullPointerException());
-        this.updateBy = SecurityUtils.getByCurrentLoginName().orElseThrow(() -> new NullPointerException());
+        this.createBy = SecurityUtils.getByCurrentLoginName().orElse("system");
+        this.updateBy = SecurityUtils.getByCurrentLoginName().orElse("system");
     }
 
     @PreUpdate
     public void preUpdate() {
-        this.updateBy = SecurityUtils.getByCurrentLoginName().orElseThrow(() -> new NullPointerException());
+        this.updateBy = SecurityUtils.getByCurrentLoginName().orElse("system");
     }
 
 }

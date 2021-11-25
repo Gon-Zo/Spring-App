@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,10 +17,12 @@ import java.util.Set;
 
 
 @Data
-@Table(name = "app_job")
+@Entity
+@DynamicInsert
+@DynamicUpdate
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Table(name = "app_job")
 public class Job extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
