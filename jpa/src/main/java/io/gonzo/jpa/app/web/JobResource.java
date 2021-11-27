@@ -5,6 +5,7 @@ import io.gonzo.jpa.app.service.JobService;
 import io.gonzo.jpa.app.web.dto.JobDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +24,14 @@ public class JobResource {
     }
 
     @PostMapping("")
-    public ResponseEntity<Job> createByJob(@RequestBody JobDTO.Store dto) {
+    public ResponseEntity<Job> createByJob(@Validated @RequestBody JobDTO.Store dto) {
         Job body = service.createBy(dto);
+        return ResponseEntity.ok(body);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Job> updateByJob(@PathVariable Long id, @Validated @RequestBody JobDTO.Store dto) {
+        Job body = service.updateBy(id, dto);
         return ResponseEntity.ok(body);
     }
 

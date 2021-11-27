@@ -1,5 +1,6 @@
 package io.gonzo.jpa.app.web.dto;
 
+import com.sun.istack.NotNull;
 import io.gonzo.jpa.app.domain.Job;
 import io.gonzo.jpa.app.domain.User;
 import lombok.AllArgsConstructor;
@@ -18,8 +19,10 @@ public class JobDTO {
     @AllArgsConstructor
     public static class Store {
 
+        @NotNull
         private String title;
 
+        @NotNull
         private String content;
 
         private List<Long> userIdList;

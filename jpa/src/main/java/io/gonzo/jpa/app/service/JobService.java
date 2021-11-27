@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -34,6 +35,22 @@ public class JobService {
         Job saveEntity = repository.save(dto.toEntity(users));
 
         return saveEntity;
+    }
+
+    @Transactional
+    public Job updateBy(Long id, JobDTO.Store dto) {
+
+        Job updateEntity = repository.findById(id).orElseThrow(() -> new NullPointerException());
+
+        updateEntity.setTitle(dto.getTitle());
+
+        updateEntity.setContent(dto.getContent());
+
+        Set<User> updateUserList = userRepository.findByIdIn(dto.getUserIdList());
+
+        updateEntity.setUsers(updateUserList);
+
+        return updateEntity;
     }
 
 }
