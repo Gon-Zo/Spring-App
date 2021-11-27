@@ -14,18 +14,19 @@ import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true, rollbackFor = Exception.class)
 public class JobService {
 
     private final JobRepository repository;
 
     private final UserRepository userRepository;
 
-    @Transactional(readOnly = true)
+    @Transactional
     public List<Job> getByAll() {
         return repository.findAll();
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public Job createBy(JobDTO.Store dto) {
 
         Set<User> users = userRepository.findByIdIn(dto.getUserIdList());
