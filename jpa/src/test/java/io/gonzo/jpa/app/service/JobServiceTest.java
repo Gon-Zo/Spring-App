@@ -14,15 +14,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @AutoConfigureTestEntityManager
 @SpringBootTest(classes = JpaApplication.class)
-@DisplayName("job 도메이 서비스 레이어")
+@DisplayName("job 도메인 서비스 레이어")
 @Transactional(rollbackFor = Exception.class)
 class JobServiceTest {
 
     @Autowired
     private TestEntityManager testEntityManager;
+
+    private final String updateTitle = "update title";
 
     @Autowired
     private JobService jobService;
@@ -54,7 +57,7 @@ class JobServiceTest {
         List<Job> jobList = jobService.getByAll();
 
         // then
-        jobList.forEach(dbJob-> Assertions.assertThat(job).isEqualTo(dbJob));
+        jobList.forEach(dbJob -> Assertions.assertThat(job).isEqualTo(dbJob));
 
         return;
     }
@@ -79,7 +82,7 @@ class JobServiceTest {
 
     @Test
     @DisplayName("job 저장시 entity id 들어왔나? 테스트 - NULL")
-    void createByIdIsNull(){
+    void createByIdIsNull() {
 
         // given
         Job saveEntity = Job.builder()
@@ -111,6 +114,75 @@ class JobServiceTest {
         //when
         Assertions.assertThat(saveEntity.getId()).isEqualTo(1L);
 
+    }
+
+    @Test
+    @Transactional
+    @DisplayName("save work action")
+    void saveAndUpdate_SUCCESS() {
+
+        // given
+        Job saveEntity = Job.builder()
+                .title("save entity save")
+                .content("saving by job domain")
+                .build();
+
+        // then
+        jobRepository.save(saveEntity);
+
+        // when
+        saveEntity.setTitle(updateTitle);
+
+        Optional<Job> foundJob = jobRepository.findById(1L);
+
+        foundJob.ifPresent(value -> {
+            Assertions.assertThat(value.getTitle()).isEqualTo(updateTitle);
+        });
+
+        return;
+    }
+
+    @Test
+    @DisplayName("저장 후 업데이트 케이스 1")
+    void saveAndUpdate() {
+
+        // given
+        Job saveEntity = Job.builder()
+                .title("save entity save")
+                .content("saving by job domain")
+                .build();
+
+        // then
+        jobRepository.save(saveEntity);
+
+        // if update
+        saveEntity.setTitle(updateTitle);
+
+        //after
+        Optional<Job> foundJobOptional = jobRepository.findById(1L);
+
+        foundJobOptional.ifPresent(value -> {
+            Assertions.assertThat(value.getTitle()).isEqualTo(updateTitle);
+        });
+
+    }
+
+    @Test
+    @Transactional
+    @DisplayName("saveAndFlushWorkAction")
+    void saveAndFlushWorkAction() {
+
+        // given
+        Job saveEntity = Job.builder()
+                .title("save entity save")
+                .content("saving by job domain")
+                .build();
+
+        jobRepository.saveAndFlush(saveEntity);
+
+        saveEntity.setTitle("title update");
+
+        return;
     }
 
 }
