@@ -26,11 +26,9 @@ public abstract class BaseEntity {
     private String updateBy;
 
     @CreatedDate
-    @CreationTimestamp
     @Column(name = "create_date", nullable = false)
     private Instant createDate;
 
-    @UpdateTimestamp
     @LastModifiedDate
     @Column(name = "update_date")
     private Instant updateDate;
