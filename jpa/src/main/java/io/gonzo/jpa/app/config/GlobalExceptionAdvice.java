@@ -6,15 +6,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.HttpResource;
 
 import static io.gonzo.jpa.app.utils.ExceptionUtils.getPrintStackTrace;
 
 @RestControllerAdvice
 public class GlobalExceptionAdvice {
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(value = {Exception.class})
     public ResponseEntity custom(Exception e) {
-        return responseEntity(GlobalErrorCode.SERVER_ERROR, e, HttpStatus.INTERNAL_SERVER_ERROR);
+        ResponseEntity message = responseEntity(GlobalErrorCode.SERVER_ERROR, e, HttpStatus.INTERNAL_SERVER_ERROR);
+        return message;
     }
 
     private ResponseEntity responseEntity(GlobalErrorCode errorCode, Exception e, HttpStatus status) {

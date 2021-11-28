@@ -23,6 +23,12 @@ public class JobResource {
         return ResponseEntity.ok(body);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<JobDTO.IUserIds> showByOneJob(@PathVariable Long id) {
+        JobDTO.IUserIds body = service.getByOne(id);
+        return ResponseEntity.ok(body);
+    }
+
     @PostMapping("")
     public ResponseEntity<Job> createByJob(@Validated @RequestBody JobDTO.Store dto) {
         Job body = service.createBy(dto);

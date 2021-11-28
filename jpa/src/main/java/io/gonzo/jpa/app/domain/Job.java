@@ -14,6 +14,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Data
@@ -37,8 +38,6 @@ public class Job extends BaseEntity implements Serializable {
     @Column(name = "content", nullable = false)
     private String content;
 
-////    @JsonIgnore
-//    @Transient
 //    @ElementCollection
 //    @CollectionTable(name = "app_job_user", joinColumns = @JoinColumn(name = "user_id"))
 //    @Column(name = "job_id", nullable = false)

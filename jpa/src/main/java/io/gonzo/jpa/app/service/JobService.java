@@ -28,6 +28,11 @@ public class JobService {
     }
 
     @Transactional
+    public JobDTO.IUserIds getByOne(Long id) {
+        return repository.findById(id, JobDTO.IUserIds.class).orElse(null);
+    }
+
+    @Transactional
     public Job createBy(JobDTO.Store dto) {
 
         Set<User> users = userRepository.findByIdIn(dto.getUserIdList());
