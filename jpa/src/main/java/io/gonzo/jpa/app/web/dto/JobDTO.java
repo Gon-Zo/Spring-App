@@ -6,6 +6,7 @@ import io.gonzo.jpa.app.domain.User;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -23,7 +24,7 @@ public class JobDTO {
         @NotNull
         private String content;
 
-        private List<Long> userIdList;
+        private List<Long> userIdList = new ArrayList<>();
 
         public Job toEntity(Set<User> users) {
             return Job.builder()

@@ -27,4 +27,6 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     @EntityGraph(attributePaths = {"users"})
     <T> Optional<T> findById(Long id, Class<T> className);
 
+//    @Transactional
+//    boolean existsById(Long id);
 }

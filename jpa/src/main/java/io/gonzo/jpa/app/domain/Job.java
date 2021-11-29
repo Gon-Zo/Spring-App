@@ -1,6 +1,5 @@
 package io.gonzo.jpa.app.domain;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.gonzo.jpa.app.domain.base.BaseEntity;
 import lombok.AllArgsConstructor;
@@ -14,7 +13,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 
 @Data
