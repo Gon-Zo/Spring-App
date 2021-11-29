@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class JobDTO {
 
@@ -34,34 +33,6 @@ public class JobDTO {
                     .build();
         }
 
-    }
-
-    @Getter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class UserIds {
-
-        private Long id;
-
-        private String title;
-
-        private String content;
-
-        private Set<Long> userIds;
-
-        public UserIds convertBy(Job job) {
-            this.id = job.getId();
-            this.title = job.getTitle();
-            this.content = job.getContent();
-            this.userIds = job.getUsers().stream().map(User::getId).collect(Collectors.toSet());
-            return this;
-        }
-
-    }
-
-    public interface OnlyTitle {
-        String getTitle();
     }
 
     public interface IUserIds {
