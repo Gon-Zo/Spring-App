@@ -12,6 +12,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+      # check null?
+      check_nullability: true
+
     properties:
       hibernate.format_sql: true
       hibernate.jdbc.lob.non_contextual_creation: true
@@ -24,7 +27,6 @@ spring:
     suffix: .html
     cache: false
     check-template-location: true
-
 
 logging:
   level:
