@@ -6,9 +6,12 @@ import io.gonzo.jpa.app.domain.User;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class JobDTO {
 
@@ -31,6 +34,42 @@ public class JobDTO {
                     .title(this.title)
                     .content(this.content)
                     .users(users)
+                    .build();
+        }
+
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Result {
+
+        private Long id;
+
+        private String title;
+
+        private String content;
+
+        private Set<Long> userIds = new HashSet<>();
+
+        private String createBy;
+
+        private String updateBy;
+
+        private Instant createDate;
+
+        private Instant updateDate;
+
+        public static Result convertBy(Job job) {
+            return Result.builder()
+                    .title(job.getTitle())
+                    .content(job.getContent())
+                    .userIds(job.getUsers().stream().map(User::getId).collect(Collectors.toSet()))
+                    .createBy(job.getCreateBy())
+                    .updateBy(job.getUpdateBy())
+                    .createDate(job.getCreateDate())
+                    .updateDate(job.getUpdateDate())
                     .build();
         }
 

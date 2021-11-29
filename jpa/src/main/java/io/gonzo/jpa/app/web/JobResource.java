@@ -30,8 +30,8 @@ public class JobResource {
     }
 
     @PostMapping("")
-    public ResponseEntity<Job> createByJob(@Validated @RequestBody JobDTO.Store dto) {
-        Job body = service.createBy(dto);
+    public ResponseEntity<JobDTO.Result> createByJob(@Validated @RequestBody JobDTO.Store dto) {
+        JobDTO.Result body = service.createBy(dto);
         return ResponseEntity.ok(body);
     }
 

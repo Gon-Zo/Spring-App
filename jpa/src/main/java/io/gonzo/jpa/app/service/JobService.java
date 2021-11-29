@@ -32,13 +32,13 @@ public class JobService {
     }
 
     @Transactional
-    public Job createBy(JobDTO.Store dto) {
+    public JobDTO.Result createBy(JobDTO.Store dto) {
 
         Set<User> users = userRepository.findByIdIn(dto.getUserIdList());
 
         Job saveEntity = repository.save(dto.toEntity(users));
 
-        return saveEntity;
+        return JobDTO.Result.convertBy(saveEntity);
     }
 
     @Transactional
