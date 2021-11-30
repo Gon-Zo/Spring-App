@@ -22,6 +22,11 @@ public class JobService {
     private final UserRepository userRepository;
 
     @Transactional
+    public List<JobDTO.IOnlyTitle> getAllByOnlyTitle() {
+        return repository.findAllProjectedBy(JobDTO.IOnlyTitle.class);
+    }
+
+    @Transactional
     public List<Job> getByAll() {
         return repository.findAll();
     }

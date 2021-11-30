@@ -17,6 +17,12 @@ public class JobResource {
 
     private final JobService service;
 
+    @GetMapping("/title")
+    public ResponseEntity<List<JobDTO.IOnlyTitle>> showAllByOnlyTitle() {
+        List<JobDTO.IOnlyTitle> body = service.getAllByOnlyTitle();
+        return ResponseEntity.ok(body);
+    }
+
     @GetMapping("")
     public ResponseEntity<List<Job>> showByJobList() {
         List<Job> body = service.getByAll();

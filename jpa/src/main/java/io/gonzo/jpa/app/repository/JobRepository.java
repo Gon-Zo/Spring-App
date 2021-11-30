@@ -18,6 +18,9 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     @EntityGraph(attributePaths = {"users"})
     List<Job> findAll();
 
+    @Transactional
+    <T> List<T> findAllProjectedBy(Class<T> className);
+
     @Override
     @Transactional
     @EntityGraph(attributePaths = {"users"})
@@ -27,6 +30,4 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     @EntityGraph(attributePaths = {"users"})
     <T> Optional<T> findById(Long id, Class<T> className);
 
-//    @Transactional
-//    boolean existsById(Long id);
 }

@@ -75,6 +75,13 @@ public class JobDTO {
 
     }
 
+    public interface IOnlyTitle {
+        String getTitle();
+
+        @Value("#{target.title} = #{target.content}")
+        String getValue();
+    }
+
     public interface IUserIds {
         Long getId();
 
