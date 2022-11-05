@@ -1,0 +1,4 @@
+com.example.jpa.domain
+com.example.jpa.domain.base
+com.example.jpa.repository
+com.example.jpa.repository.specs
