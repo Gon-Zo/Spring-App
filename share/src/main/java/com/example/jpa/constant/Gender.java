@@ -1,4 +1,4 @@
-package com.example.jpa.share.constant;
+package com.example.jpa.constant;
 
 import lombok.Getter;
 

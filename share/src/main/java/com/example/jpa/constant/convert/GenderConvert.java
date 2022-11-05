@@ -1,6 +1,6 @@
-package com.example.jpa.share.constant.convert;
+package com.example.jpa.constant.convert;
 
-import com.example.jpa.share.constant.Gender;
+import com.example.jpa.constant.Gender;
 
 import javax.persistence.AttributeConverter;
 import java.util.Optional;
