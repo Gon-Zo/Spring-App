@@ -1,8 +1,8 @@
-package com.example.jpa.app.web;
+package com.example.jpa.api.web;
 
-import com.example.jpa.app.domain.Auth;
-import com.example.jpa.app.repository.AuthRepository;
-import com.example.jpa.app.service.dto.AuthDTO;
+import com.example.jpa.data.domain.Auth;
+import com.example.jpa.data.repository.AuthRepository;
+import com.example.jpa.api.service.dto.AuthDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

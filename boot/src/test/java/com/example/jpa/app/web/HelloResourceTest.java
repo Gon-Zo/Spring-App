@@ -1,5 +1,6 @@
 package com.example.jpa.app.web;
 
+import com.example.jpa.api.web.HelloResource;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

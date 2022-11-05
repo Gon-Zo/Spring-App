@@ -1,7 +1,7 @@
-package com.example.jpa.app.repository.specs;
+package com.example.jpa.data.repository.specs;
 
-import com.example.jpa.app.domain.Category;
-import com.example.jpa.app.domain.Product;
+import com.example.jpa.data.domain.Category;
+import com.example.jpa.data.domain.Product;
 import org.springframework.data.jpa.domain.Specification;
 
 public class ProductSpecs {

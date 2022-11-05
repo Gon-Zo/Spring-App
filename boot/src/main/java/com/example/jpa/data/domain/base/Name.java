@@ -1,4 +1,4 @@
-package com.example.jpa.app.domain.base;
+package com.example.jpa.data.domain.base;
 
 import lombok.Builder;
 import lombok.Getter;

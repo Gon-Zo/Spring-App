@@ -1,4 +1,4 @@
-package com.example.jpa.app.config.security;
+package com.example.jpa.core.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;

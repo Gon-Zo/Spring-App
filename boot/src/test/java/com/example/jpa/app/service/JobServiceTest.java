@@ -1,8 +1,9 @@
 package com.example.jpa.app.service;
 
 import com.example.jpa.BootApplication;
-import com.example.jpa.app.domain.Job;
-import com.example.jpa.app.repository.JobRepository;
+import com.example.jpa.data.domain.Job;
+import com.example.jpa.data.repository.JobRepository;
+import com.example.jpa.api.service.JobService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

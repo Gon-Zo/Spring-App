@@ -1,7 +1,7 @@
-package com.example.jpa.app.domain;
+package com.example.jpa.data.domain;
 
 
-import com.example.jpa.app.domain.base.BaseEntity;
+import com.example.jpa.data.domain.base.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

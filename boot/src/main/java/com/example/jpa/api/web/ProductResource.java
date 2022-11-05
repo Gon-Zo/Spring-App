@@ -1,7 +1,7 @@
-package com.example.jpa.app.web;
+package com.example.jpa.api.web;
 
-import com.example.jpa.app.domain.Product;
-import com.example.jpa.app.service.ProductService;
+import com.example.jpa.data.domain.Product;
+import com.example.jpa.api.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

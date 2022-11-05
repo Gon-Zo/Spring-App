@@ -1,6 +1,6 @@
-package com.example.jpa.app.domain.base;
+package com.example.jpa.data.domain.base;
 
-import com.example.jpa.app.constant.BaseEnumCode;
+import com.example.jpa.share.constant.BaseEnumCode;
 
 import javax.persistence.AttributeConverter;
 import java.util.Arrays;

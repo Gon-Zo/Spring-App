@@ -1,8 +1,8 @@
 package com.example.jpa.app.web;
 
 import com.example.jpa.BootApplication;
-import com.example.jpa.app.domain.Job;
-import com.example.jpa.app.repository.JobRepository;
+import com.example.jpa.data.domain.Job;
+import com.example.jpa.data.repository.JobRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

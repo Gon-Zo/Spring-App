@@ -1,4 +1,4 @@
-package com.example.jpa.app.config.security.handler;
+package com.example.jpa.core.security.handler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
-package com.example.jpa.app.service.dto;
+package com.example.jpa.api.service.dto;
 
-import com.example.jpa.app.domain.Category;
+import com.example.jpa.data.domain.Category;
 import lombok.*;
 import org.apache.commons.lang3.ObjectUtils;
 

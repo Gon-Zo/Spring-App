@@ -1,8 +1,8 @@
-package com.example.jpa.app.service;
+package com.example.jpa.api.service;
 
-import com.example.jpa.app.domain.User;
-import com.example.jpa.app.repository.UserRepository;
-import com.example.jpa.app.service.dto.UserStoreDTO;
+import com.example.jpa.data.domain.User;
+import com.example.jpa.data.repository.UserRepository;
+import com.example.jpa.api.service.dto.UserStoreDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,16 +16,18 @@ public class UserService {
 
     private final UserRepository repository;
 
-    public List<User> getUserList1(){
+    public List<User> getUserList1() {
         return repository.findAll();
     }
 
     public Optional<List<User>> getUserList() {
-        return repository.findByAll();
+//        return repository.findByAll();
+        return Optional.empty();
     }
 
     public Optional<List<User>> getFoundAppUserList(UserStoreDTO dto) {
-        return repository.findByWhere(dto);
+//        return repository.findByWhere(dto);
+        return Optional.empty();
     }
 
     public void saveAppUser(UserStoreDTO dto) {
@@ -33,11 +35,13 @@ public class UserService {
     }
 
     public Long updateAppUser(UserStoreDTO dto, Long id) {
-        return repository.update(dto, id);
+//        return repository.update(dto, id);
+        return 0L;
     }
 
     public Long removeAppUser(Long id) {
-        return repository.delete(id);
+//        return repository.delete(id);
+        return 0L;
     }
 
     @Transactional(rollbackFor = Exception.class)

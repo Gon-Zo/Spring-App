@@ -1,7 +1,7 @@
-package com.example.jpa.app.web;
+package com.example.jpa.api.web;
 
-import com.example.jpa.app.config.security.RoleType;
-import com.example.jpa.app.utils.SecurityUtil;
+import com.example.jpa.core.security.RoleType;
+import com.example.jpa.core.utils.SecurityUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

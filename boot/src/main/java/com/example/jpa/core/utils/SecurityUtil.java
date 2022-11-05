@@ -1,4 +1,4 @@
-package com.example.jpa.app.utils;
+package com.example.jpa.core.utils;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.core.Authentication;

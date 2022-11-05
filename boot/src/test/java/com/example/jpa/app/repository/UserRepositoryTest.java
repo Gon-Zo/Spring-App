@@ -1,8 +1,9 @@
 package com.example.jpa.app.repository;
 
-import com.example.jpa.app.domain.User;
-import com.example.jpa.app.domain.base.Name;
-import com.example.jpa.app.constant.Gender;
+import com.example.jpa.data.domain.User;
+import com.example.jpa.data.domain.base.Name;
+import com.example.jpa.share.constant.Gender;
+import com.example.jpa.data.repository.UserRepository;
 import com.example.jpa.app.config.TestConfig;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

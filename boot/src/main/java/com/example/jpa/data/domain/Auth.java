@@ -1,4 +1,4 @@
-package com.example.jpa.app.domain;
+package com.example.jpa.data.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;

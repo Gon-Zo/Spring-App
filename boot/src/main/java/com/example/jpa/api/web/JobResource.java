@@ -1,8 +1,8 @@
-package com.example.jpa.app.web;
+package com.example.jpa.api.web;
 
-import com.example.jpa.app.domain.Job;
-import com.example.jpa.app.service.JobService;
-import com.example.jpa.app.service.dto.JobDTO;
+import com.example.jpa.data.domain.Job;
+import com.example.jpa.api.service.JobService;
+import com.example.jpa.api.service.dto.JobDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

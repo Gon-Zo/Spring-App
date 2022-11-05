@@ -1,10 +1,10 @@
-package com.example.jpa.app.service;
+package com.example.jpa.api.service;
 
-import com.example.jpa.app.domain.Job;
-import com.example.jpa.app.domain.User;
-import com.example.jpa.app.repository.JobRepository;
-import com.example.jpa.app.repository.UserRepository;
-import com.example.jpa.app.service.dto.JobDTO;
+import com.example.jpa.data.domain.Job;
+import com.example.jpa.data.domain.User;
+import com.example.jpa.data.repository.JobRepository;
+import com.example.jpa.data.repository.UserRepository;
+import com.example.jpa.api.service.dto.JobDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,13 +51,13 @@ public class JobService {
 
         Job updateEntity = repository.findById(id).orElseThrow(() -> new NullPointerException());
 
-        updateEntity.setTitle(dto.getTitle());
-
-        updateEntity.setContent(dto.getContent());
-
-        Set<User> updateUserList = userRepository.findByIdIn(dto.getUserIdList());
-
-        updateEntity.setUsers(updateUserList);
+//        updateEntity.setTitle(dto.getTitle());
+//
+//        updateEntity.setContent(dto.getContent());
+//
+//        Set<User> updateUserList = userRepository.findByIdIn(dto.getUserIdList());
+//
+//        updateEntity.setUsers(updateUserList);
 
         return updateEntity;
     }

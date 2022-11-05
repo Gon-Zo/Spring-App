@@ -1,6 +1,6 @@
-package com.example.jpa.app.config;
+package com.example.jpa.core;
 
-import com.example.jpa.app.utils.SecurityUtil;
+import com.example.jpa.core.utils.SecurityUtil;
 import org.springframework.data.domain.AuditorAware;
 
 import java.util.Optional;

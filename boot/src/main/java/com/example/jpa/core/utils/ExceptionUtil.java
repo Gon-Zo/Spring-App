@@ -1,4 +1,4 @@
-package com.example.jpa.app.utils;
+package com.example.jpa.core.utils;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

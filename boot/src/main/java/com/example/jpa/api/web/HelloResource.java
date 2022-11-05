@@ -1,4 +1,4 @@
-package com.example.jpa.app.web;
+package com.example.jpa.api.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

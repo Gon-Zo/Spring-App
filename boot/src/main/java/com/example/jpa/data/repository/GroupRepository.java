@@ -1,6 +1,6 @@
-package com.example.jpa.app.repository;
+package com.example.jpa.data.repository;
 
-import com.example.jpa.app.domain.Group;
+import com.example.jpa.data.domain.Group;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

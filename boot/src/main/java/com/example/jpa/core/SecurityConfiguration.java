@@ -1,7 +1,7 @@
-package com.example.jpa.app.config;
+package com.example.jpa.core;
 
-import com.example.jpa.app.config.security.filter.CustomAfterFilter;
-import com.example.jpa.app.config.security.filter.CustomBeforeFilter;
+import com.example.jpa.core.security.filter.CustomAfterFilter;
+import com.example.jpa.core.security.filter.CustomBeforeFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

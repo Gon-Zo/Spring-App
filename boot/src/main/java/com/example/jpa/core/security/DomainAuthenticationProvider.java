@@ -1,4 +1,4 @@
-package com.example.jpa.app.config.security;
+package com.example.jpa.core.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;

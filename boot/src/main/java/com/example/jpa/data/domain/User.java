@@ -1,9 +1,9 @@
-package com.example.jpa.app.domain;
+package com.example.jpa.data.domain;
 
-import com.example.jpa.app.domain.base.BaseEntity;
-import com.example.jpa.app.domain.base.Name;
-import com.example.jpa.app.constant.Gender;
-import com.example.jpa.app.constant.convert.GenderConvert;
+import com.example.jpa.data.domain.base.BaseEntity;
+import com.example.jpa.data.domain.base.Name;
+import com.example.jpa.share.constant.Gender;
+import com.example.jpa.share.constant.convert.GenderConvert;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

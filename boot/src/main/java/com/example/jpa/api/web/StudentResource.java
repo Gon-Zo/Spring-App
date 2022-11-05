@@ -1,9 +1,9 @@
-package com.example.jpa.app.web;
+package com.example.jpa.api.web;
 
 
-import com.example.jpa.app.domain.Student;
-import com.example.jpa.app.repository.StudentRepository;
-import com.example.jpa.app.service.dto.StudentDTO;
+import com.example.jpa.data.domain.Student;
+import com.example.jpa.data.repository.StudentRepository;
+import com.example.jpa.api.service.dto.StudentDTO;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.http.ResponseEntity;

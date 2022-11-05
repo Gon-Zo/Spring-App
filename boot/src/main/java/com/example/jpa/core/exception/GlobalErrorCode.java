@@ -1,4 +1,4 @@
-package com.example.jpa.app.config.exception;
+package com.example.jpa.core.exception;
 
 
 public enum GlobalErrorCode {

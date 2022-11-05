@@ -1,4 +1,4 @@
-package com.example.jpa.app.service.dto;
+package com.example.jpa.api.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

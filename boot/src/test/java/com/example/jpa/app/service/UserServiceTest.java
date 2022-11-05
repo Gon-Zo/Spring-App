@@ -1,7 +1,8 @@
 package com.example.jpa.app.service;
 
-import com.example.jpa.app.domain.User;
-import com.example.jpa.app.repository.UserRepository;
+import com.example.jpa.data.domain.User;
+import com.example.jpa.data.repository.UserRepository;
+import com.example.jpa.api.service.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

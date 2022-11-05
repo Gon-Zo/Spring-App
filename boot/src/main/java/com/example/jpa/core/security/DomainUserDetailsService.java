@@ -1,8 +1,8 @@
-package com.example.jpa.app.config.security;
+package com.example.jpa.core.security;
 
-import com.example.jpa.app.domain.Group;
-import com.example.jpa.app.domain.User;
-import com.example.jpa.app.repository.UserRepository;
+import com.example.jpa.data.domain.Group;
+import com.example.jpa.data.domain.User;
+import com.example.jpa.data.repository.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

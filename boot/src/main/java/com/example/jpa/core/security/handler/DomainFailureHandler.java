@@ -1,7 +1,7 @@
-package com.example.jpa.app.config.security.handler;
+package com.example.jpa.core.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.example.jpa.app.constant.AuthenticationTypes;
+import com.example.jpa.share.constant.AuthenticationTypes;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;

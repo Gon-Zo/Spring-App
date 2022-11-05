@@ -1,4 +1,4 @@
-package com.example.jpa.app.repository.support;
+package com.example.jpa.data.repository.support;
 
 //import com.example.app.app.domain.User;
 //import com.example.app.app.web.dto.UserStoreDTO;

@@ -1,7 +1,7 @@
-package com.example.jpa.app.service.dto;
+package com.example.jpa.api.service.dto;
 
-import com.example.jpa.app.domain.Job;
-import com.example.jpa.app.domain.User;
+import com.example.jpa.data.domain.Job;
+import com.example.jpa.data.domain.User;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;

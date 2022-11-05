@@ -1,13 +1,9 @@
-package com.example.jpa.app.config;
+package com.example.jpa.core;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  * Jpa configuration </br>
@@ -17,16 +13,8 @@ import javax.persistence.PersistenceContext;
  */
 @Configuration
 @EnableJpaAuditing
-@EnableJpaRepositories(basePackages = "io.gonzo.jpa.app.repository")
+@EnableJpaRepositories(basePackages = "com.example.jpa.data.repository")
 public class JpaConfiguration {
-
-    @PersistenceContext
-    private EntityManager entityManager;
-
-    @Bean(name = "jpaQueryFactory")
-    public JPAQueryFactory jpaQueryFactory() {
-        return new JPAQueryFactory(entityManager);
-    }
 
     @Bean
     public SpringSecurityAuditorAware auditorAware() {

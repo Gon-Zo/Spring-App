@@ -1,7 +1,7 @@
-package com.example.jpa.app.web;
+package com.example.jpa.api.web;
 
-import com.example.jpa.app.service.CategoryService;
-import com.example.jpa.app.service.dto.CategoryDTO;
+import com.example.jpa.api.service.CategoryService;
+import com.example.jpa.api.service.dto.CategoryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

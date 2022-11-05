@@ -1,4 +1,4 @@
-package com.example.jpa.app.config;
+package com.example.jpa.core;
 
 
 import org.springframework.context.annotation.Configuration;

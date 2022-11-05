@@ -1,7 +1,7 @@
-package com.example.jpa.app.service;
+package com.example.jpa.api.service;
 
-import com.example.jpa.app.repository.CategoryRepository;
-import com.example.jpa.app.service.dto.CategoryDTO;
+import com.example.jpa.data.repository.CategoryRepository;
+import com.example.jpa.api.service.dto.CategoryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

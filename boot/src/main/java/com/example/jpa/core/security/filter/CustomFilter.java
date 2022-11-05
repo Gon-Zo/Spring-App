@@ -1,4 +1,4 @@
-package com.example.jpa.app.config.security.filter;
+package com.example.jpa.core.security.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
