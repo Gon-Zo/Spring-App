@@ -5,12 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-/**
- * Jpa configuration </br>
- * Queerydsl configuration </br>
- *
- * @author gon-zo
- */
 @Configuration
 @EnableJpaAuditing
 @EnableJpaRepositories(basePackages = "com.example.jpa.repository")
