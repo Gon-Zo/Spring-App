@@ -1,4 +1,4 @@
-package com.example.app.app.web.dto;
+package com.example.app.app.service.dto;
 
 import com.example.app.app.domain.Job;
 import com.example.app.app.domain.User;

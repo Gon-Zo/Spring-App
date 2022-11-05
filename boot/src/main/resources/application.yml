@@ -1,38 +1,18 @@
 spring:
   application:
     name: JPA-APP
-    profiles:
-      active:
-        group:
-        dev:
-          - pg
-          - h2
-          - mysql
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-      # check null?
-      check_nullability: true
 
     properties:
       hibernate.format_sql: true
       hibernate.jdbc.lob.non_contextual_creation: true
       hibernate.jdbc.time_zone: UTC
       hibernate.id.new_generator_mappings: true
-  # thymeleaf setting
-  thymeleaf:
-    mode: HTML
-    prefix: classpath:templates/
-    suffix: .html
-    cache: false
-    check-template-location: true
 
 logging:
   level:
     org:
       hibernate.type.descriptor.sql.BasicBinder: TRACE
-
-
-server:
-  port: 20000

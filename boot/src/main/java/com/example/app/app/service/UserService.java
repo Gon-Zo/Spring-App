@@ -2,7 +2,7 @@ package com.example.app.app.service;
 
 import com.example.app.app.domain.User;
 import com.example.app.app.repository.UserRepository;
-import com.example.app.app.web.dto.UserStoreDTO;
+import com.example.app.app.service.dto.UserStoreDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

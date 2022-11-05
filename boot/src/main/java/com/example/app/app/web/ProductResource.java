@@ -23,10 +23,7 @@ public class ProductResource {
     }
 
     @GetMapping("/{title}")
-    public List<Product> showProduct(@PathVariable String title , String categoryTitle) {
-        return service.getProductByTitle(title , categoryTitle);
+    public List<Product> showProduct(@PathVariable String title, String categoryTitle) {
+        return service.getProductByTitle(title, categoryTitle);
     }
-
-
-
 }

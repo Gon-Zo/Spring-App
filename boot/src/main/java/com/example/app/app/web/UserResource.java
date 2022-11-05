@@ -2,7 +2,7 @@ package com.example.app.app.web;
 
 import com.example.app.app.domain.User;
 import com.example.app.app.service.UserService;
-import com.example.app.app.web.dto.UserStoreDTO;
+import com.example.app.app.service.dto.UserStoreDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,14 +59,6 @@ public class UserResource {
     private ResponseEntity responseEntity(HttpStatus statusType, String responseMessage, Object data) {
 
         throw new NullPointerException();
-
-//        MessageDTO message = MessageDTO.builder()
-//                .status(statusType.value())
-//                .message(responseMessage)
-//                .data(data)
-//                .build();
-//
-//        return new ResponseEntity(message, statusType);
     }
 
 }

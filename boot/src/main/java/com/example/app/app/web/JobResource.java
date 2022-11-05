@@ -2,7 +2,7 @@ package com.example.app.app.web;
 
 import com.example.app.app.domain.Job;
 import com.example.app.app.service.JobService;
-import com.example.app.app.web.dto.JobDTO;
+import com.example.app.app.service.dto.JobDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

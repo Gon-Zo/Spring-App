@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloResource {
 
     @GetMapping("/test")
-    public String test (){
+    public String test() {
         return "success";
     }
-
 
 
 }

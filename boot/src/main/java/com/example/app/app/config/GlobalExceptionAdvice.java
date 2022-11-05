@@ -1,8 +1,8 @@
 package com.example.app.app.config;
 
 import com.example.app.app.config.exception.GlobalErrorCode;
-import com.example.app.app.utils.ExceptionUtils;
-import com.example.app.app.web.dto.MessageDTO;
+import com.example.app.app.utils.ExceptionUtil;
+import com.example.app.app.service.dto.MessageDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,7 +25,7 @@ public class GlobalExceptionAdvice {
                 .status(status.value())
                 .code(errorCode.getCode())
                 .message(errorCode.getMessage())
-                .data(ExceptionUtils.getPrintStackTrace(e))
+                .data(ExceptionUtil.getPrintStackTrace(e))
                 .build();
 
         return new ResponseEntity(message, status);

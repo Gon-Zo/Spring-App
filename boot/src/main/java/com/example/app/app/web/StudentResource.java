@@ -3,7 +3,7 @@ package com.example.app.app.web;
 
 import com.example.app.app.domain.Student;
 import com.example.app.app.repository.StudentRepository;
-import com.example.app.app.web.dto.StudentDTO;
+import com.example.app.app.service.dto.StudentDTO;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +36,7 @@ public class StudentResource {
     public ResponseEntity<Student> showByStudent(@PathVariable UUID id) {
         Optional<Student> data = repository.findById(id);
 
-        if(data.isEmpty()){
+        if (data.isEmpty()) {
             throw new NullPointerException();
         }
 

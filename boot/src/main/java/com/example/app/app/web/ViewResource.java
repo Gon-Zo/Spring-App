@@ -1,7 +1,7 @@
 package com.example.app.app.web;
 
 import com.example.app.app.config.security.RoleType;
-import com.example.app.app.utils.SecurityUtils;
+import com.example.app.app.utils.SecurityUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +15,11 @@ public class ViewResource {
     @GetMapping("/home")
     public String goByHom(Model model) {
 
-        boolean isSystem = SecurityUtils.isAuthenticationTypeAble(RoleType.SYSTEM);
+        boolean isSystem = SecurityUtil.isAuthenticationTypeAble(RoleType.SYSTEM);
 
-        boolean isAdmin = SecurityUtils.isAuthenticationTypeAble(RoleType.ADMIN);
+        boolean isAdmin = SecurityUtil.isAuthenticationTypeAble(RoleType.ADMIN);
 
-        boolean isUser = SecurityUtils.isAuthenticationTypeAble(RoleType.USER);
+        boolean isUser = SecurityUtil.isAuthenticationTypeAble(RoleType.USER);
 
         if (isSystem) {
             getByUserModel(model);
@@ -43,7 +43,7 @@ public class ViewResource {
 
         Map<String, Object> useMap = new HashMap<>();
 
-        String loginUserName = SecurityUtils.getByCurrentLoginName().orElseThrow(() -> new NullPointerException());
+        String loginUserName = SecurityUtil.getByCurrentLoginName().orElseThrow(() -> new NullPointerException());
 
         useMap.put("name", loginUserName);
 

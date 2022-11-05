@@ -2,7 +2,7 @@ package com.example.app.app.web;
 
 import com.example.app.app.domain.Auth;
 import com.example.app.app.repository.AuthRepository;
-import com.example.app.app.web.dto.AuthDTO;
+import com.example.app.app.service.dto.AuthDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +44,7 @@ public class AuthResource {
 
         Optional<Auth> authOptional = repository.findById(id);
 
-        if (authOptional.isPresent()){
+        if (authOptional.isPresent()) {
             Auth auth = authOptional.get();
 
             auth.setAuthName("TEST_SUCCESS");

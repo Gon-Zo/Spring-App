@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Optional;
 
-public class SecurityUtils {
+public class SecurityUtil {
 
     public static boolean isAuthenticationTypeAble(String authenticationType) {
 
