@@ -1,58 +1,30 @@
 package com.example.jpa.api.service.dto;
 
 import com.example.jpa.domain.Category;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.apache.commons.lang3.ObjectUtils;
 
 import java.time.Instant;
-import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
 public class CategoryDTO {
 
-    private Long id;
+    public interface Info {
 
-    private String title;
+        Long getId();
 
-    private String workId;
+        String getTitle();
 
-    private Category parent;
+        String getWorkId();
 
-    private Set<Category> childrenSet;
+        Category getParent();
 
-    private Instant createDate;
+        Category getCildrenSet();
 
-    private Instant updateDate;
+        Instant getCreateDate();
 
-    @Builder
-    public CategoryDTO(Long id, String title, String workId, Category parent, Set<Category> childrenSet, Instant createDate, Instant updateDate) {
-        this.id = id;
-        this.title = title;
-        this.workId = workId;
-        this.parent = parent;
-        this.childrenSet = childrenSet;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
+        Instant getUpdateDate();
+
+        default Boolean isParent() {
+            return ObjectUtils.isEmpty(getParent());
+        }
     }
-
-    public CategoryDTO toDTO(Category category) {
-        this.id = category.getId();
-        this.title = category.getTitle();
-        this.workId = category.getWorkId();
-        this.parent = category.getParent();
-        this.childrenSet = category.getChildrenSet();
-        this.createDate = category.getCreateDate();
-        this.updateDate = category.getUpdateDate();
-        return this;
-    }
-
-    public boolean isParent() {
-        return ObjectUtils.isEmpty(this.parent);
-    }
-
 }
