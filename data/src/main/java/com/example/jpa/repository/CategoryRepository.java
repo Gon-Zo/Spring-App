@@ -10,7 +10,5 @@ import java.util.List;
 public interface CategoryRepository extends JpaRepository<Category, Long> {
     Category findByTitle(String title);
 
-    <T> List<T> findAllByProjections(Class<T> type);
-
     <T> List<T> findByParentIsNull(Class<T> type);
 }
