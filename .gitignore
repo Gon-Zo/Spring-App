@@ -1,6 +1,10 @@
 /.gradle/
 /.idea/
-/data/
+
 
 /jpa/build
 #/jpa/src/main/webapp/
+/share/.gradle/
+/boot/.gradle/
+/data/.gradle/
+/share/build/
