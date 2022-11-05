@@ -1,8 +1,8 @@
 package com.example.jpa.api.service.dto;
 
-import com.example.jpa.data.domain.User;
-import com.example.jpa.data.domain.base.Name;
-import com.example.jpa.share.constant.Gender;
+import com.example.jpa.constant.Gender;
+import com.example.jpa.domain.User;
+import com.example.jpa.domain.base.Name;
 import lombok.Getter;
 import lombok.Setter;
 

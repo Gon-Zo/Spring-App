@@ -32,7 +32,6 @@ public class DomainSuccessHandler implements AuthenticationSuccessHandler {
         }
 
         response.setStatus(401);
-        return;
     }
 
     /**

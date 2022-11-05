@@ -1,7 +1,7 @@
 package com.example.jpa.api.service.dto;
 
-import com.example.jpa.data.domain.Job;
-import com.example.jpa.data.domain.User;
+import com.example.jpa.domain.Job;
+import com.example.jpa.domain.User;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -62,10 +62,13 @@ public class JobDTO {
         private Instant updateDate;
 
         public static Result convertBy(Job job) {
+
+            Set<Long> idSet = job.getUsers().stream().map(User::getId).collect(Collectors.toSet());
+
             return Result.builder()
                     .title(job.getTitle())
                     .content(job.getContent())
-                    .userIds(job.getUsers().stream().map(User::getId).collect(Collectors.toSet()))
+                    .userIds(idSet)
                     .createBy(job.getCreateBy())
                     .updateBy(job.getUpdateBy())
                     .createDate(job.getCreateDate())

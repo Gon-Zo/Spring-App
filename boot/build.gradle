@@ -11,5 +11,6 @@ jar {
 }
 
 dependencies {
-
+    implementation(project(":data"))
+    implementation(project(":share"))
 }

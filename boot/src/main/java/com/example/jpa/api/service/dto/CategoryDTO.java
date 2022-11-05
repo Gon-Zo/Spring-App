@@ -1,7 +1,10 @@
 package com.example.jpa.api.service.dto;
 
-import com.example.jpa.data.domain.Category;
-import lombok.*;
+import com.example.jpa.domain.Category;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.apache.commons.lang3.ObjectUtils;
 
 import java.time.Instant;

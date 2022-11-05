@@ -1,8 +1,8 @@
 package com.example.jpa.api.web;
 
-import com.example.jpa.data.domain.User;
 import com.example.jpa.api.service.UserService;
 import com.example.jpa.api.service.dto.UserStoreDTO;
+import com.example.jpa.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

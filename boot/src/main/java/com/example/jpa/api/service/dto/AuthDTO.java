@@ -1,6 +1,6 @@
 package com.example.jpa.api.service.dto;
 
-import com.example.jpa.data.domain.Auth;
+import com.example.jpa.domain.Auth;
 import lombok.*;
 
 @Value

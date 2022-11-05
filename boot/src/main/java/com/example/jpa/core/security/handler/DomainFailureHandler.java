@@ -1,7 +1,7 @@
 package com.example.jpa.core.security.handler;
 
+import com.example.jpa.constant.AuthenticationTypes;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.example.jpa.share.constant.AuthenticationTypes;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -18,9 +18,7 @@ import java.util.Map;
 @Component(value = "authenticationFailureHandler")
 public class DomainFailureHandler implements AuthenticationFailureHandler {
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request,
-                                        HttpServletResponse response,
-                                        AuthenticationException exception) throws IOException, ServletException {
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
 
         exception.printStackTrace();
 
@@ -37,7 +35,7 @@ public class DomainFailureHandler implements AuthenticationFailureHandler {
 
             responseMap.put("status", 401);
 
-            responseMap.put("message", message);
+            responseMap.put("message", "");
 
             response.getOutputStream().println(objectMapper.writeValueAsString(responseMap));
 

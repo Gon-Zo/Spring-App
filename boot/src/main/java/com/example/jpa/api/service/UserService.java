@@ -1,8 +1,8 @@
 package com.example.jpa.api.service;
 
-import com.example.jpa.data.domain.User;
-import com.example.jpa.data.repository.UserRepository;
 import com.example.jpa.api.service.dto.UserStoreDTO;
+import com.example.jpa.domain.User;
+import com.example.jpa.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
