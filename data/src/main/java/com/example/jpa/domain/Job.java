@@ -45,4 +45,10 @@ public class Job extends BaseEntity implements Serializable {
         this.users = users;
     }
 
+    @Transient
+    public void update(String title, String content, Set<User> userSet) {
+        this.title = title;
+        this.content = content;
+        this.users = userSet;
+    }
 }

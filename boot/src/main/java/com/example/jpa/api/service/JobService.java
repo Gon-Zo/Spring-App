@@ -9,7 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -21,45 +23,40 @@ public class JobService {
 
     private final UserRepository userRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<JobDTO.IOnlyTitle> getAllByOnlyTitle() {
         return repository.findAllProjectedBy(JobDTO.IOnlyTitle.class);
     }
 
-    @Transactional
-    public List<Job> getByAll() {
-        return repository.findAll();
+    @Transactional(readOnly = true)
+    public List<JobDTO.Info> getByAll() {
+        return repository.findAllProjectedBy(JobDTO.Info.class);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<JobDTO.IUserIds> getByOne(Long id) {
+        return repository.findById(id, JobDTO.IUserIds.class);
     }
 
     @Transactional
-    public JobDTO.IUserIds getByOne(Long id) {
-        return repository.findById(id, JobDTO.IUserIds.class).orElse(null);
+    public Optional<JobDTO.Result> createBy(JobDTO.Store dto, Collection<User> userSet) {
+
+        if (userSet.isEmpty()) {
+            return Optional.empty();
+        }
+
+        Job saveEntity = repository.save(dto.toEntity(userSet));
+
+        return Optional.of(JobDTO.Result.convertBy(saveEntity));
     }
 
     @Transactional
-    public JobDTO.Result createBy(JobDTO.Store dto) {
+    public JobDTO.Result updateBy(Long id, JobDTO.Store dto, Set<User> userSet) {
 
-        Set<User> users = userRepository.findByIdIn(dto.getUserIdList());
+        Job entity = repository.findById(id).orElseThrow(NullPointerException::new);
 
-        Job saveEntity = repository.save(dto.toEntity(users));
+        entity.update(dto.getTitle(), dto.getContent(), userSet);
 
-        return JobDTO.Result.convertBy(saveEntity);
+        return JobDTO.Result.convertBy(entity);
     }
-
-    @Transactional
-    public Job updateBy(Long id, JobDTO.Store dto) {
-
-        Job updateEntity = repository.findById(id).orElseThrow(() -> new NullPointerException());
-
-//        updateEntity.setTitle(dto.getTitle());
-//
-//        updateEntity.setContent(dto.getContent());
-//
-//        Set<User> updateUserList = userRepository.findByIdIn(dto.getUserIdList());
-//
-//        updateEntity.setUsers(updateUserList);
-
-        return updateEntity;
-    }
-
 }
