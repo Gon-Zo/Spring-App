@@ -1,4 +1,0 @@
-dependencies {
-    implementation 'com.h2database:h2'
-    implementation group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '7.0.19'
-}

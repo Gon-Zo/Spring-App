@@ -1,4 +1,4 @@
 rootProject.name = 'spring-app'
 
-include 'jpa'
+include('boot')
 

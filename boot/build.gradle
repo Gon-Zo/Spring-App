@@ -1,0 +1,78 @@
+//plugins {
+//    id 'org.springframework.boot' version "${SpringbootVersion}"
+//    id 'io.spring.dependency-management' version "${SpringdependencyManagement}"
+//    id 'java'
+//
+//    //querydsl 추가
+//    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+//}
+//
+//group = 'io.gonzo'
+//version = '0.0.1-SNAPSHOT'
+//
+//sourceCompatibility = "11"
+//targetCompatibility = "11"
+//assert System.properties["java.specification.version"] == "1.8" || "1.9" || "10" || "11" || "12" || "13" || "14" || "15"
+//
+//configurations {
+//    compileOnly {
+//        extendsFrom annotationProcessor
+//    }
+//}
+//
+//repositories {
+//    mavenCentral()
+//}
+//
+//apply from: "gradle/querydsl.gradle"
+//
+//// database config
+//apply from: "${project.rootDir.toString()}/gradle/h2.gradle"
+//
+//if (project.hasProperty("pg")) {
+//    apply from: "${project.rootDir.toString()}/gradle/pg.gradle"
+//} else {
+//    apply from: "${project.rootDir.toString()}/gradle/mysql.gradle"
+//}
+//
+//apply from: "${project.rootDir.toString()}/gradle/utils.gradle"
+//
+//dependencies {
+//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    compileOnly 'org.projectlombok:lombok'
+//    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+//    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+//    annotationProcessor 'org.projectlombok:lombok'
+//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+////    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+////        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+////    }
+//    implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:1.17"
+//
+//    //security add
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//
+//    //thymeleaf add
+//    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//}
+//
+//test {
+//    useJUnitPlatform()
+//}
+
+plugins {
+    id 'java'
+}
+
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = false
+}
+
+dependencies {
+
+}
