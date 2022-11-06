@@ -1,6 +1,8 @@
 package com.example.jpa.api.service;
 
+import com.example.jpa.api.service.dto.SignUpDTO;
 import com.example.jpa.api.service.dto.UserStoreDTO;
+import com.example.jpa.api.service.user.SignUpService;
 import com.example.jpa.domain.user.User;
 import com.example.jpa.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,8 @@ public class UserService {
 
     private final UserRepository repository;
 
+    private final SignUpService signUpService;
+
     public List<User> getUserList1() {
         return repository.findAll();
     }
@@ -31,8 +35,8 @@ public class UserService {
         return Optional.empty();
     }
 
-    public void saveAppUser(UserStoreDTO dto) {
-        repository.save(dto.toEntity());
+    public SignUpDTO.Response saveAppUser(SignUpDTO.Request dto) {
+        return signUpService.signUp(dto);
     }
 
     public Long updateAppUser(UserStoreDTO dto, Long id) {

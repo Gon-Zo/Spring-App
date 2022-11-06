@@ -1,6 +1,7 @@
 package com.example.jpa.domain.base;
 
-import lombok.Builder;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +11,8 @@ import java.io.Serializable;
 
 @Getter
 @Embeddable
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Name implements Serializable {
 
     @Column(name = "first_name", nullable = false)
@@ -19,9 +21,4 @@ public class Name implements Serializable {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Builder
-    private Name(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
 }

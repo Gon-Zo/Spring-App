@@ -8,33 +8,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.Optional;
 
 @Getter
-@Entity
 @Table
+@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class UserFail extends AbstractDate {
+public class UserPassword extends AbstractDate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "count", nullable = false)
-    private BigDecimal count;
+    @Column(nullable = false, name = "hash_password")
+    private String password;
 
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     private User user;
 
-    @PrePersist
-    void insert() {
-        this.count = Optional.ofNullable(this.count).orElse(BigDecimal.ZERO);
-    }
-
-    public UserFail(BigDecimal count) {
-        this.count = count;
+    public UserPassword(String password) {
+        this.password = password;
     }
 }
+

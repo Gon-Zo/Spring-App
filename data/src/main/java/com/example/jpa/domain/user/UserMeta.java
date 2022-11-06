@@ -4,10 +4,7 @@ import com.example.jpa.constant.Gender;
 import com.example.jpa.domain.base.AbstractDate;
 import com.example.jpa.domain.base.BirthDate;
 import com.example.jpa.domain.base.Name;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -37,4 +34,11 @@ public class UserMeta extends AbstractDate {
             optional = false
     )
     private User user;
+
+    @Builder
+    private UserMeta(Name name, Gender gender, BirthDate birthDate) {
+        this.name = name;
+        this.gender = gender;
+        this.birthDate = birthDate;
+    }
 }

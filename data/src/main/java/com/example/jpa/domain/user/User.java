@@ -15,10 +15,10 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "users")
 @Getter
 @DynamicInsert
 @DynamicUpdate
+@Entity(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends AbstractDate {
 
@@ -33,29 +33,34 @@ public class User extends AbstractDate {
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
-    @Column(name = "password")
-    private String password;
-
     @JsonIgnore
     @ManyToMany(targetEntity = Group.class)
     @JoinTable(name = "group_users", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "group_id", referencedColumnName = "id"))
     private Set<Group> groups = new HashSet<>();
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
     private UserMeta userMeta;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
     private UserFail userFail;
 
-    @Builder
-    private User(Long id, String email, String password) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-    }
+    @JsonIgnore
+    @OneToOne(mappedBy = "user", cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    private UserPassword userPassword;
 
     @org.springframework.data.annotation.Transient
     public Boolean isActive() {
         return UserStatus.DEFAULT == this.status;
+    }
+
+    @Builder
+    private User(String email, UserStatus status, UserMeta userMeta, UserFail userFail, UserPassword userPassword) {
+        this.email = email;
+        this.status = status;
+        this.userMeta = userMeta;
+        this.userFail = userFail;
+        this.userPassword = userPassword;
     }
 }
