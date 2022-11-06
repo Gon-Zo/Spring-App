@@ -1,6 +1,7 @@
 package com.example.jpa.domain;
 
 import com.example.jpa.domain.base.BaseEntity;
+import com.example.jpa.domain.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;

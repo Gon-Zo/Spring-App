@@ -1,7 +1,7 @@
 package com.example.jpa.api.service;
 
 import com.example.jpa.api.service.dto.UserStoreDTO;
-import com.example.jpa.domain.User;
+import com.example.jpa.domain.user.User;
 import com.example.jpa.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -54,8 +53,6 @@ public class UserService {
         if (updateUserOptional.isPresent()) {
 
             User updateUser = updateUserOptional.get();
-
-            updateUser.usedByUser();
 
             return Boolean.TRUE;
         }

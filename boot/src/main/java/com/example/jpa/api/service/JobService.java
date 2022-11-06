@@ -2,7 +2,7 @@ package com.example.jpa.api.service;
 
 import com.example.jpa.api.service.dto.JobDTO;
 import com.example.jpa.domain.Job;
-import com.example.jpa.domain.User;
+import com.example.jpa.domain.user.User;
 import com.example.jpa.repository.JobRepository;
 import com.example.jpa.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

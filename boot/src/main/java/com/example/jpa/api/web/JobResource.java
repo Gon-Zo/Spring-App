@@ -3,7 +3,7 @@ package com.example.jpa.api.web;
 import com.example.jpa.api.service.JobService;
 import com.example.jpa.api.service.UserService;
 import com.example.jpa.api.service.dto.JobDTO;
-import com.example.jpa.domain.User;
+import com.example.jpa.domain.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

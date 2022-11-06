@@ -1,7 +1,7 @@
 package com.example.jpa.core.security;
 
 import com.example.jpa.domain.Group;
-import com.example.jpa.domain.User;
+import com.example.jpa.domain.user.User;
 import com.example.jpa.repository.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -56,7 +56,7 @@ public class DomainUserDetailsService implements UserDetailsService {
                 throw new AccessDeniedException(String.format(">>>>>>>>>>>>>>>>>>>>>> username %s", loginUser.getEmail()));
             }
 
-            domainUserDetails = new DomainUserDetails(loginUser.getEmail(), loginUser.getPassword(), authList, loginUser.getUseYn());
+            domainUserDetails = new DomainUserDetails(loginUser.getEmail(), loginUser.getPassword(), authList, loginUser.isActive());
 
         } catch (AccessDeniedException e) {
             e.printStackTrace();
