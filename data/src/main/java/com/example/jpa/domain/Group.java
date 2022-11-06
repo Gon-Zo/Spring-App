@@ -2,6 +2,7 @@ package com.example.jpa.domain;
 
 
 import com.example.jpa.domain.base.BaseEntity;
+import com.example.jpa.domain.user.User;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

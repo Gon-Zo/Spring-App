@@ -8,3 +8,5 @@
 /boot/.gradle/
 /data/.gradle/
 /share/build/
+/data/build/
+/boot/build/

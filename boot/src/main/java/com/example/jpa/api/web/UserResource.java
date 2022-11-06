@@ -1,8 +1,9 @@
 package com.example.jpa.api.web;
 
 import com.example.jpa.api.service.UserService;
+import com.example.jpa.api.service.dto.SignUpDTO;
 import com.example.jpa.api.service.dto.UserStoreDTO;
-import com.example.jpa.domain.User;
+import com.example.jpa.domain.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
 @RequiredArgsConstructor
 public class UserResource {
 
@@ -28,9 +28,10 @@ public class UserResource {
         return service.getUserList();
     }
 
-    @PostMapping("/app-user")
-    public void createByAppUser(@RequestBody UserStoreDTO dto) {
-        service.saveAppUser(dto);
+    @PostMapping("user")
+    @ResponseStatus(HttpStatus.CREATED)
+    public SignUpDTO.Response createByAppUser(@RequestBody SignUpDTO.Request dto) {
+        return service.saveAppUser(dto);
     }
 
     @PutMapping("/app-user/{id}")

@@ -1,12 +1,15 @@
 package com.example.jpa.api.service;
 
+import com.example.jpa.api.service.dto.SignUpDTO;
 import com.example.jpa.api.service.dto.UserStoreDTO;
-import com.example.jpa.domain.User;
+import com.example.jpa.api.service.user.SignUpService;
+import com.example.jpa.domain.user.User;
 import com.example.jpa.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +18,8 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository repository;
+
+    private final SignUpService signUpService;
 
     public List<User> getUserList1() {
         return repository.findAll();
@@ -30,8 +35,8 @@ public class UserService {
         return Optional.empty();
     }
 
-    public void saveAppUser(UserStoreDTO dto) {
-        repository.save(dto.toEntity());
+    public SignUpDTO.Response saveAppUser(SignUpDTO.Request dto) {
+        return signUpService.signUp(dto);
     }
 
     public Long updateAppUser(UserStoreDTO dto, Long id) {
@@ -53,8 +58,6 @@ public class UserService {
 
             User updateUser = updateUserOptional.get();
 
-            updateUser.usedByUser();
-
             return Boolean.TRUE;
         }
 
@@ -62,4 +65,7 @@ public class UserService {
         return Boolean.FALSE;
     }
 
+    public Collection<User> getBy(Collection<Long> userIds) {
+        return repository.findByIdIn(userIds);
+    }
 }

@@ -1,16 +1,13 @@
 package com.example.jpa.api.service.dto;
 
 import com.example.jpa.domain.Job;
-import com.example.jpa.domain.User;
+import com.example.jpa.domain.user.User;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class JobDTO {
@@ -29,11 +26,11 @@ public class JobDTO {
 
         private List<Long> userIdList = new ArrayList<>();
 
-        public Job toEntity(Set<User> users) {
+        public Job toEntity(Collection<User> users) {
             return Job.builder()
                     .title(this.title)
                     .content(this.content)
-                    .users(users)
+                    .users((Set<User>) users)
                     .build();
         }
 
@@ -69,9 +66,9 @@ public class JobDTO {
                     .title(job.getTitle())
                     .content(job.getContent())
                     .userIds(idSet)
-                    .createBy(job.getCreateBy())
-                    .updateBy(job.getUpdateBy())
-                    .createDate(job.getCreateDate())
+                    .createBy(job.getCreatedBy())
+                    .updateBy(job.getUpdatedBy())
+                    .createDate(job.getCreatedDate())
                     .updateDate(job.getUpdateDate())
                     .build();
         }
@@ -101,6 +98,14 @@ public class JobDTO {
         interface Ids {
             Long getId();
         }
+    }
+
+    public interface Info {
+        Long getId();
+
+        String getTitle();
+
+        String getContent();
 
     }
 

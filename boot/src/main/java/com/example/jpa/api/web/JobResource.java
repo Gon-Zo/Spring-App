@@ -1,50 +1,67 @@
 package com.example.jpa.api.web;
 
 import com.example.jpa.api.service.JobService;
+import com.example.jpa.api.service.UserService;
 import com.example.jpa.api.service.dto.JobDTO;
-import com.example.jpa.domain.Job;
+import com.example.jpa.domain.user.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @RestController
-@RequestMapping("/job")
 @RequiredArgsConstructor
 public class JobResource {
-
     private final JobService service;
 
-    @GetMapping("/title")
-    public ResponseEntity<List<JobDTO.IOnlyTitle>> showAllByOnlyTitle() {
-        List<JobDTO.IOnlyTitle> body = service.getAllByOnlyTitle();
-        return ResponseEntity.ok(body);
+    private final UserService userService;
+
+    @GetMapping("/jobs/title")
+    public List<JobDTO.IOnlyTitle> showAllByOnlyTitle() {
+        return service.getAllByOnlyTitle();
     }
 
-    @GetMapping("")
-    public ResponseEntity<List<Job>> showByJobList() {
-        List<Job> body = service.getByAll();
-        return ResponseEntity.ok(body);
+    @GetMapping("jobs")
+    public List<JobDTO.Info> showByJobList() {
+        return service.getByAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("jobs/{id}")
     public ResponseEntity<JobDTO.IUserIds> showByOneJob(@PathVariable Long id) {
-        JobDTO.IUserIds body = service.getByOne(id);
-        return ResponseEntity.ok(body);
+
+        Optional<JobDTO.IUserIds> bodyOptional = service.getByOne(id);
+
+        if (bodyOptional.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(bodyOptional.get());
     }
 
-    @PostMapping("")
+    @PostMapping("job")
     public ResponseEntity<JobDTO.Result> createByJob(@Validated @RequestBody JobDTO.Store dto) {
-        JobDTO.Result body = service.createBy(dto);
-        return ResponseEntity.ok(body);
+
+        Set<User> userSet = (Set<User>) userService.getBy(dto.getUserIdList());
+
+        Optional<JobDTO.Result> bodyOptional = service.createBy(dto, userSet);
+
+        if (bodyOptional.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(bodyOptional.get());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Job> updateByJob(@PathVariable Long id, @Validated @RequestBody JobDTO.Store dto) {
-        Job body = service.updateBy(id, dto);
-        return ResponseEntity.ok(body);
-    }
+    @PutMapping("jobs/{id}")
+    public JobDTO.Result updateByJob(@PathVariable Long id, @Validated @RequestBody JobDTO.Store dto) {
 
+        Set<User> userSet = (Set<User>) userService.getBy(dto.getUserIdList());
+
+        return service.updateBy(id, dto, userSet);
+    }
 }

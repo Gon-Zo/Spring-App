@@ -11,9 +11,7 @@ public class AuthDTO {
     private String authName;
 
     public Auth toEntity() {
-        return Auth.builder()
-                .authName(this.authName)
-                .build();
+        return Auth.newAuthOf(this.authName);
     }
 
 

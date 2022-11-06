@@ -1,10 +1,11 @@
 package com.example.jpa.repository;
 
-import com.example.jpa.domain.User;
+import com.example.jpa.domain.user.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -19,6 +20,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @EntityGraph(attributePaths = {"groups", "groups.auths"})
     Optional<User> findByEmail(String email);
 
-    Set<User> findByIdIn(List<Long> userIds);
+    Set<User> findByIdIn(Collection<Long> userIds);
 
 }

@@ -17,7 +17,7 @@ public class CategoryResource {
     private final CategoryService service;
 
     @GetMapping("")
-    public List<CategoryDTO> showByCategories() {
+    public List<CategoryDTO.Info> showByCategories() {
         return service.getCategoryList();
     }
 
