@@ -55,6 +55,11 @@ public class User extends AbstractDate {
         return UserStatus.DEFAULT == this.status;
     }
 
+    @org.springframework.data.annotation.Transient
+    public void setDefaultStatus() {
+        this.status = UserStatus.DEFAULT;
+    }
+
     @Builder
     private User(String email, UserStatus status, UserMeta userMeta, UserFail userFail, UserPassword userPassword) {
         this.email = email;

@@ -17,7 +17,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @EntityGraph(attributePaths = {"groups", "groups.auths"})
     List<User> findAll();
 
-    @EntityGraph(attributePaths = {"groups", "groups.auths"})
+    @EntityGraph(attributePaths = {"groups", "groups.auths", "userPassword"})
     Optional<User> findByEmail(String email);
 
     Set<User> findByIdIn(Collection<Long> userIds);
