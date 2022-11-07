@@ -1,4 +1,4 @@
-package com.example.jpa.core;
+package com.example.jpa.config;
 
 import com.example.jpa.core.utils.SecurityUtil;
 import org.springframework.data.domain.AuditorAware;
