@@ -27,9 +27,6 @@ public class Student extends BaseEntity implements Serializable {
 
     @Builder
     private Student(String firstName, String lastName) {
-        this.name = Name.builder()
-                .firstName(firstName)
-                .lastName(lastName)
-                .build();
+        this.name = new Name(firstName, lastName);
     }
 }

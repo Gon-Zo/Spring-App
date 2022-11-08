@@ -1,4 +1,4 @@
-package com.example.jpa.core;
+package com.example.jpa.config;
 
 import com.example.jpa.core.security.filter.CustomAfterFilter;
 import com.example.jpa.core.security.filter.CustomBeforeFilter;

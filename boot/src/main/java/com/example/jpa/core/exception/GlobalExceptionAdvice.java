@@ -1,8 +1,7 @@
 package com.example.jpa.core.exception;
 
-import com.example.jpa.core.exception.GlobalErrorCode;
-import com.example.jpa.core.utils.ExceptionUtil;
 import com.example.jpa.api.service.dto.MessageDTO;
+import com.example.jpa.core.utils.ExceptionUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -27,7 +26,7 @@ public class GlobalExceptionAdvice {
                 .data(ExceptionUtil.getPrintStackTrace(e))
                 .build();
 
-        return new ResponseEntity(message, status);
+        return new ResponseEntity<>(message, status);
     }
 
 }

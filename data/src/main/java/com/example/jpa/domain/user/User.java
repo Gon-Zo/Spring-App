@@ -15,6 +15,12 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 서비스를 위한 User 엔티티
+ *
+ * @author newbalancer
+ * @see com.example.jpa.repository.UserRepository
+ */
 @Getter
 @DynamicInsert
 @DynamicUpdate
@@ -26,7 +32,7 @@ public class User extends AbstractDate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -53,6 +59,11 @@ public class User extends AbstractDate {
     @org.springframework.data.annotation.Transient
     public Boolean isActive() {
         return UserStatus.DEFAULT == this.status;
+    }
+
+    @org.springframework.data.annotation.Transient
+    public void setDefaultStatus() {
+        this.status = UserStatus.DEFAULT;
     }
 
     @Builder
