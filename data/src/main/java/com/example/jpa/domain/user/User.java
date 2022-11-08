@@ -15,6 +15,12 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * 서비스를 위한 User 엔티티
+ *
+ * @author newbalancer
+ * @see com.example.jpa.repository.UserRepository
+ */
 @Getter
 @DynamicInsert
 @DynamicUpdate
