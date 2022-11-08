@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -24,18 +25,25 @@ public class SignUpDTO {
     @AllArgsConstructor
     public static class Request {
 
+        @NotNull
         private String email;
 
+        @NotNull
         private UserStatus status;
 
+        @NotNull
         private String password;
 
+        @NotNull
         private String firstName;
 
+        @NotNull
         private String lastName;
 
+        @NotNull
         private Gender gender;
 
+        @NotNull
         private String birthDate;
 
         public User toUser(UserMeta userMeta, UserPassword userPassword, UserFail userFail) {
