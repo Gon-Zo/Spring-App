@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: JPA-APP
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+      hibernate.jdbc.lob.non_contextual_creation: true
+      hibernate.jdbc.time_zone: UTC
+      hibernate.id.new_generator_mappings: true
+
+logging:
+  level:
+    org:
+      hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+---
+
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:h2:~/test
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+
+---
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://localhost:3333/default
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
