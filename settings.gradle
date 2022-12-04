@@ -1,8 +1,0 @@
-rootProject.name = 'spring-app'
-
-include(
-        'boot',
-        'data',
-        'share'
-)
-

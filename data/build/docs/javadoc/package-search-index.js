@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.example.jpa.domain"},{"l":"com.example.jpa.domain.base"},{"l":"com.example.jpa.repository"},{"l":"com.example.jpa.repository.specs"}];updateSearchResults();
